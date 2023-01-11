@@ -8,7 +8,10 @@ module.exports = {
             },
             colors: {
                 'regal-green': '#00302E',
+                'regal-green-500': '#024F4B',
                 'regal-yellow': '#E2B887',
+                'regal-yellow-500': '#EBCCA8',
+                'regal-footer': '#0B0D17',
             },
         },
     },
