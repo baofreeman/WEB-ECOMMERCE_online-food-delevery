@@ -1,6 +1,7 @@
 import Footer from '../../components/Footer';
 import Button from '../../components/Button';
-function Home() {
+import Logger from '../Logger';
+function Home({ onClick }) {
     return (
         <>
             <div className="grid bg-regal-green px-36 text-white">
@@ -23,7 +24,7 @@ function Home() {
                         <Button size={'sm'} type={'basic'} href="/">
                             Home
                         </Button>
-                        <Button size={'sm'} type={'basic'} to>
+                        <Button size={'sm'} type={'basic'} to={'/log'}>
                             Login
                         </Button>
                         <Button size={'sm'} type={'primary'}>

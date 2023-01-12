@@ -1,19 +1,17 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-
-//Pages
-import Home from './pages/Home';
-import Log from './pages/Log';
-import Dashboard from './pages/Dashboard';
+import { publicRouters } from '../../lilies-food-place/src/routes';
 
 function App() {
     return (
         <Router>
             <div className="App">
                 <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/log" element={<Log />} />
-                    <Route path="/dashboard" element={<Dashboard />} />
+                    {publicRouters.map((route, index) => {
+                        let Page = route.component;
+                        return <Route key={index} path={route.path} element={<Page />} />;
+                    })}
+                    <Route />
                 </Routes>
             </div>
         </Router>

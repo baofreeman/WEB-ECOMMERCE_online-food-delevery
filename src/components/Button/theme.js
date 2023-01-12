@@ -26,4 +26,5 @@ export const LinkSize = {
 
 export let Custom = {
     width: 'w-full',
+    flex: 'flex justify-start w-full',
 };

@@ -12,6 +12,8 @@ module.exports = {
                 'regal-yellow': '#E2B887',
                 'regal-yellow-500': '#EBCCA8',
                 'regal-footer': '#0B0D17',
+                'regal-white-400': '#FBFBFB',
+                'regal-white-200': '#EFEFEF',
             },
         },
     },

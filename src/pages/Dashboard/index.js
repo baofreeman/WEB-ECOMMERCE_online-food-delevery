@@ -1,7 +1,11 @@
+import Content from '../../components/Content';
+import Sidebar from '../../components/Sidebar';
+
 function Dashboard() {
     return (
-        <div>
-            <h1>Dashboard</h1>
+        <div className="flex h-screen">
+            <Sidebar />
+            <Content />
         </div>
     );
 }
