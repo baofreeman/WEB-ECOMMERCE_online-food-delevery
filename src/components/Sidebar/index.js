@@ -6,7 +6,7 @@ import Button from '../Button';
 
 function Sidebar() {
     return (
-        <div className="w-1/4 bg-slate-500 px-10 py-10 items-start bg-regal-white-400">
+        <div className="w-1/4 bg-regal-white-200 px-10 py-10 items-start h-screen bg-regal-white-400">
             <div className="flex items-start mb-14">
                 <div className="flex-1">
                     <img src={image3} width={60} height={60} className={'rounded-full'} />
