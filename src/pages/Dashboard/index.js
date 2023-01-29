@@ -1,13 +1,17 @@
-import Content from '../../components/Content';
-import Sidebar from '../../components/Sidebar';
-
+import Sidebar from '../../components/Layout/Sidebar';
+import Content from '../../components/Layout/Content';
+import { Outlet } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from '../../redux/store';
 function Dashboard() {
     return (
-        <div className="flex h-screen">
-            <Sidebar />
-            <Content />
-        </div>
+        <Provider store={store}>
+            <div className="flex h-screen">
+                <Sidebar />
+                <Content />
+                <Outlet />
+            </div>
+        </Provider>
     );
 }
-
 export default Dashboard;

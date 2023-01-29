@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { ButtonSize, ButtonType, LinkSize, LinkType, Custom } from './theme';
+import { ButtonSize, ButtonStyle, LinkSize, LinkStyle } from './theme';
 
-function Button({ to, href, custom, size, type, children, onClick, onToggle, ...passProps }) {
+function Button({ to, href, custom, size, type, children, onClick, onToggle, style, ...passProps }) {
     let Comp = 'button';
     const props = {
         onClick,
@@ -17,15 +17,14 @@ function Button({ to, href, custom, size, type, children, onClick, onToggle, ...
         Comp = 'a';
     }
 
-    const ButtonStyle = ButtonType[type] + ' ' + ButtonSize[size];
-    const LinkStype = LinkType[type] + ' ' + LinkSize[size];
-    let CustomStyle = ' ' + Custom[custom];
+    const ButtonList = ButtonStyle[style] + ' ' + ButtonSize[size];
+    const LinkList = LinkStyle[style] + ' ' + LinkSize[size];
 
     function checkStyle() {
         if (to || href) {
-            return LinkStype + CustomStyle;
+            return LinkList;
         } else {
-            return ButtonStyle + CustomStyle;
+            return ButtonList;
         }
     }
 

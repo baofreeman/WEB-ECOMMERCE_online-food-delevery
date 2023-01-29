@@ -1,11 +1,15 @@
 import Footer from '../../components/Footer';
 import Button from '../../components/Button';
-import Logger from '../Logger';
-function Home({ onClick }) {
+import { useNavigate } from 'react-router-dom';
+import Input from '../../components/Input';
+
+function Home() {
+    const navigate = useNavigate();
+
     return (
         <>
             <div className="grid bg-regal-green px-36 text-white">
-                <header className="grid grid-cols-2 mt-10">
+                <header className="grid grid-cols-2 mt-10 justify-between w-full">
                     <div className="flex items-center">
                         <svg width="58" height="67" viewBox="0 0 58 67" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -20,14 +24,24 @@ function Home({ onClick }) {
                         <h1 className="ml-4 text-xl font-bold">Lilies</h1>
                     </div>
 
-                    <div className="flex text-base font-semibold justify-end items-center">
-                        <Button size={'sm'} type={'basic'} href="/">
+                    <div className="flex text-base font-semibold justify-evenly items-center">
+                        <Button size={'mA'} style={'basicA'} href="/">
                             Home
+                        </Button>{' '}
+                        <Button
+                            size={'mA'}
+                            style={'basicA'}
+                            to="/dashboard"
+                            onClick={() => {
+                                navigate('/', { replace: true });
+                            }}
+                        >
+                            Dashboard
                         </Button>
-                        <Button size={'sm'} type={'basic'} to={'/log'}>
+                        <Button size={'mA'} style={'basicA'} to={'/signup'}>
                             Login
                         </Button>
-                        <Button size={'sm'} type={'primary'}>
+                        <Button size={'mA'} style={'primaryB'} to={'/signin'}>
                             Sign up
                         </Button>
                     </div>
@@ -61,7 +75,7 @@ function Home({ onClick }) {
                         </div>
                     </div>
 
-                    <div className="grid flex justify-center mt-36">
+                    <div className="grid justify-center mt-36">
                         <h1 className=" text-center text-2xl font-bold">Special Meals of the day!</h1>
                         <h4 className=" text-center text-sm mt-7 w-96 leading-7">
                             Check our sepecials of the day and get discounts on all our meals and swift delivery to what
@@ -72,42 +86,42 @@ function Home({ onClick }) {
                     <div className="grid grid-cols-3 gap-6 mt-36 mb-48">
                         <div className="flex flex-col justify-start items-center">
                             <img
-                                class="rounded-full w-40 h-40"
+                                class="rounded-full w-40 h-40 mb-4"
                                 src="https://img.dominos.vn/Pizzaminsea-Hai-San-Nhiet-Doi-Xot-Tieu.jpg"
                             />
-                            <div className="">
-                                <h3 className="wrap my-5 px-8 text-xl text-center font-bold text-regal-yellow">
+                            <div className="flex flex-col items-center">
+                                <Button size={'mA'} style={'primaryA'} to={'/dashboard'}>
                                     Stir fry Pasta fry
-                                </h3>
-                                <h4 className="wrap px-8 text-sm font-thin text-center">
+                                </Button>
+                                <h4 className="wrap px-8 text-sm font-thin text-center mt-4">
                                     Stir fry pasta yada yada yada because of Sesan
                                 </h4>
                             </div>
                         </div>
                         <div className="flex flex-col justify-start items-center">
                             <img
-                                class="rounded-full w-40 h-40"
-                                src="https://img.dominos.vn/Meat-lover-Pizza-5-Loai-Thit-Thuong-Hang.jpg"
+                                class="rounded-full w-40 h-40 mb-4"
+                                src="https://img.dominos.vn/Pizzaminsea-Hai-San-Nhiet-Doi-Xot-Tieu.jpg"
                             />
-                            <div className="">
-                                <h3 className="wrap my-5 px-8 text-xl text-center font-bold text-regal-yellow">
-                                    Pizza Meat Lover
-                                </h3>
-                                <h4 className="wrap px-8 text-sm font-thin text-center">
+                            <div className="flex flex-col items-center">
+                                <Button size={'mA'} style={'primaryA'} to={'/dashboard'}>
+                                    Stir fry Pasta fry
+                                </Button>
+                                <h4 className="wrap px-8 text-sm font-thin text-center mt-4">
                                     Stir fry pasta yada yada yada because of Sesan
                                 </h4>
                             </div>
                         </div>
                         <div className="flex flex-col justify-start items-center">
                             <img
-                                class="rounded-full w-40 h-40"
-                                src="https://img.dominos.vn/Pepperoni-feast-Pizza-Xuc-Xich-Y.jpg"
+                                class="rounded-full w-40 h-40 mb-4"
+                                src="https://img.dominos.vn/Pizzaminsea-Hai-San-Nhiet-Doi-Xot-Tieu.jpg"
                             />
-                            <div className="">
-                                <h3 className="wrap my-5 px-8 text-xl text-center font-bold text-regal-yellow">
-                                    Pepperoni Feast
-                                </h3>
-                                <h4 className="wrap px-8 text-sm font-thin text-center">
+                            <div className="flex flex-col items-center">
+                                <Button size={'mA'} style={'primaryA'} to={'/dashboard'}>
+                                    Stir fry Pasta fry
+                                </Button>
+                                <h4 className="wrap px-8 text-sm font-thin text-center mt-4">
                                     Stir fry pasta yada yada yada because of Sesan
                                 </h4>
                             </div>
@@ -126,9 +140,9 @@ function Home({ onClick }) {
                         <div className="flex justify-end items-start">
                             <input
                                 placeholder="getfreeman@gmail.com"
-                                className="min-w-0 max-h-12 p-3 leading-none mr-3 rounded-md text-gray-400"
+                                className="py-3 px-8 leading-none mr-3 text-sm rounded-md text-gray-400"
                             />
-                            <Button size={'sm'} type={'primary'}>
+                            <Button size={'sm'} style={'primary'}>
                                 Sign up
                             </Button>
                         </div>

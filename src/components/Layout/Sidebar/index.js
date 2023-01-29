@@ -1,10 +1,16 @@
-import { faBagShopping, faHouse, faSackDollar, faSackXmark, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faHouse, faSackDollar, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { image3 } from '../../assets/images';
+import { NavLink } from 'react-router-dom';
+import { image3 } from '../../../assets/images';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector, connect } from 'react-redux';
+import { useState } from 'react';
 
-import Button from '../Button';
+import Button from '../../Button';
 
 function Sidebar() {
+    const navigate = useNavigate();
+    const getData = useSelector((state) => state.cartReducer.carts);
     return (
         <div className="w-1/4 bg-regal-white-200 px-10 py-10 items-start h-screen bg-regal-white-400">
             <div className="flex items-start mb-14">
@@ -28,26 +34,38 @@ function Sidebar() {
                 </svg>
                 <h1 className="ml-4 text-4xl font-bold">Lilies</h1>
             </div>
-            <div className="py-10">
-                <div className="flex px-2 py-3 justify-items-start items-center bg-regal-white-200 rounded">
+            <ul className="py-10">
+                <Button className="flex px-2 py-3 justify-items-start items-center bg-regal-white-200 rounded">
                     <FontAwesomeIcon icon={faHouse} className={'text-xl mr-4'} />
-                    <Button>Dashboard</Button>
-                </div>
-                <div className="flex px-2 py-3 mt-4 justify-items-start items-center">
+                    <NavLink to={'/dashboard'}>Dashboard</NavLink>
+                </Button>
+                <Button className="flex px-2 py-3 mt-4 justify-items-start items-center">
                     <FontAwesomeIcon icon={faUser} className={'text-xl mr-4'} />
-                    <Button>Your Profile</Button>
-                </div>
-                <div className="flex px-2 py-3 mt-4 justify-items-start items-center">
-                    <FontAwesomeIcon icon={faBagShopping} className={'text-xl mr-4'} />
-                    <Button custom={'flex'}>Orders</Button>
-                    <span className="px-3 py-1 bg-regal-yellow-500 rounded-md">1</span>
-                </div>
-                <div className="flex px-2 py-3 mt-4 justify-items-start items-center">
-                    <FontAwesomeIcon icon={faSackDollar} className={'text-xl mr-4'} />
-                    <Button custom={'flex'}>Your cart</Button>
-                    <span className="px-3 py-1 bg-regal-green-500 text-white rounded-md">1</span>
-                </div>
-            </div>
+                    <NavLink>Profile</NavLink>
+                </Button>
+                <Button
+                    Custom={'flex'}
+                    to={'/dashboard/order'}
+                    onClick={() => {
+                        navigate('/', { replace: true });
+                    }}
+                >
+                    <div className="flex px-2 py-3 mt-4 justify-items-start items-center">
+                        <FontAwesomeIcon icon={faSackDollar} className={'text-xl mr-4'} />
+                        <span className="flex-1">Order</span>
+                        <span className="px-3 py-1 bg-regal-yellow-500 text-black rounded-md w-12 text-center">1</span>
+                    </div>
+                </Button>
+                <Button Custom={'flex'} to={'/dashboard/add'}>
+                    <div className="flex px-2 py-3 mt-4 justify-items-start items-center">
+                        <FontAwesomeIcon icon={faSackDollar} className={'text-xl mr-4'} />
+                        <span className="flex-1">Your cart</span>
+                        <span className="px-3 py-1 bg-regal-green-500 text-white rounded-md w-12 text-center">
+                            {getData.length}
+                        </span>
+                    </div>
+                </Button>
+            </ul>
         </div>
     );
 }
