@@ -1,26 +1,27 @@
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 
-import Order from './components/Layout/Order';
-import AddToCart from './components/Layout/AddToCart';
-import YourCart from './components/Layout/YourCart';
-import Checkout from './components/Layout/Checkout';
-import Dashboard from './pages/Dashboard';
 import Home from './pages/Home';
-import SignIn from './pages/SignIn';
-import SignUp from './pages/SignUp';
-import ProductSingle from './components/Layout/ProductSingle';
-import Product from './components/Product';
+import Order from './utils/Order';
+import AddToCart from './utils/AddToCart';
+import Checkout from './utils/Checkout';
+import Dashboard from './pages/Dashboard/Dashboard';
+import ProductSingle from './utils/Content/ProductDetail';
+import Product from './utils/Content/Product';
+import Profile from './utils/Profile';
+import Auth from './pages/Auth/Auth';
+import SignUp from './pages/Auth/SignUp';
+
 function App() {
     return (
-        <div className="App">
+        <div className="App max-md:w-full">
             <Routes>
                 <Route path="/" element={<Home />}></Route>
-                <Route path="/signin" element={<SignIn />} />
-                <Route path="/signup" element={<SignUp />} />
+                <Route path="/signin" element={<Auth />} />
+                <Route path="/signup" element={<Auth />} />
                 <Route path="/dashboard" element={<Dashboard />}>
                     <Route path="order" element={<Order />} />
-                    <Route path="cart" element={<YourCart />} />
+                    <Route path="profile" element={<Profile />} />
                     <Route path="product" element={<Product />} />
                     <Route path="product/:productId" element={<ProductSingle />} />
                     <Route path="add" element={<AddToCart />} />

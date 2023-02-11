@@ -1,26 +1,19 @@
-export const addCart = (item) => {
+export const addCart = (product) => {
     return {
         type: 'add_cart',
-        payload: item,
+        payload: product,
     };
 };
 
-export const removeInt = (item) => {
+export const removeInt = (product) => {
     return {
         type: 'remove_int',
-        payload: item,
+        payload: product,
     };
 };
-export const removeItem = (id) => {
+export const removeItem = (product, i) => {
     return {
         type: 'remove_item',
-        payload: id,
-    };
-};
-
-export const increment = (item) => {
-    return {
-        type: 'REMOVE_ITEM',
-        payload: item,
+        payload: { product, i },
     };
 };

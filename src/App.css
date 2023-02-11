@@ -18,4 +18,29 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
+
+    .nav-link {
+        display: flex;
+        align-items: center;
+        justify-items: start;
+        padding: 12px 8px 12px 8px;
+        margin-top: 16px;
+        height: 48px;
+    }
+
+    .nav-link.activated {
+        color: #000;
+        background-color: #fbfbfb;
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+    }
+
+    .mobile-menu.activated {
+        display: flex;
+    }
+
+    li {
+        list-style: none;
+    }
 }
