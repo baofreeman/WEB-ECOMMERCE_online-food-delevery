@@ -1,43 +1,46 @@
 import Button from '../Button';
 
 function Footer() {
+    const list = [
+        {
+            aboutUs: { path: '/', display: 'About Us' },
+            careers: { path: '/signin', display: 'Careers' },
+            contactUs: { path: '/signup', display: 'Contact Us' },
+            helpCenter: { path: '/dashboard', display: 'Help Center' },
+            safetyCenter: { path: '/dashboard/order', display: 'Safety' },
+            cookiePolicy: { path: '/dashboard/add', display: 'Cookie Policy' },
+            termsofSevice: { path: '/dashboard/add', display: 'Terms of Sevice' },
+        },
+    ];
     return (
         <div className="grid grid-cols-4 max-md:grid-cols-2 justify-between pb-36 px-36 min-h-80 items-start bg-regal-footer text-white max-lg:px-16 max-md:px-8 max-md:pb-8">
             <div className="pt-16 flex flex-col items-start">
                 <h2 className="text-base font-bold mb-6">Company</h2>
-                <Button className="text-sm font-thin" to={'/dashboard'}>
-                    About Us
-                </Button>
-                <Button className="text-sm font-thin my-3" to={'/dashboard'}>
-                    Careers
-                </Button>
-                <Button className="text-sm font-thin" to={'/dashboard'}>
-                    Contact Us
-                </Button>
+                {list.map((item) => (
+                    <>
+                        <Button to={item.aboutUs.path}>{item.aboutUs.display}</Button>
+                        <Button to={item.careers.path}>{item.careers.display}</Button>
+                        <Button to={item.contactUs.path}>{item.contactUs.display}</Button>
+                    </>
+                ))}
             </div>
             <div className="pt-16 flex flex-col items-start">
                 <h2 className="text-base font-bold mb-6">Support</h2>
-                <Button className="text-sm font-thin" to={'/dashboard'}>
-                    Help Center
-                </Button>
-                <Button className="text-sm font-thin my-3" to={'/dashboard'}>
-                    Safety Center
-                </Button>
+                {list.map((item) => (
+                    <>
+                        <Button to={item.helpCenter.path}>{item.helpCenter.display}</Button>
+                        <Button to={item.safetyCenter.path}>{item.safetyCenter.display}</Button>
+                    </>
+                ))}
             </div>
             <div className="pt-16 flex flex-col items-start">
                 <h2 className="text-base font-bold mb-6">Legal</h2>
-                <Button className="text-sm font-thin" to={'/dashboard'}>
-                    Cookies Policy
-                </Button>
-                <Button className="text-sm font-thin my-3" to={'/dashboard'}>
-                    Privacy Policy
-                </Button>
-                <Button className="text-sm font-thin" to={'/dashboard'}>
-                    Terms of Service
-                </Button>
-                <Button className="text-sm font-thin my-3" to={'/dashboard'}>
-                    Dispute resolution
-                </Button>
+                {list.map((item) => (
+                    <>
+                        <Button to={item.cookiePolicy.path}>{item.cookiePolicy.display}</Button>
+                        <Button to={item.termsofSevice.path}>{item.termsofSevice.display}</Button>
+                    </>
+                ))}
             </div>
             <div className="pt-16 flex flex-col items-start">
                 <h2 className="text-base font-bold mb-6">Install App</h2>
