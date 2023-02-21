@@ -1,8 +1,32 @@
-import { ADD_CART, REMOVE_ITEM, REMOVE_INT } from './type';
+import { ADD_CART, REMOVE_ITEM, REMOVE_INT, RESET_STORE } from './type';
+
+const getDataStorage = () => {
+    let newData = localStorage.getItem('cart');
+    if (newData === []) {
+        return [];
+    } else if (newData === null) {
+        return [];
+    } else {
+        const dataCart = JSON.parse(newData);
+        return dataCart;
+    }
+};
+
+const getQtyStorage = () => {
+    let newQty = localStorage.getItem('qty');
+    if (newQty === 0) {
+        return 0;
+    } else if (newQty === null) {
+        return 0;
+    } else {
+        const dataQty = JSON.parse(newQty);
+        return dataQty;
+    }
+};
 
 const initialStore = {
-    carts: [],
-    totalQty: 0,
+    carts: getDataStorage(),
+    totalQty: getQtyStorage(),
 };
 
 export const cartReducer = (state = initialStore, action) => {
@@ -20,6 +44,7 @@ export const cartReducer = (state = initialStore, action) => {
                 const temp = { ...action.payload, qty: 1 };
                 const total = (state.totalQty += temp.qty);
                 return {
+                    ...state,
                     carts: [...state.carts, temp],
                     totalQty: total,
                 };
@@ -31,6 +56,7 @@ export const cartReducer = (state = initialStore, action) => {
                 const delete_item = (state.carts[itemIndex_desc].qty -= 1);
                 const total = (state.totalQty -= 1);
                 return {
+                    ...state,
                     carts: [...state.carts],
                     totalQty: total,
                 };
@@ -39,6 +65,7 @@ export const cartReducer = (state = initialStore, action) => {
                 newItems.splice(action.payload, 1);
                 let total = (state.totalQty -= state.carts[itemIndex_desc].qty);
                 return {
+                    ...state,
                     carts: newItems,
                     totalQty: total,
                 };
@@ -52,8 +79,15 @@ export const cartReducer = (state = initialStore, action) => {
             let total = state.totalQty;
             total = state.totalQty -= state.carts[itemIndex_remove].qty;
             return {
+                ...state,
                 carts: newItems,
                 totalQty: total,
+            };
+
+        case RESET_STORE:
+            return {
+                carts: [],
+                totalQty: 0,
             };
 
         default:

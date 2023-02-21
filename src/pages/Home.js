@@ -1,28 +1,13 @@
-import { useState } from 'react';
-import { createContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import Footer from '../components/Footer';
 import Button from '.././components/Button';
 import Header from '../components/Header';
 
-export const useContextProfile = createContext();
-export const UserProvider = useContextProfile.Provider;
-export const UserConsumer = useContextProfile.Consumer;
-
 function Home() {
-    const [profile, setProfile] = useState(false);
-    const hanldeSetProfile = () => {
-        if (profile) {
-            setProfile(!profile);
-        }
-    };
     return (
-        <UserProvider value={{ profile, setProfile }}>
-            <div
-                className="grid bg-regal-green px-36 text-white max-lg:px-16 max-md:px-8 max-md:justify-center max-md:block"
-                onClick={hanldeSetProfile}
-            >
+        <>
+            <div className="grid bg-regal-green px-36 text-white max-lg:px-16 max-md:px-8 max-md:justify-center max-md:block">
                 <Header />
                 <div className="grid mt-36 max-md:mt-0 max-md:flex max-md:flex-col">
                     <div className="grid grid-cols-2 max-md:grid-cols-1 max-md:pt-32">
@@ -125,7 +110,7 @@ function Home() {
                 </div>
             </div>
             <Footer />
-        </UserProvider>
+        </>
     );
 }
 

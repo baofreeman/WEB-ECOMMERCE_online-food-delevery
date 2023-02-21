@@ -36,9 +36,9 @@ function Profile() {
     console.log(photoURL);
     return (
         <LayoutModal>
-            <div className="flex h-full items-center justify-center">
+            <div className="flex h-full w-full items-center justify-center">
                 {user ? (
-                    <div className="flex flex-col justify-between h-screen pb-44 pt-28">
+                    <div className="flex w-full flex-col justify-between h-screen pb-44 pt-28 max-lg:pb-96 max-lg:pt-60">
                         <div className="flex items-center justify-center">
                             <img
                                 src={photoURL}
@@ -50,15 +50,11 @@ function Profile() {
                         <h1 className="text-base font-semibold select-none">Email: {user.email}</h1>
                         <div className="flex items-center justify-between">
                             <h1 className="text-base font-semibold select-none">Avatar:</h1>
-                            <Input
-                                type="file"
-                                onChange={handleChange}
-                                className="border-2 p-2 text-sm font-thin"
-                            ></Input>
+                            <Input type="file" onChange={handleChange} size={'sm'}></Input>
                             <div className="w-1/5">
                                 <Button
-                                    size={'smF'}
-                                    style={'primary'}
+                                    size={'buttonSmall'}
+                                    style={'buttonPrimary'}
                                     disabled={loading || !photo}
                                     onClick={handleUpload}
                                 >
@@ -66,15 +62,15 @@ function Profile() {
                                 </Button>
                             </div>
                         </div>
-                        <Button size={'smF'} style={'primary'} onClick={logoutUser}>
+                        <Button size={'buttonMedium'} style={'buttonBasic'} onClick={logoutUser}>
                             Logout
                         </Button>
                     </div>
                 ) : (
-                    <div className="flex flex-col items-center justify-center">
+                    <div className="w-full flex flex-col items-center justify-center">
                         {!index ? <SignIn /> : <SignUp />}
-                        <div className=" w-full px-28 mb-32">
-                            <p className="flex flex-col items-center cursor-pointer" onClick={toggleIndex}>
+                        <div className=" w-full px-28 max-md:px-4 mb-32">
+                            <p className="flex flex-col items-center cursor-pointer mt-4" onClick={toggleIndex}>
                                 {!index ? 'Create an Account' : 'Already have an account'}
                             </p>
                             {error && (

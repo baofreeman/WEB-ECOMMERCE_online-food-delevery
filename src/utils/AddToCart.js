@@ -8,11 +8,17 @@ import { addCart, removeInt, removeItem } from '../redux/actions';
 import LayoutModal from '../pages/Dashboard/LayoutModal';
 
 function AddToCart() {
+    const dispatch = useDispatch();
     const getData = useSelector((state) => state.cartReducer.carts);
     const getQty = useSelector((state) => state.cartReducer.totalQty);
 
-    const dispatch = useDispatch();
     const [price, setPrice] = useState(0);
+    // useEffect(() => {
+    //     localStorage.setItem('cart', JSON.stringify(getData));
+    //     localStorage.setItem('qty', JSON.stringify(getQty));
+    //     localStorage.setItem('orderQty', JSON.stringify(getOrderQty));
+    // }, [getQty]);
+
     const total = () => {
         let price = 0;
         getData.map((e, i) => {
@@ -20,7 +26,9 @@ function AddToCart() {
             setPrice(price);
         });
     };
+
     useEffect(() => {
+        localStorage.setItem('price', JSON.stringify(price));
         total();
     }, [total]);
 
@@ -34,26 +42,32 @@ function AddToCart() {
     const remove = (product, i) => {
         dispatch(removeItem(product, i));
     };
-    console.log({ data: getData, qty: getQty, price: price });
+
+    //localStorage
 
     return (
         <LayoutModal>
-            {getQty ? (
+            {getData ? (
                 <>
                     <div className="flex justify-between mx-5 my-5 max-lg:hidden">
                         <div className="flex">
-                            <h4 className="ml-3 mr-20">Item</h4>
-                            <h4>Name</h4>
+                            <h1 className="ml-3 mr-20">Item</h1>
+                            <h1 className="ml-3 mr-20">Name</h1>
                         </div>
                         <div className="flex">
-                            <h4>Qty</h4>
-                            <h4 className="ml-16">Sub-Total</h4>
+                            <h1 className="ml-3 mr-20">Qty</h1>
+                            <h1 className="ml-3 mr-20">Total</h1>
                         </div>
                     </div>
-                    <div className="h-64 overflow-y-scroll max-lg:h-3/4">
+                    <div className="h-96 overflow-y-scroll max-lg:h-3/4 shadow-form bg-regal-white-400">
                         {getData.map((product, i) => (
-                            <section key={i} className={'flex flex-1 flex-col my-5 mx-5 max-lg:mt-12 max-md:mt-14'}>
-                                <div className="flex items-start">
+                            <section
+                                key={i}
+                                className={
+                                    'flex flex-1 flex-col my-1 mx-5 border-b border-stone-400 max-lg:mt-12 max-md:mt-14'
+                                }
+                            >
+                                <div className="flex items-start py-4">
                                     <img
                                         src={product.img}
                                         width={60}
@@ -63,7 +77,7 @@ function AddToCart() {
                                     <div className="flex flex-col items-start justify-center flex-1 ml-4">
                                         <h2 className="wrap text-sm font-medium select-none">{product.name}</h2>
                                         <span
-                                            className="text-center text-xs text-red-500 cursor-pointer select-none"
+                                            className="text-center text-xs text-red-500 hover:text-red-300 cursor-pointer select-none"
                                             onClick={() => remove(product, i)}
                                         >
                                             remove
@@ -92,20 +106,22 @@ function AddToCart() {
                                 </div>
                             </section>
                         ))}
-                        <span className="flex justify-end w-full text-base font-bold px-5 select-none mt-5">
-                            {price}
-                        </span>
                     </div>
+                    <span className="flex justify-end w-full text-base font-bold px-5 select-none mt-5">
+                        Subtotal: {price}
+                    </span>
                 </>
             ) : (
                 <p>Empty</p>
             )}
-            <div className="flex flex-col items-end">
-                <div className="w-full right-0 left-0 mt-5 max-lg:px-0">
-                    <Button to={'/dashboard/checkout'} size={'smB'} style={'basicB'}>
-                        Checkout
-                    </Button>
-                </div>
+            <div className="w-full flex right-0 left-0 mt-5 max-lg:px-0">
+                <Button
+                    to={'/dashboard/checkout'}
+                    size={'linkMedium'}
+                    style={getData.length ? 'linkBasicRounded' : 'linkDisable'}
+                >
+                    Checkout
+                </Button>
             </div>
         </LayoutModal>
     );

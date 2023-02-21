@@ -6,7 +6,7 @@ import { useAuth } from '../../contexts';
 
 function Wrapper() {
     const [index, setIndex] = useState(false);
-    const { loading, user, error, setError } = useAuth();
+    const { error, setError } = useAuth();
     const toggleIndex = () => {
         setIndex((prevState) => !prevState);
         setError('');
@@ -14,7 +14,7 @@ function Wrapper() {
 
     return (
         <>
-            <div className="h-full flex max-lg:flex-col max-lg:h-screen">
+            <div className="h-full flex max-lg:flex-col max-md:flex-col max-lg:h-screen">
                 <div className="max-lg:flex max-lg:h-1/2 max-lg:justify-center max-md:hidden">
                     <img
                         className="h-screen max-lg:h-full max-lg:w-full max-lg:items-center w-auto"
@@ -22,10 +22,10 @@ function Wrapper() {
                         alt="loi anh"
                     />
                 </div>
-                <div className="w-1/2 flex flex-col items-center justify-center">
+                <div className="w-1/2 max-md:w-full max-md:flex-1 flex flex-col items-center justify-center">
                     {!index ? <SignIn /> : <SignUp />}
-                    <div className=" w-full px-28 mb-32">
-                        <p className="flex flex-col items-center cursor-pointer" onClick={toggleIndex}>
+                    <div className=" w-full px-28 max-md:px-4 mb-32 h-1/4">
+                        <p className="flex flex-col items-center cursor-pointer mt-4" onClick={toggleIndex}>
                             {!index ? 'Create an Account' : 'Already have an account'}
                         </p>
                         {error && (

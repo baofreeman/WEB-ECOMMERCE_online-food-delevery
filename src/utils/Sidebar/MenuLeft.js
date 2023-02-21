@@ -1,4 +1,4 @@
-import { faHouse, faSackDollar, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faFolder, faHouse, faSackDollar, faStore, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link, NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
@@ -8,27 +8,33 @@ import { useAuth } from '../../contexts';
 
 function MenuLeft() {
     const nav = [
-        { path: '/dashboard', display: 'DashBoard', icon: faHouse },
+        { path: '/', display: 'Home', icon: faHouse },
+        { path: '/dashboard', display: 'DashBoard', icon: faStore },
         { path: '/dashboard/profile', display: 'Profile', icon: faUser },
-        { path: '/dashboard/order', display: 'Order', icon: faSackDollar, module: '1' },
+        { path: '/dashboard/order', display: 'Order', icon: faFolder, module: '1' },
         { path: '/dashboard/add', display: 'Your Cart', icon: faSackDollar, module: '0' },
     ];
     const navigate = useNavigate();
     const { user } = useAuth();
     const [photoURL, setPhotoURL] = useState('https://cdn-icons-png.flaticon.com/512/1946/1946429.png');
     const [displayname, setDisplayname] = useState('');
+
     useEffect(() => {
         if (user?.photoURL) {
             setPhotoURL(user.photoURL);
             setDisplayname(user.displayName);
         }
     }, [user]);
+    const orderCart = JSON.parse(localStorage.getItem('order'));
+    const getCartQty = JSON.parse(localStorage.getItem('cart'));
+
     const navLinkClass = ({ isActive }) => {
         return isActive ? 'nav-link activated' : 'nav-link';
     };
     const getData = useSelector((state) => state.cartReducer.carts);
     const getQty = useSelector((state) => state.cartReducer.totalQty);
 
+    useEffect(() => {}, [getCartQty]);
     return (
         <div className="w-1/4 bg-regal-white-200 px-10 py-10 items-start h-screen max-lg:px-5 max-md:hidden">
             <div className="flex items-start mb-14 max-lg:flex-col">
@@ -64,7 +70,7 @@ function MenuLeft() {
                                 <span className="flex-1 w-full">{item.display}</span>
                                 {item.module ? (
                                     <span className="px-3 py-1 bg-regal-green-500 text-white rounded-md w-12 text-center">
-                                        {item.display === 'Your Cart' ? getQty : 1}
+                                        {item.display === 'Your Cart' ? getQty : orderCart ? orderCart.length : 0}
                                     </span>
                                 ) : null}
                             </NavLink>

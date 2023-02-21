@@ -17,3 +17,10 @@ export const removeItem = (product, i) => {
         payload: { product, i },
     };
 };
+
+export const resetStore = (product) => {
+    return {
+        type: 'reset_store',
+        payload: { product },
+    };
+};

@@ -31,7 +31,7 @@ function ProductSingle() {
             </div>
             <div className="flex justify-between">
                 <div className="w-full">
-                    <Button size={'smF'} style={'primary'} onClick={() => handleAddCart(product)}>
+                    <Button size={'buttonMedium'} style={'buttonPrimary'} onClick={() => handleAddCart(product)}>
                         Add to cart
                     </Button>
                 </div>

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ButtonSize, ButtonStyle, LinkSize, LinkStyle } from './theme';
 
-function Button({ to, href, custom, size, type, children, onClick, onToggle, style, ...passProps }) {
+function Button({ to, href, custom, size, type, children, onClick, onToggle, disabled, style, ...passProps }) {
     let Comp = 'button';
     const props = {
         onClick,

@@ -8,13 +8,13 @@ import { useAuth } from '../../contexts';
 
 function SignIn() {
     const emailRef = useRef();
-    const { signInUser, error, forgetPassword } = useAuth();
+    const { signInUser } = useAuth();
     const formik = useFormik({
         initialValues: {
             email: '',
             password: '',
         },
-        onSubmit: (value, actions) => {
+        onSubmit: (value) => {
             const email = value.email;
             const password = value.password;
             if (email && password) {
@@ -35,7 +35,7 @@ function SignIn() {
         }),
     });
     return (
-        <div className="flex flex-col w-full px-28 max-lg:h-1/2 max-md:px-4 justify-end items-center flex-1 max-lg:px-28 max-lg:justify-center">
+        <div className="flex flex-col w-full px-28 max-lg:h-1/2 max-md:px-4 max-md:justify-end justify-end items-center flex-1 max-lg:px-28 max-lg:justify-center">
             <h1 className="text-2xl font-bold mb-2">Welcome Back</h1>
             <form
                 className="w-full flex flex-col items-center"
@@ -68,8 +68,9 @@ function SignIn() {
                     <p className="text-xs font-thin text-red-600">{formik.errors.password}</p>
                 )}
                 <Button
-                    className="w-full bg-regal-green hover:bg-regal-green-500 my-4 text-regal-yellow font-bold rounded py-3 px-11 text-base"
                     type="submit"
+                    size="buttonMedium"
+                    style={formik.values.email && formik.values.password ? 'buttonBasic' : 'buttonDisable'}
                 >
                     SIGN IN
                 </Button>

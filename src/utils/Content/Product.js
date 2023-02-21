@@ -1,15 +1,17 @@
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Button from '../../components/Button';
 import { addCart } from '../../redux/actions';
 
 function Product({ data }) {
     console.log(data);
+    const getData = useSelector((state) => state.cartReducer.carts);
     const dispatch = useDispatch();
     const handleAddCart = (product) => {
         dispatch(addCart(product));
     };
+    console.log(getData);
     return (
         <div className="w-full h-screen max-md:mt-16">
             <div className="grid grid-cols-3 gap-2 max-lg:grid-cols-2" to={'/dashboard/product'}>
@@ -37,9 +39,15 @@ function Product({ data }) {
                         </Link>
                         <div className="mt-1 flex justify-between items-center w-full px-10 pb-5 max-lg:px-5 max-md:px-1 max-md:flex-col">
                             <span className="text-base font-semibold max-md:mb-2">{product.price}</span>
-                            <Button size={'sm'} style={'primary'} onClick={() => handleAddCart(product)}>
-                                Add to cart
-                            </Button>
+                            <div className="w-full pl-12 max-md:pl-0">
+                                <Button
+                                    size={'buttonSmall'}
+                                    style={'buttonPrimary'}
+                                    onClick={() => handleAddCart(product)}
+                                >
+                                    Add to cart
+                                </Button>
+                            </div>
                         </div>
                     </section>
                 ))}

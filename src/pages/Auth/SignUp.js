@@ -6,8 +6,7 @@ import Button from '../../components/Button';
 import { useAuth } from '../../contexts';
 
 function SignUp() {
-    const { registerUser, loading } = useAuth();
-    const { user } = useAuth();
+    const { registerUser, getStore } = useAuth();
 
     const formik = useFormik({
         initialValues: {
@@ -24,6 +23,7 @@ function SignUp() {
             const phone = value.email;
             if (name && email && password && phone) {
                 registerUser(name, email, password, phone);
+                getStore(name, email);
             }
         },
         validationSchema: Yup.object({
@@ -48,7 +48,7 @@ function SignUp() {
     });
 
     return (
-        <div className="flex flex-col w-full px-28 max-lg:h-1/2 max-md:px-4 justify-end items-center flex-1 max-lg:px-28 max-lg:justify-center">
+        <div className="flex flex-col w-full px-28 max-lg:h-1/2 max-md:px-4 max-md:justify-end justify-end items-center flex-1 max-lg:px-28 max-lg:justify-center">
             <h1 className="text-2xl font-bold mb-2">Welcome</h1>
             <form className="w-full flex flex-col items-center" onSubmit={formik.handleSubmit}>
                 <Input
@@ -117,8 +117,17 @@ function SignUp() {
                 )}
 
                 <Button
-                    className="w-full bg-regal-green hover:bg-regal-green-500 my-4 text-regal-yellow font-bold rounded py-3 px-11 text-base"
                     type="submit"
+                    size="buttonMedium"
+                    style={
+                        formik.values.name &&
+                        formik.values.email &&
+                        formik.values.password &&
+                        formik.values.confirmPassword &&
+                        formik.values.phone
+                            ? 'buttonBasic'
+                            : 'buttonDisable'
+                    }
                 >
                     SIGN UP
                 </Button>

@@ -11,9 +11,10 @@ import {
 } from 'firebase/auth';
 
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
-
 import { auth } from '../firebase-config';
 import { storage } from '../firebase-config';
+import { doc, setDoc } from 'firebase/firestore';
+import { db } from '../firebase-config';
 
 const AuthContext = createContext({});
 
@@ -64,6 +65,7 @@ export function AuthProvider({ children }) {
 
     const logoutUser = () => {
         signOut(auth);
+
         navigate('/');
     };
 
