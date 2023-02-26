@@ -1,6 +1,6 @@
 export const ButtonStyle = {
     buttonPrimary:
-        'bg-regal-yellow text-black hover:bg-regal-yellow-500 text-black font-bold rounded shadow-md shadow-gray-300 focus:ring focus:ring-regal-green select-none',
+        'bg-regal-yellow text-regal-green hover:bg-regal-yellow-500 text-black font-bold rounded shadow-md shadow-gray-300 focus:ring focus:ring-regal-green select-none',
     buttonBasic:
         'bg-regal-green hover:bg-regal-green-500 text-regal-yellow font-bold rounded shadow-md shadow-gray-400 focus:ring focus:ring-regal-yellow select-none',
     buttonDelete: 'bg-red-300 hover:bg-red-500 text-white font-bold rounded select-none',
@@ -8,8 +8,8 @@ export const ButtonStyle = {
 };
 
 export const ButtonSize = {
-    buttonSmall: 'w-full py-3 px-6 text-xs text-center max-md:py-3 max-md:px-4 max-md:text-xs',
-    buttonMedium: 'w-full py-4 px-8 text-sm text-center max-md:py-4 max-md:px-6 max-md:text-xs',
+    buttonSmall: 'w-full py-3 px-6 text-xs flex items-center justify-center max-md:py-3 max-md:px-4 max-md:text-xs',
+    buttonMedium: 'w-full py-4 px-8 text-sm flex items-center justify-center max-md:py-4 max-md:px-6 max-md:text-xs',
 };
 
 export const LinkStyle = {
@@ -23,8 +23,8 @@ export const LinkStyle = {
 };
 
 export const LinkSize = {
-    linkSmall: 'w-full py-3 px-6 max-md:px-1 text-center text-sm',
-    linkMedium: 'w-full py-3 px-8 text-sm text-center font-bold max-md:py-4',
-    linkSmallRounded: 'py-2 px-4 text-sm w-full text-center',
-    linkMediumRounded: 'py-3 px-8 text-sm w-full text-center',
+    linkSmall: 'w-full text-center text-xs',
+    linkMedium: 'w-full text-base text-center font-bold max-md:py-4',
+    linkSmallRounded: 'py-3 px-6 text-sm w-full text-center',
+    linkMediumRounded: 'py-4 px-8 text-base w-full text-center',
 };

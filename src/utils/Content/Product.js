@@ -6,12 +6,10 @@ import { addCart } from '../../redux/actions';
 
 function Product({ data }) {
     console.log(data);
-    const getData = useSelector((state) => state.cartReducer.carts);
     const dispatch = useDispatch();
     const handleAddCart = (product) => {
         dispatch(addCart(product));
     };
-    console.log(getData);
     return (
         <div className="w-full h-screen max-md:mt-16">
             <div className="grid grid-cols-3 gap-2 max-lg:grid-cols-2" to={'/dashboard/product'}>
@@ -28,10 +26,10 @@ function Product({ data }) {
                                     'text-center flex items-center flex-col px-10 py-5 max-lg:px-5 max-md:px-1 max-md:py-2 '
                                 }
                             >
-                                <img src={product.img} width={80} height={80} className={'rounded-full'} />
+                                <img src={product.imageURL} width={80} height={80} className={'rounded-full'} />
                                 <div className="w-full">
-                                    <h2 className="wrap_1 mt-3 text-base font-bold max-md:text-sm">{product.name}</h2>
-                                    <h4 className="wrap mt-3 text-sm font-thin px-8 text-left max-md:text-xs max-md:px-2">
+                                    <h2 className="wrap_1 mt-3 text-base font-bold max-md:text-sm">{product.title}</h2>
+                                    <h4 className="wrap mt-3 text-xs font-thin px-8 text-left max-md:text-xs max-md:px-2">
                                         {product.des}
                                     </h4>
                                 </div>

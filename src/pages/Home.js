@@ -54,7 +54,7 @@ function Home() {
                                 />
                             </Link>
                             <div className="flex flex-col items-center">
-                                <Button size={'mA'} style={'primaryA'} to={'/dashboard'}>
+                                <Button size={'linkMedium'} style={'linkPrimary'} to={'/dashboard'}>
                                     Stir fry Pasta fry
                                 </Button>
                                 <h4 className="wrap px-8 text-sm font-thin text-center mt-4 max-md:mt-2">
@@ -70,7 +70,7 @@ function Home() {
                                 />
                             </Link>
                             <div className="flex flex-col items-center">
-                                <Button size={'mA'} style={'primaryA'} to={'/dashboard'}>
+                                <Button size={'linkMedium'} style={'linkPrimary'} to={'/dashboard'}>
                                     Stir fry Pasta fry
                                 </Button>
                                 <h4 className="wrap px-8 text-sm font-thin text-center mt-4">
@@ -86,7 +86,7 @@ function Home() {
                                 />
                             </Link>
                             <div className="flex flex-col items-center">
-                                <Button size={'mA'} style={'primaryA'} to={'/dashboard'}>
+                                <Button size={'linkMedium'} style={'linkPrimary'} to={'/dashboard'}>
                                     Stir fry Pasta fry
                                 </Button>
                                 <h4 className="wrap px-8 text-sm font-thin text-center mt-4">

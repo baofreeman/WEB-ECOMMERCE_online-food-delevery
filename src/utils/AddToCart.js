@@ -13,12 +13,6 @@ function AddToCart() {
     const getQty = useSelector((state) => state.cartReducer.totalQty);
 
     const [price, setPrice] = useState(0);
-    // useEffect(() => {
-    //     localStorage.setItem('cart', JSON.stringify(getData));
-    //     localStorage.setItem('qty', JSON.stringify(getQty));
-    //     localStorage.setItem('orderQty', JSON.stringify(getOrderQty));
-    // }, [getQty]);
-
     const total = () => {
         let price = 0;
         getData.map((e, i) => {
@@ -32,8 +26,8 @@ function AddToCart() {
         total();
     }, [total]);
 
-    const increment = (e) => {
-        dispatch(addCart(e));
+    const increment = (product) => {
+        dispatch(addCart(product));
     };
 
     const decrement = (product) => {
@@ -42,8 +36,6 @@ function AddToCart() {
     const remove = (product, i) => {
         dispatch(removeItem(product, i));
     };
-
-    //localStorage
 
     return (
         <LayoutModal>
@@ -117,7 +109,7 @@ function AddToCart() {
             <div className="w-full flex right-0 left-0 mt-5 max-lg:px-0">
                 <Button
                     to={'/dashboard/checkout'}
-                    size={'linkMedium'}
+                    size={'linkMediumRounded'}
                     style={getData.length ? 'linkBasicRounded' : 'linkDisable'}
                 >
                     Checkout

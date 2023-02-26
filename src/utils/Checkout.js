@@ -104,7 +104,7 @@ function Checkout() {
         }),
     });
 
-    // console.log({ province, district });
+    console.log({ province, district });
     return (
         <LayoutModal>
             <div className="flex flex-col w-full h-screen justify-center items-center">

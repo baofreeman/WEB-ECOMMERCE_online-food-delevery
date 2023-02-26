@@ -10,7 +10,8 @@ import ProductSingle from './utils/Content/ProductDetail';
 import Product from './utils/Content/Product';
 import Profile from './utils/Profile';
 import Auth from './pages/Auth/Auth';
-import SignUp from './pages/Auth/SignUp';
+
+import CreateContainer from './utils/CreateContainer';
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                 <Route path="/" element={<Home />}></Route>
                 <Route path="/signin" element={<Auth />} />
                 <Route path="/signup" element={<Auth />} />
+                <Route path="/create" element={<CreateContainer />} />
                 <Route path="/dashboard" element={<Dashboard />}>
                     <Route path="order" element={<Order />} />
                     <Route path="profile" element={<Profile />} />

@@ -1,10 +1,9 @@
 import { Outlet } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
 import Sidebar from '../../utils/Sidebar/Sidebar';
 import Content from '../../utils/Content/Content';
-import Header from '../../components/Header';
 
 function Dashboard() {
     const getData = useSelector((state) => state.cartReducer.carts);

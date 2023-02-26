@@ -1,20 +1,20 @@
+import { useState, useEffect } from 'react';
 import { faFolder, faHouse, faSackDollar, faStore, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link, NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { useState, useEffect } from 'react';
+
 import { useAuth } from '../../contexts';
 
 function MenuLeft() {
-    const nav = [
+    const list = [
         { path: '/', display: 'Home', icon: faHouse },
         { path: '/dashboard', display: 'DashBoard', icon: faStore },
         { path: '/dashboard/profile', display: 'Profile', icon: faUser },
         { path: '/dashboard/order', display: 'Order', icon: faFolder, module: '1' },
         { path: '/dashboard/add', display: 'Your Cart', icon: faSackDollar, module: '0' },
     ];
-    const navigate = useNavigate();
     const { user } = useAuth();
     const [photoURL, setPhotoURL] = useState('https://cdn-icons-png.flaticon.com/512/1946/1946429.png');
     const [displayname, setDisplayname] = useState('');
@@ -31,14 +31,14 @@ function MenuLeft() {
     const navLinkClass = ({ isActive }) => {
         return isActive ? 'nav-link activated' : 'nav-link';
     };
-    const getData = useSelector((state) => state.cartReducer.carts);
     const getQty = useSelector((state) => state.cartReducer.totalQty);
 
     useEffect(() => {}, [getCartQty]);
+
     return (
         <div className="w-1/4 bg-regal-white-200 px-10 py-10 items-start h-screen max-lg:px-5 max-md:hidden">
             <div className="flex items-start mb-14 max-lg:flex-col">
-                <Link className="flex-1 max-lg:mb-4" to={'/dashboard/profile'}>
+                <Link className="flex-1 w-16 h-16 max-lg:mb-4" to={'/dashboard/profile'}>
                     <img src={photoURL} className={'rounded-full w-16 h-16 p-1 bg-white border border-regal-yellow'} />
                 </Link>
                 <div className="">
@@ -62,7 +62,7 @@ function MenuLeft() {
                 <h1 className="ml-4 text-4xl font-bold">Lilies</h1>
             </div>
             <ul className="py-10 w-full">
-                {nav.map((item, id) => {
+                {list.map((item, id) => {
                     return (
                         <li key={id} className="w-full">
                             <NavLink to={item.path} className={navLinkClass}>

@@ -58,7 +58,7 @@ function Profile() {
                                     disabled={loading || !photo}
                                     onClick={handleUpload}
                                 >
-                                    Upload
+                                    <p>Upload</p>
                                 </Button>
                             </div>
                         </div>
@@ -70,8 +70,8 @@ function Profile() {
                     <div className="w-full flex flex-col items-center justify-center">
                         {!index ? <SignIn /> : <SignUp />}
                         <div className=" w-full px-28 max-md:px-4 mb-32">
-                            <p className="flex flex-col items-center cursor-pointer mt-4" onClick={toggleIndex}>
-                                {!index ? 'Create an Account' : 'Already have an account'}
+                            <p className="flex flex-col text-xs items-center cursor-pointer mt-4" onClick={toggleIndex}>
+                                {!index ? 'Create an Account' : 'Already have an Account'}
                             </p>
                             {error && (
                                 <p className="flex items-center justify-center text-black text-xs bg-red-300 mt-3 px-4 py-1 rounded-md">

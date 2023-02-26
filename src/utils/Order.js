@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import LayoutModal from '../pages/Dashboard/LayoutModal';
 
 function Order() {
@@ -16,14 +15,6 @@ function Order() {
                 <h1 className={'text-xl font-bold mb-4'}>Order</h1>
                 <div className="w-full h-1/2 shadow-form bg-regal-white-400">
                     <div className="h-full max-lg:h-4/5 max-lg:overflow-y-scroll overflow-y-scroll">
-                        {/* {orderCart.length < 2
-                            ? orderCart.map((item) => (
-                                  <>
-                                      <h1>{item.name}</h1>
-                                      <h1>{item.phone}</h1>
-                                  </>
-                              ))
-                            : null} */}
                         {orderCart.map((item, i) => (
                             <section
                                 key={i}

@@ -1,4 +1,5 @@
-import { ADD_CART, REMOVE_ITEM, REMOVE_INT, RESET_STORE } from './type';
+import { ADD_CART, REMOVE_ITEM, REMOVE_INT, RESET_STORE, SET_fOODS } from './type';
+import { getAllFoodItems } from '../data/dataProducts';
 
 const getDataStorage = () => {
     let newData = localStorage.getItem('cart');
@@ -27,10 +28,16 @@ const getQtyStorage = () => {
 const initialStore = {
     carts: getDataStorage(),
     totalQty: getQtyStorage(),
+    foodItems: [],
 };
 
 export const cartReducer = (state = initialStore, action) => {
     switch (action.type) {
+        case SET_fOODS:
+            return {
+                ...state,
+                foodItems: [...action.payload],
+            };
         case ADD_CART:
             const itemIndex = state.carts.findIndex((item) => item.id === action.payload.id);
             if (itemIndex >= 0) {

@@ -9,12 +9,12 @@ import {
     signOut,
     sendPasswordResetEmail,
 } from 'firebase/auth';
-
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+
 import { auth } from '../firebase-config';
 import { storage } from '../firebase-config';
-import { doc, setDoc } from 'firebase/firestore';
-import { db } from '../firebase-config';
+
+/** Auth Context */
 
 const AuthContext = createContext({});
 
@@ -23,11 +23,11 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-    const navigate = useNavigate();
-
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+    const navigate = useNavigate();
+
     useEffect(() => {
         setLoading(true);
         const unsubscribe = onAuthStateChanged(auth, (res) => {
@@ -38,6 +38,7 @@ export function AuthProvider({ children }) {
         return unsubscribe;
     }, []);
 
+    // register
     const registerUser = (name, email, password, phone) => {
         setLoading(true);
         createUserWithEmailAndPassword(auth, email, password, phone)
@@ -52,28 +53,32 @@ export function AuthProvider({ children }) {
             .finally(() => setLoading(false));
     };
 
+    // login
     const signInUser = (email, password) => {
         setLoading(true);
         signInWithEmailAndPassword(auth, email, password)
             .then((res) => {
-                console.log(res);
+                // const user = res.user.providerData;
+                // localStorage.setItem('user', JSON.stringify(user));
                 navigate('/dashboard');
             })
             .catch((err) => setError(err.message))
             .finally(() => setLoading(false));
     };
 
+    //logout
     const logoutUser = () => {
         signOut(auth);
-
         navigate('/');
     };
 
+    // forget password
     const forgetPassword = (email) => {
         return sendPasswordResetEmail(auth, email);
     };
 
-    async function upload(file, currentUser) {
+    // upload avatar
+    const upload = async (file, currentUser) => {
         const fileRef = ref(storage, currentUser.uid + '.png');
         setLoading(true);
         const snapshot = await uploadBytes(fileRef, file);
@@ -81,7 +86,7 @@ export function AuthProvider({ children }) {
         updateProfile(auth.currentUser, { photoURL });
         setLoading(false);
         alert('thanh cong');
-    }
+    };
 
     const contextValue = {
         user,

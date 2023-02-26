@@ -1,3 +1,10 @@
+export const setFoods = (product) => {
+    return {
+        type: 'set_foods',
+        payload: product,
+    };
+};
+
 export const addCart = (product) => {
     return {
         type: 'add_cart',

@@ -1,11 +1,9 @@
 import { useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faClose, faSackDollar } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-import { useAuth } from '../../contexts';
 import Menu from './Menu';
 
 function Header() {
@@ -25,7 +23,7 @@ function Header() {
     const getQty = useSelector((state) => state.cartReducer.totalQty);
 
     return (
-        <header className="grid grid-cols-2 mt-10 justify-between w-full max-md:flex max-md:bg-regal-green max-md:items-center max-md:w-full max-md:fixed max-md:mt-0 max-md:h-20 max-md:top-0 max-md:right-0 max-md:left-0 z-10">
+        <header className="grid grid-cols-2 h-32 py-5 justify-between w-full max-md:flex max-md:bg-regal-green max-md:items-center max-md:w-full max-md:fixed max-md:mt-0 max-md:h-20 max-md:top-0 max-md:right-0 max-md:left-0 z-10">
             <NavLink to={'/dashboard/add'} className="hidden max-md:block">
                 <FontAwesomeIcon icon={faSackDollar} className="ml-4 px-2 py-2 text-2xl text-regal-yellow z-10" />
                 <span className="bg-regal-yellow-500 rounded-full absolute top-5 left-9 w-5 h-5 text-regal-green flex items-center justify-center text-sm font-bold">
@@ -73,7 +71,7 @@ function Header() {
             <section
                 ref={navbarRef}
                 onClick={handleClose}
-                className="max-md:hidden max-md:absolute max-md:top-20 max-md:flex max-md:flex-col max-md:bg-regal-green-500 max-md:w-full"
+                className="max-md:hidden flex items-center justify-end max-md:absolute max-md:top-20 max-md:flex max-md:flex-col max-md:bg-regal-green-500 max-md:w-full"
             >
                 <Menu />
             </section>
