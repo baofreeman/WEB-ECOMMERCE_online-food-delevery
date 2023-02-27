@@ -10,7 +10,6 @@ import LayoutModal from '../pages/Dashboard/LayoutModal';
 function AddToCart() {
     const dispatch = useDispatch();
     const getData = useSelector((state) => state.cartReducer.carts);
-    const getQty = useSelector((state) => state.cartReducer.totalQty);
 
     const [price, setPrice] = useState(0);
     const total = () => {

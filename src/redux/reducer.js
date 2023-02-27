@@ -1,5 +1,4 @@
 import { ADD_CART, REMOVE_ITEM, REMOVE_INT, RESET_STORE, SET_fOODS } from './type';
-import { getAllFoodItems } from '../data/dataProducts';
 
 const getDataStorage = () => {
     let newData = localStorage.getItem('cart');
