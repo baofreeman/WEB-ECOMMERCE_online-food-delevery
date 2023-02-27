@@ -92,6 +92,7 @@ export const cartReducer = (state = initialStore, action) => {
 
         case RESET_STORE:
             return {
+                ...state,
                 carts: [],
                 totalQty: 0,
             };

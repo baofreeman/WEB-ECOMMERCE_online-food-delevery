@@ -1,6 +1,6 @@
 function Select({ label, options, value, setValue, type }) {
     return (
-        <div className="w-full bg-transparent border border-regal-yellow-500 text-gray-900 text-m rounded focus:outline-none focus:border-regal-yellow focus:ring-1 focus:ring-regal-yellow block p-2.5 m-2 placeholder:italic placeholder:text-sm placeholder:text-slate-400'">
+        <div className="w-full bg-transparent border border-regal-yellow-500 text-gray-900 text-sm rounded focus:outline-none focus:border-regal-yellow focus:ring-1 focus:ring-regal-yellow block p-2.5 placeholder:italic placeholder:text-sm placeholder:text-slate-400'">
             <label htmlFor="select-address"></label>
             <select
                 id="select-address"

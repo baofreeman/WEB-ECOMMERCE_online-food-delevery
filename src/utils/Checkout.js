@@ -70,7 +70,7 @@ function Checkout() {
         listOrder.push({
             id: user ? user.uid : null,
             orderId: makeid(6),
-            name: values.name,
+            title: values.title,
             phone: values.phone,
             cart: getData,
             price: price,
@@ -84,7 +84,7 @@ function Checkout() {
 
     const formik = useFormik({
         initialValues: {
-            name: '',
+            title: '',
             phone: '',
             address: '',
             province: province,
@@ -92,7 +92,7 @@ function Checkout() {
         },
         onSubmit,
         validationSchema: Yup.object().shape({
-            name: Yup.string().required('Required').min(3, 'Must be 4 character or more'),
+            title: Yup.string().required('Required').min(3, 'Must be 4 character or more'),
             phone: Yup.string()
                 .required('Required')
                 .matches(/(03|05|07|08|09|01[2|6|8|9])+([0-9]{8})\b/, 'Must be a valid phone number'),
@@ -108,23 +108,23 @@ function Checkout() {
     return (
         <LayoutModal>
             <div className="flex flex-col w-full h-screen justify-center items-center">
-                <h1 className={'text-xl font-bold mb-4'}>Checkout</h1>
+                <h1 className={'text-xl font-bold'}>Checkout</h1>
                 <form
                     action="/dashboard"
                     onSubmit={formik.handleSubmit}
-                    className={'w-full flex flex-col items-center top-1/4 px-5 py-5 shadow-form'}
+                    className={'w-full flex flex-col gap-4 items-center top-1/4 px-5 py-5 shadow-form'}
                 >
                     <Input
                         type={'text'}
-                        name="name"
-                        id="name"
+                        name="title"
+                        id="title"
                         size={'m'}
-                        placeholder={'Enter your name'}
-                        value={formik.values.name}
+                        placeholder={'Enter your title'}
+                        value={formik.values.title}
                         onChange={formik.handleChange}
                     />
-                    {formik.touched.name && formik.errors.name && (
-                        <p className="text-xs font-thin text-red-600">{formik.errors.name}</p>
+                    {formik.touched.title && formik.errors.title && (
+                        <p className="text-xs font-thin text-red-600">{formik.errors.title}</p>
                     )}
 
                     <Input

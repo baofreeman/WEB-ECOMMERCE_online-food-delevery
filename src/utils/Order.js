@@ -9,6 +9,8 @@ function Order() {
         localStorage.removeItem('price');
     }, 1000);
 
+    console.log(orderCart);
+
     return (
         <LayoutModal>
             <div className="flex flex-col w-full h-screen items-center justify-center px-4">
@@ -25,7 +27,7 @@ function Order() {
                                     {item.cart.map((product, i) => (
                                         <div key={i} className="flex justify-between mt-1">
                                             <div className="wrap w-1/2 text-sm font-medium my-1 select-none">
-                                                {product.name}
+                                                {product.title}
                                             </div>
                                             <div>{product.qty}</div>
                                             <div className="text-base font-semibold w-24 text-right select-none">

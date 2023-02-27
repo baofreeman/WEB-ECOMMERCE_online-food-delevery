@@ -20,6 +20,8 @@ function AddToCart() {
         });
     };
 
+    console.log(getData);
+
     useEffect(() => {
         localStorage.setItem('price', JSON.stringify(price));
         total();
@@ -59,14 +61,14 @@ function AddToCart() {
                                 }
                             >
                                 <div className="flex items-start py-4">
-                                    <img
-                                        src={product.img}
-                                        width={60}
-                                        height={60}
-                                        className={'rounded-full select-none'}
-                                    />
+                                    <div className="flex items-center w-[60px] h-[60px] rounded-full">
+                                        <img
+                                            src={product.imageURL}
+                                            className={'h-full rounded-full object-cover select-none'}
+                                        />
+                                    </div>
                                     <div className="flex flex-col items-start justify-center flex-1 ml-4">
-                                        <h2 className="wrap text-sm font-medium select-none">{product.name}</h2>
+                                        <h2 className="wrap text-sm font-medium select-none">{product.title}</h2>
                                         <span
                                             className="text-center text-xs text-red-500 hover:text-red-300 cursor-pointer select-none"
                                             onClick={() => remove(product, i)}

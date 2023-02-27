@@ -50,7 +50,7 @@ function SignUp() {
     return (
         <div className="flex flex-col w-full px-28 max-lg:h-1/2 max-md:px-4 max-md:justify-end justify-end items-center flex-1 max-lg:px-28 max-lg:justify-center">
             <form
-                className="w-full flex flex-col items-center px-10 py-10 rounded-md border-2 shadow-form"
+                className="w-full flex flex-col gap-4 items-center px-10 py-10 rounded-md border-2 shadow-form"
                 onSubmit={formik.handleSubmit}
             >
                 <h1 className="text-2xl font-bold mb-2">Welcome</h1>

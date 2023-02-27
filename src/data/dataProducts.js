@@ -91,8 +91,8 @@ export const categories = [
     },
     {
         id: 2,
-        name: 'Pizzas',
-        urlParamName: 'pizzas',
+        name: 'Desserts',
+        urlParamName: 'desserts',
     },
     {
         id: 3,
@@ -103,6 +103,21 @@ export const categories = [
         id: 4,
         name: 'Soft Drinks',
         urlParamName: 'drinks',
+    },
+    {
+        id: 5,
+        name: 'Bowls',
+        urlParamName: 'bowls',
+    },
+    {
+        id: 6,
+        name: 'Kids Menu',
+        urlParamName: 'kidsMenu',
+    },
+    {
+        id: 7,
+        name: 'Family',
+        urlParamName: 'family',
     },
 ];
 

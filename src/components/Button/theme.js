@@ -13,7 +13,7 @@ export const ButtonSize = {
 };
 
 export const LinkStyle = {
-    linkPrimary: 'text-regal-yellow font-base select-none',
+    linkPrimary: 'text-regal-yellow select-none',
     linkPrimaryRounded:
         'bg-regal-yellow text-black hover:bg-regal-yellow-500 text-black font-bold rounded focus:ring focus:ring-regal-green select-none',
     linkBasic: 'text-white font-base select-none',
@@ -23,8 +23,8 @@ export const LinkStyle = {
 };
 
 export const LinkSize = {
-    linkSmall: 'w-full text-center text-xs',
+    linkSmall: 'w-full text-center text-sm',
     linkMedium: 'w-full text-base text-center font-bold max-md:py-4',
-    linkSmallRounded: 'py-3 px-6 text-sm w-full text-center',
+    linkSmallRounded: 'py-3 px-6 text-sm w-full flex items-center justify-center text-center',
     linkMediumRounded: 'py-4 px-8 text-base w-full text-center',
 };

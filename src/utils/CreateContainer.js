@@ -22,6 +22,7 @@ function CreateContainer() {
     const [price, setPrice] = useState('');
     const [category, setCategory] = useState(true);
     const [imageAsset, setImageAsset] = useState(null);
+    const [des, setDes] = useState('');
     const [fields, setFields] = useState(false);
     const [alertStatus, setAlertStatus] = useState('danger');
     const [msg, setMsg] = useState(null);
@@ -79,7 +80,7 @@ function CreateContainer() {
     const saveDetails = () => {
         setLoading(true);
         try {
-            if (!title || !category || !imageAsset || !price) {
+            if (!title || !category || !imageAsset || !price || !des) {
                 setFields(true);
                 setMsg("Required fields can't be empty");
                 setAlertStatus('danger');
@@ -93,6 +94,7 @@ function CreateContainer() {
                     title: title,
                     imageURL: imageAsset,
                     category: category,
+                    des: des,
                     price: price,
                 };
                 saveItem(data);
@@ -104,7 +106,7 @@ function CreateContainer() {
                     setFields(false);
                 }, 4000);
                 clearData();
-                navigate('/dashboard');
+                // navigate('/dashboard');
             }
         } catch (error) {
             setLoading(true);
@@ -129,14 +131,15 @@ function CreateContainer() {
         setTitle('');
         setImageAsset(null);
         setPrice('');
+        setDes('');
         setCategory('Select Category');
     };
     return (
         <>
             <div className="flex flex-col items-start h-screen bg-regal-green px-36 text-white max-lg:px-16 max-md:px-8 max-md:justify-center max-md:block">
                 <Header />
-                <div className="w-full h-full flex items-center justify-center mb-10 bg-regal-white-200 rounded-md">
-                    <div className="w-[50%] max-md:w-[75%] flex flex-col gap-4 border border-gray-200 rounded-md p-4">
+                <div className="w-full h-full flex gap-4 items-center justify-center mb-10 bg-regal-white-200 rounded-md">
+                    <div className="w-[50%] h-[80%] max-md:w-[75%] flex flex-col gap-4 border border-gray-200 rounded-md p-4">
                         {fields && (
                             <motion.p
                                 initial={{ opacity: 0 }}
@@ -244,6 +247,18 @@ function CreateContainer() {
                             <Button size={'buttonMedium'} style={'buttonPrimary'} onClick={saveDetails}>
                                 Save
                             </Button>
+                        </div>
+                    </div>
+                    <div className="w-[50%] h-[80%]  flex flex-col gap-4 border border-gray-200 rounded-md p-4">
+                        <h1 className="w-full text-black text-sm">Desception</h1>
+                        <div className="h-full flex-1">
+                            <Input
+                                required
+                                type="text"
+                                value={des}
+                                size="lg"
+                                onChange={(e) => setDes(e.target.value)}
+                            ></Input>
                         </div>
                     </div>
                 </div>
