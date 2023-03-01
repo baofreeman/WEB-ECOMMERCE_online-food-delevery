@@ -1,15 +1,33 @@
 import { Link } from 'react-router-dom';
+import { img1, img2, img3, img4 } from '../assets/images';
 
 import Footer from '../components/Footer';
 import Button from '.././components/Button';
 import Header from '../components/Header';
 
 function Home() {
+    const listFoods = [
+        {
+            title: 'Steak House Burger',
+            path: img2,
+            des: 'Beyond Burger, caramelized onion sauce, blue cheese crumbles, iceberg lettuce, and horseradish aioli served on a brioche bun',
+        },
+        {
+            title: 'Supper Green Quinoa',
+            path: img3,
+            des: 'Nourishing mix of kale, baby spinach, cabbage, carrots, marinated quinoa, dried cranberries, avocado, sunflower seeds, almonds, spiced pepitas, and red beets tossed in a mango-lemon vinaigrette',
+        },
+        {
+            title: 'VG Classic Burger',
+            path: img4,
+            des: 'Beyond burger, American cheese, special sauce, lettuce, tomato, and onion on a brioche bun',
+        },
+    ];
     return (
         <>
             <div className="grid bg-regal-green px-36 text-white max-lg:px-16 max-md:px-8 max-md:justify-center max-md:block">
                 <Header />
-                <div className="grid mt-36 max-md:mt-0 max-md:flex max-md:flex-col">
+                <div className="grid mt-36 gap-28 max-md:mt-0 max-md:flex max-md:flex-col">
                     <div className="grid grid-cols-2 max-md:grid-cols-1 max-md:pt-32">
                         <div className="items-center">
                             <h1 className="text-4xl font-medium max-md:text-2xl">Order food anytime, anywhere</h1>
@@ -27,17 +45,20 @@ function Home() {
                             </div>
                         </div>
                         <div className="items-center flex justify-center">
-                            <Link className="" to="/dashboard">
+                            <Link
+                                className="flex items-center justify-center rounded-full w-[300px] h-[300px]"
+                                to="/dashboard"
+                            >
                                 <img
-                                    className="rounded-full w-96 h-96 max-lg:h-72 max-lg:w-72 max-md:w-56 max-md:h-56 max-md:mt-12"
-                                    src="https://img.dominos.vn/Pizza-Ga-Pho-Mai-Thit-Heo-Xong-Khoi-Cheesy-Chicken-Bacon.jpg"
+                                    className="rounded-full w-full h-full object-cover"
+                                    src={img1}
                                     alt="image description"
                                 />
                             </Link>
                         </div>
                     </div>
 
-                    <div className="grid justify-center mt-36 max-md:mt-12">
+                    <div className="grid justify-center">
                         <h1 className=" text-center text-2xl font-bold max-md:text-lg">Special Meals of the day!</h1>
                         <h4 className=" text-center text-sm mt-7 w-96 leading-7 max-md:w-full max-md:text-xs max-md:mt-3">
                             Check our sepecials of the day and get discounts on all our meals and swift delivery to what
@@ -45,58 +66,30 @@ function Home() {
                         </h4>
                     </div>
 
-                    <div className="grid grid-cols-3 gap-6 mt-36 mb-48 max-md:grid-cols-1 max-md:mt-16 max-md:mb-16">
-                        <div className="flex flex-col justify-start items-center">
-                            <Link to={'/dashboard'}>
-                                <img
-                                    className="rounded-full w-40 h-40 mb-4 max-md:h-28 max-md:w-28"
-                                    src="https://img.dominos.vn/Pizzaminsea-Hai-San-Nhiet-Doi-Xot-Tieu.jpg"
-                                />
-                            </Link>
-                            <div className="flex flex-col items-center">
+                    <div className="grid grid-cols-3 gap-6 max-md:grid-cols-1">
+                        {listFoods.map((item, i) => (
+                            <div key={i} className="flex flex-col justify-start items-center gap-4">
+                                <div className="items-center flex justify-center">
+                                    <Link
+                                        className="flex items-center justify-center rounded-full w-[150px] h-[150px]"
+                                        to="/dashboard"
+                                    >
+                                        <img
+                                            className="rounded-full w-full h-full object-cover"
+                                            src={item.path}
+                                            alt="image description"
+                                        />
+                                    </Link>
+                                </div>
                                 <Button size={'linkMedium'} style={'linkPrimary'} to={'/dashboard'}>
-                                    Stir fry Pasta fry
+                                    {item.title}
                                 </Button>
-                                <h4 className="wrap px-8 text-sm font-thin text-center mt-4 max-md:mt-2">
-                                    Stir fry pasta yada yada yada because of Sesan
-                                </h4>
+                                <h4 className="wrap px-8 text-sm font-thin text-center">{item.des}</h4>
                             </div>
-                        </div>
-                        <div className="flex flex-col justify-start items-center">
-                            <Link to={'/dashboard'}>
-                                <img
-                                    className="rounded-full w-40 h-40 mb-4 max-md:h-28 max-md:w-28"
-                                    src="https://img.dominos.vn/Pizzaminsea-Hai-San-Nhiet-Doi-Xot-Tieu.jpg"
-                                />
-                            </Link>
-                            <div className="flex flex-col items-center">
-                                <Button size={'linkMedium'} style={'linkPrimary'} to={'/dashboard'}>
-                                    Stir fry Pasta fry
-                                </Button>
-                                <h4 className="wrap px-8 text-sm font-thin text-center mt-4">
-                                    Stir fry pasta yada yada yada because of Sesan
-                                </h4>
-                            </div>
-                        </div>
-                        <div className="flex flex-col justify-start items-center">
-                            <Link to={'/dashboard'}>
-                                <img
-                                    className="rounded-full w-40 h-40 mb-4 max-md:h-28 max-md:w-28"
-                                    src="https://img.dominos.vn/Pizzaminsea-Hai-San-Nhiet-Doi-Xot-Tieu.jpg"
-                                />
-                            </Link>
-                            <div className="flex flex-col items-center">
-                                <Button size={'linkMedium'} style={'linkPrimary'} to={'/dashboard'}>
-                                    Stir fry Pasta fry
-                                </Button>
-                                <h4 className="wrap px-8 text-sm font-thin text-center mt-4">
-                                    Stir fry pasta yada yada yada because of Sesan
-                                </h4>
-                            </div>
-                        </div>
+                        ))}
                     </div>
 
-                    <div className="mb-36 grid grid-cols-2 gap-10 max-md:grid-cols-1 max-md:gap-6 max-md:block max-md:mb-16">
+                    <div className="grid grid-cols-2 mb-36 gap-10 max-md:grid-cols-1 max-md:gap-6 max-md:block">
                         <div>
                             <h2 className="text-2xl font-semibold text-regal-yellow max-md:text-base">
                                 Get notified when we update!

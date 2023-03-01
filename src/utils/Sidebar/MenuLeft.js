@@ -1,20 +1,12 @@
 import { useState, useEffect } from 'react';
-import { faFolder, faHouse, faSackDollar, faStore, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link, NavLink } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { useAuth } from '../../contexts';
+import { dataListMenuLeft } from '../../data/dataListMenuLeft';
 
 function MenuLeft() {
-    const list = [
-        { path: '/', display: 'Home', icon: faHouse },
-        { path: '/dashboard', display: 'DashBoard', icon: faStore },
-        { path: '/dashboard/profile', display: 'Profile', icon: faUser },
-        { path: '/dashboard/order', display: 'Order', icon: faFolder, module: '1' },
-        { path: '/dashboard/add', display: 'Your Cart', icon: faSackDollar, module: '0' },
-    ];
     const { user } = useAuth();
     const [photoURL, setPhotoURL] = useState('https://cdn-icons-png.flaticon.com/512/1946/1946429.png');
     const [displayname, setDisplayname] = useState('');
@@ -62,7 +54,7 @@ function MenuLeft() {
                 <h1 className="ml-4 text-4xl font-bold">Lilies</h1>
             </div>
             <ul className="py-10 w-full">
-                {list.map((item, id) => {
+                {dataListMenuLeft.map((item, id) => {
                     return (
                         <li key={id} className="w-full">
                             <NavLink to={item.path} className={navLinkClass}>

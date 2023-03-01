@@ -13,10 +13,10 @@ function Order() {
 
     return (
         <LayoutModal>
-            <div className="flex flex-col w-full h-screen items-center justify-center px-4">
-                <h1 className={'text-xl font-bold mb-4'}>Order</h1>
-                <div className="w-full h-1/2 shadow-form bg-regal-white-400">
-                    <div className="h-full max-lg:h-4/5 max-lg:overflow-y-scroll overflow-y-scroll">
+            <div className="flex flex-col w-full h-screen gap-4 items-center justify-center">
+                <h1 className={'text-xl font-bold'}>Order</h1>
+                <div className="w-full shadow-form bg-regal-white-400">
+                    <div className="h-[400px] max-lg:h-[300px] max-md:h-[250px] overflow-y-scroll">
                         {orderCart.map((item, i) => (
                             <section
                                 key={i}
@@ -46,7 +46,7 @@ function Order() {
                         ))}
                     </div>
                 </div>
-                <h1 className="flex items-center mt-14 text-lg text-regal-green font-medium">
+                <h1 className="flex items-center text-lg text-regal-green font-medium">
                     Thank you for trusting us, we will call to confirm and prepare the dish for you. Wish you enjoy
                     delicious.
                 </h1>

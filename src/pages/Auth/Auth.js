@@ -23,13 +23,10 @@ function Wrapper() {
                         alt="loi anh"
                     />
                 </div>
-                <div className="w-1/2 max-md:w-full max-md:flex-1 flex flex-col items-center justify-center">
+                <div className="w-1/2 px-16 py-8 max-md:px-4 max-md:w-full max-lg:w-full max-lg:h-3/4 max-md:flex-1 flex flex-col items-center justify-center gap-4">
                     {!index ? <SignIn /> : <SignUp />}
-                    <div className="px-28 max-md:px-4 mb-8 h-1/4">
-                        <div
-                            className="flex text-xs items-center justify-center cursor-pointer mt-4"
-                            onClick={toggleIndex}
-                        >
+                    <div className="px-6">
+                        <div className="flex text-xs items-center justify-center cursor-pointer" onClick={toggleIndex}>
                             {!index ? (
                                 <>
                                     <p className="mr-1">Create your</p>

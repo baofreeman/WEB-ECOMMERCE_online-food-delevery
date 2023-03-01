@@ -69,6 +69,7 @@ export function AuthProvider({ children }) {
     //logout
     const logoutUser = () => {
         signOut(auth);
+        localStorage.clear();
         navigate('/');
     };
 

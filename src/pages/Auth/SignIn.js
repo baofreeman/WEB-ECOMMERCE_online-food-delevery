@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
@@ -7,12 +6,8 @@ import Button from '../../components/Button';
 import { useAuth } from '../../contexts';
 
 function SignIn() {
-    const emailRef = useRef();
     const { signInUser, forgetPassword } = useAuth();
-    console.log(emailRef);
-    const forgot = () => {
-        if (emailRef.current.value) forgetPassword(emailRef.current.value).then(() => (emailRef.current.value = ''));
-    };
+
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -39,7 +34,7 @@ function SignIn() {
         }),
     });
     return (
-        <div className="flex flex-col w-full px-16 max-lg:h-1/2 max-md:px-4 max-md:justify-end justify-end items-center flex-1 max-lg:px-28 max-lg:justify-center">
+        <div className="flex flex-col w-full items-center">
             <form
                 className="w-full flex flex-col gap-4 items-center px-10 py-10 rounded-md border-2 shadow-form"
                 onSubmit={(e) => {
@@ -51,7 +46,6 @@ function SignIn() {
                 <Input
                     type={'email'}
                     id="email"
-                    ref={emailRef}
                     name="email"
                     value={formik.values.email}
                     size={'m'}
@@ -79,7 +73,7 @@ function SignIn() {
                 >
                     SIGN IN
                 </Button>
-                <p onClick={forgot}>Forget Password</p>
+                <p>Forget Password</p>
             </form>
         </div>
     );

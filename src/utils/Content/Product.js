@@ -3,15 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Button from '../../components/Button';
 import { addCart } from '../../redux/actions';
+import { Suspense, useState } from 'react';
+import Loader from '../../components/Loader';
 
 function Product({ data }) {
-    console.log(data);
     const dispatch = useDispatch();
     const handleAddCart = (product) => {
         dispatch(addCart(product));
     };
     return (
-        <div className="w-full h-screen max-md:mt-16">
+        <div className="w-full h-screen">
             <div className="grid grid-cols-3 gap-2 max-lg:grid-cols-2" to={'/dashboard/product'}>
                 {data.map((product) => (
                     <section
@@ -23,15 +24,15 @@ function Product({ data }) {
                         <Link to={`product/${product.id}`}>
                             <div
                                 className={
-                                    'text-center flex items-center flex-col px-10 py-5 max-lg:px-5 max-md:px-1 max-md:py-2 '
+                                    'text-center flex items-center flex-col gap-2 px-10 py-5 max-lg:px-5 max-md:px-1 max-md:py-2'
                                 }
                             >
-                                <div className="w-[120px] h-[120px] rounded-full">
+                                <div className="w-[120px] h-[120px] rounded-full border border-regal-yellow">
                                     <img src={product.imageURL} className={'w-full h-full rounded-full object-cover'} />
                                 </div>
-                                <div className="w-full">
-                                    <h2 className="wrap_1 mt-3 text-base font-bold max-md:text-sm">{product.title}</h2>
-                                    <h4 className="wrap mt-3 text-xs font-thin px-8 text-left max-md:text-xs max-md:px-2">
+                                <div className="w-full flex flex-col gap-2">
+                                    <h2 className="wrap_1 text-base font-bold max-md:text-sm">{product.title}</h2>
+                                    <h4 className="wrap text-xs font-thin px-8 text-left max-md:text-xs max-md:px-2">
                                         {product.des}
                                     </h4>
                                 </div>

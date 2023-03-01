@@ -14,8 +14,8 @@ function Footer() {
     ];
     return (
         <div className="grid grid-cols-4 max-md:grid-cols-2 justify-between pb-36 px-36 min-h-80 items-start bg-regal-footer text-white max-lg:px-16 max-md:px-8 max-md:pb-8">
-            {list.map((item) => (
-                <div className="pt-16 flex flex-col items-start">
+            {list.map((item, i) => (
+                <div className="pt-16 flex flex-col items-start" key={i}>
                     <h2 className="text-base font-bold mb-6">Company</h2>
                     <div className="my-1">
                         <Button size={'linkSmall'} style={'linkBasic'} to={item.aboutUs.path}>
@@ -36,7 +36,7 @@ function Footer() {
             ))}
             <div className="pt-16 flex flex-col items-start">
                 <h2 className="text-base font-bold mb-6">Support</h2>
-                {list.map((item) => (
+                {list.map((item, i) => (
                     <>
                         <div className="my-1">
                             <Button size={'linkSmall'} style={'linkBasic'} to={item.helpCenter.path}>
@@ -53,7 +53,7 @@ function Footer() {
             </div>
             <div className="pt-16 flex flex-col items-start">
                 <h2 className="text-base font-bold mb-6">Legal</h2>
-                {list.map((item) => (
+                {list.map((item, i) => (
                     <>
                         <div className="my-1">
                             <Button size={'linkSmall'} style={'linkBasic'} to={item.cookiePolicy.path}>

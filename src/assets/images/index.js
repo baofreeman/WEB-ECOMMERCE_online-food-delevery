@@ -2,3 +2,8 @@ export { default as image1 } from './1.png';
 export { default as image2 } from './2.png';
 export { default as image4 } from './3.png';
 export { default as image3 } from './avt.png';
+export { default as img1 } from './img1.jpg';
+export { default as img2 } from './img2.jpg';
+export { default as img3 } from './img3.jpg';
+export { default as img4 } from './img4.jpg';
+export { default as cartEmpty } from './cartEmpty.png';

@@ -1,6 +1,6 @@
 function Loader() {
     return (
-        <div role="status">
+        <div role="status" className="w-full h-full flex items-center justify-center">
             <svg
                 aria-hidden="true"
                 className="inline w-10 h-10 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
@@ -17,7 +17,7 @@ function Loader() {
                     fill="currentFill"
                 />
             </svg>
-            <span class="sr-only">Loading...</span>
+            <span className="sr-only">Loading...</span>
         </div>
     );
 }
