@@ -21,7 +21,7 @@ function AddToCart() {
         });
     };
 
-    console.log(getData);
+    console.log('render');
 
     useEffect(() => {
         localStorage.setItem('price', JSON.stringify(price));
@@ -44,7 +44,7 @@ function AddToCart() {
             <div className="flex flex-col w-full h-screen gap-4 items-center justify-center">
                 <h1 className={'text-xl font-bold'}>Cart</h1>
                 {getData.length ? (
-                    <div className='"w-full shadow-form bg-regal-white-400'>
+                    <div className="w-full shadow-form bg-regal-white-400">
                         <div className="h-[400px] max-lg:h-[300px] max-md:h-[250px] overflow-y-scroll">
                             {getData.map((product, i) => (
                                 <section

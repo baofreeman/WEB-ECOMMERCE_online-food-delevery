@@ -14,6 +14,8 @@ function Sidebar() {
         { path: '/dashboard/add', display: 'Your Cart', module: '0' },
     ];
 
+    console.log('render sidebar');
+
     return (
         <>
             <MenuLeft />

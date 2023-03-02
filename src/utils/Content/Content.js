@@ -2,9 +2,9 @@ import React, { lazy, Suspense, useEffect, useState } from 'react';
 import Loader from '../../components/Loader';
 import { useSelector } from 'react-redux';
 
-// import Product from './Product';
+import Product from './Product';
 
-const Product = lazy(() => import('./Product'));
+// const Product = lazy(() => import('./Product'));
 
 function Content({ data }) {
     const [productList, setProductList] = useState();
@@ -62,41 +62,35 @@ function Content({ data }) {
     };
 
     return (
-        <div className="grid w-full bg-white px-5 py-5 h-screen">
+        <div className="grid w-full bg-white px-5 py-5 h-screen gap-4">
+            <select
+                className="w-[20%] max-lg:w-[40%] max-md:w-full h-[40px] outline-none text-sm max-md:text-xs p-2 rounded-md cursor-pointer text-black border border-regal-yellow"
+                onChange={handleChange}
+            >
+                <option value="select" className="text-sm max-md:text-xs text-black">
+                    Filter By Category
+                </option>
+                <option value="burgers" className="text-sm max-md:text-xs text-black">
+                    Burgers
+                </option>
+                <option value="salads" className="text-sm max-md:text-xs text-black">
+                    Salads
+                </option>
+                <option value="desserts" className="text-sm max-md:text-xs text-black">
+                    Desserts
+                </option>
+                <option value="bowls" className="text-sm max-md:text-xs text-black">
+                    Bowls
+                </option>
+                <option value="kidsMenu" className="text-sm max-md:text-xs text-black">
+                    Kids Menu
+                </option>
+                <option value="family" className="text-sm max-md:text-xs text-black">
+                    Family
+                </option>
+            </select>
             <div className="grid overflow-y-scroll overflow-x-hidden gap-4">
-                <select
-                    className="w-[20%] max-lg:w-[40%] max-md:w-full outline-none text-sm max-md:text-xs p-2 rounded-md cursor-pointer text-black border border-regal-yellow"
-                    onChange={handleChange}
-                >
-                    <option value="select" className="text-sm max-md:text-xs text-black">
-                        Filter By Category
-                    </option>
-                    <option value="burgers" className="text-sm max-md:text-xs text-black">
-                        Burgers
-                    </option>
-                    <option value="salads" className="text-sm max-md:text-xs text-black">
-                        Salads
-                    </option>
-                    <option value="desserts" className="text-sm max-md:text-xs text-black">
-                        Desserts
-                    </option>
-                    <option value="bowls" className="text-sm max-md:text-xs text-black">
-                        Bowls
-                    </option>
-                    <option value="kidsMenu" className="text-sm max-md:text-xs text-black">
-                        Kids Menu
-                    </option>
-                    <option value="family" className="text-sm max-md:text-xs text-black">
-                        Family
-                    </option>
-                </select>
-                {field && productList.length ? (
-                    <Suspense fallback={<Loader />}>
-                        <Product data={productList} />
-                    </Suspense>
-                ) : (
-                    <Loader />
-                )}
+                {field && productList.length ? <Product data={productList} /> : null}
             </div>
         </div>
     );

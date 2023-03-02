@@ -4,15 +4,12 @@ import { useOutletContext, useParams } from 'react-router-dom';
 import { addCart } from '../../redux/actions';
 import Button from '../../components/Button';
 import LayoutModal from '../../pages/Dashboard/LayoutModal';
-import { useContext, useEffect, useState } from 'react';
-import { setFoods } from '../../redux/actions';
-import { getAllFoodItems } from '../../data/dataProducts';
+import { useEffect, useState } from 'react';
 import Loader from '../../components/Loader';
 function ProductSingle() {
     const { productId } = useParams();
     const [foodItem, setFoodItem] = useState();
     const [fields, setfields] = useState(false);
-    const getFoods = useSelector((state) => state.cartReducer.foodItems);
     const data = useOutletContext();
     const dispatch = useDispatch();
 

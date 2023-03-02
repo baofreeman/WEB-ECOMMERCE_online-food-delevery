@@ -9,7 +9,7 @@ import Loader from '../components/Loader';
 import Button from '../components/Button';
 import { storage } from '../firebase-config';
 import { saveItem, getAllFoodItems } from '../data/dataProducts';
-import { deleteObject, getDownloadURL, ref, uploadBytes, uploadBytesResumable } from 'firebase/storage';
+import { deleteObject, getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { makeid } from '../data/randomID';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';

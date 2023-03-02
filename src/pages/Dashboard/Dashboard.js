@@ -8,11 +8,12 @@ import { getAllFoodItems } from '../../data/dataProducts';
 import { setFoods } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
 
-import Content from '../../utils/Content/Content';
+// import Content from '../../utils/Content/Content';
 import Loader from '../../components/Loader';
 // import Product from '../../utils/Content/Product';
 
 // const Product = lazy(() => import('../../utils/Content/Product'));
+const Content = lazy(() => import('../../utils/Content/Content'));
 function Dashboard() {
     const getData = useSelector((state) => state.cartReducer.carts);
     const getQty = useSelector((state) => state.cartReducer.totalQty);
@@ -40,10 +41,14 @@ function Dashboard() {
             });
     }, []);
 
+    console.log('getData');
+
     return (
         <div className="flex h-screen max-md:mt-[80px]">
             <Sidebar />
-            <Content data={getFoods} />
+            <Suspense fallback={<Loader />}>
+                <Content data={getFoods} />
+            </Suspense>
             <Outlet context={getFoods} />
         </div>
     );
