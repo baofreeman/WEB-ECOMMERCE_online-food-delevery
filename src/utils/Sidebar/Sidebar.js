@@ -19,14 +19,14 @@ function Sidebar() {
     return (
         <>
             <MenuLeft />
-            <div className="hidden max-md:flex max-md:flex-col">
+            <div className="hidden sm:flex sm:flex-col">
                 <Header />
             </div>
             {navbar ? (
                 <section className="w-full flex flex-col bg-regal-green-500 items-center justify-center z-10 absolute top-20 right-0 left-0">
                     {list.map((item, id) => {
                         return (
-                            <div className="w-28 max-md:w-full my-2 text-center max-md:flex">
+                            <div className="w-28 sm:w-full my-2 text-center sm:flex">
                                 <Button
                                     key={id}
                                     onClick={() => setNavbar(!navbar)}

@@ -16,11 +16,11 @@ function Order() {
             <div className="flex flex-col w-full h-screen gap-4 items-center justify-center">
                 <h1 className={'text-xl font-bold'}>Order</h1>
                 <div className="w-full shadow-form bg-regal-white-400">
-                    <div className="h-[400px] max-lg:h-[300px] max-md:h-[250px] overflow-y-scroll">
+                    <div className="h-[400px] md:h-[300px] sm:h-[250px] overflow-y-scroll">
                         {orderCart.map((item, i) => (
                             <section
                                 key={i}
-                                className="'flex flex-1 flex-col my-5 mx-5 border-b border-stone-400 max-lg:mt-12 max-md:mt-14'"
+                                className="'flex flex-1 flex-col my-5 mx-5 border-b border-stone-400 md:mt-12 sm:mt-14'"
                             >
                                 <div className="flex flex-col">
                                     <h1 className="text-xs text-regal-yellow font-thin">Order: {item.orderId}</h1>

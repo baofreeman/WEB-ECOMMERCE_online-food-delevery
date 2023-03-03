@@ -45,12 +45,12 @@ function AddToCart() {
                 <h1 className={'text-xl font-bold'}>Cart</h1>
                 {getData.length ? (
                     <div className="w-full shadow-form bg-regal-white-400">
-                        <div className="h-[400px] max-lg:h-[300px] max-md:h-[250px] overflow-y-scroll">
+                        <div className="h-[400px] md:h-[300px] sm:h-[250px] overflow-y-scroll">
                             {getData.map((product, i) => (
                                 <section
                                     key={i}
                                     className={
-                                        'flex flex-1 flex-col my-1 mx-5 border-b border-stone-400 max-lg:mt-12 max-md:mt-14'
+                                        'flex flex-1 flex-col my-1 mx-5 border-b border-stone-400 md:mt-12 sm:mt-14'
                                     }
                                 >
                                     <div className="flex items-start py-4">
@@ -99,7 +99,7 @@ function AddToCart() {
                             <span className="flex justify-end w-full text-base font-bold px-5 select-none mt-5">
                                 Subtotal: {price}
                             </span>
-                            <div className="w-full flex right-0 left-0 mt-5 max-lg:px-0">
+                            <div className="w-full flex right-0 left-0 mt-5 md:px-0">
                                 <Button
                                     to={'/dashboard/checkout'}
                                     size={'linkMediumRounded'}

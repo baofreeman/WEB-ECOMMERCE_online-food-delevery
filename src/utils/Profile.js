@@ -64,9 +64,9 @@ function Profile() {
                     </Button>
                 </>
             ) : (
-                <div className="w-full flex flex-col items-center justify-center">
+                <div>
                     {!index ? <SignIn /> : <SignUp />}
-                    <div className=" w-full px-28 max-md:px-4 mb-32">
+                    <div className=" w-full px-28 sm:px-4">
                         <p className="flex flex-col text-xs items-center cursor-pointer mt-4" onClick={toggleIndex}>
                             {!index ? 'Create an Account' : 'Already have an Account'}
                         </p>

@@ -8,10 +8,7 @@ function UserUi() {
 
     return (
         <div>
-            <div
-                className="max-md:hidden ml-8 flex justify-end relative"
-                onClick={() => setToggleUser((prev) => !prev)}
-            >
+            <div className="sm:hidden ml-8 flex justify-end relative" onClick={() => setToggleUser((prev) => !prev)}>
                 <img
                     src={user.photoURL ? user.photoURL : 'https://cdn-icons-png.flaticon.com/512/1946/1946429.png'}
                     alt="avatar"

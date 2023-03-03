@@ -13,7 +13,7 @@ function Product({ data }) {
     };
     return (
         <div className="w-full h-screen">
-            <div className="grid grid-cols-3 gap-2 max-lg:grid-cols-2" to={'/dashboard/product'}>
+            <div className="grid grid-cols-3 gap-2 md:grid-cols-2" to={'/dashboard/product'}>
                 {data.map((product) => (
                     <section
                         key={product.id}
@@ -24,23 +24,23 @@ function Product({ data }) {
                         <Link to={`product/${product.id}`}>
                             <div
                                 className={
-                                    'text-center flex items-center flex-col gap-2 px-10 py-5 max-lg:px-5 max-md:px-1 max-md:py-2'
+                                    'text-center flex items-center flex-col gap-2 px-10 py-5 md:px-5 sm:px-1 sm:py-2'
                                 }
                             >
                                 <div className="w-[120px] h-[120px] rounded-full border border-regal-yellow">
                                     <img src={product.imageURL} className={'w-full h-full rounded-full object-cover'} />
                                 </div>
                                 <div className="w-full flex flex-col gap-2">
-                                    <h2 className="wrap_1 text-base font-bold max-md:text-sm">{product.title}</h2>
-                                    <h4 className="wrap text-xs font-thin px-8 text-left max-md:text-xs max-md:px-2">
+                                    <h2 className="wrap_1 text-base font-bold sm:text-sm">{product.title}</h2>
+                                    <h4 className="wrap text-xs font-thin px-8 text-left sm:text-xs sm:px-2">
                                         {product.des}
                                     </h4>
                                 </div>
                             </div>
                         </Link>
-                        <div className="mt-1 flex justify-between items-center w-full px-10 pb-5 max-lg:px-5 max-md:px-1 max-md:flex-col">
-                            <span className="text-base font-semibold max-md:mb-2">{product.price}</span>
-                            <div className="w-full pl-12 max-md:pl-0">
+                        <div className="mt-1 flex justify-between items-center w-full px-10 pb-5 md:px-5 sm:px-1 sm:flex-col">
+                            <span className="text-base font-semibold sm:mb-2">{product.price}</span>
+                            <div className="w-full pl-12 sm:pl-0">
                                 <Button
                                     size={'buttonSmall'}
                                     style={'buttonPrimary'}

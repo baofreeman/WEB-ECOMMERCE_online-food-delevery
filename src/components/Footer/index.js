@@ -13,7 +13,7 @@ function Footer() {
         },
     ];
     return (
-        <div className="grid grid-cols-4 max-md:grid-cols-2 justify-between pb-36 px-36 min-h-80 items-start bg-regal-footer text-white max-lg:px-16 max-md:px-8 max-md:pb-8">
+        <div className="grid grid-cols-4 sm:grid-cols-2 justify-between pb-36 px-[120px] min-h-80 items-start bg-regal-footer text-white md:px-16 sm:px-8 sm:pb-8">
             {list.map((item, i) => (
                 <div className="pt-16 flex flex-col items-start" key={i}>
                     <h2 className="text-base font-bold mb-6">Company</h2>

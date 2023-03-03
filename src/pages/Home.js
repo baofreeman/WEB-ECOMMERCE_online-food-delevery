@@ -25,21 +25,21 @@ function Home() {
     ];
     return (
         <>
-            <div className="grid bg-regal-green px-36 text-white max-lg:px-16 max-md:px-8 max-md:justify-center max-md:block">
+            <div className="grid w-full h-full md:px-[60px] bg-regal-green px-[120px] text-white sm:justify-center">
                 <Header />
-                <div className="grid mt-36 gap-28 max-md:mt-0 max-md:flex max-md:flex-col">
-                    <div className="grid grid-cols-2 max-md:grid-cols-1 max-md:pt-32">
+                <div className="grid mt-36 gap-28 sm:mt-0 sm:flex sm:flex-col">
+                    <div className="grid grid-cols-2 sm:grid-cols-1 sm:pt-32">
                         <div className="items-center">
-                            <h1 className="text-4xl font-medium max-md:text-2xl">Order food anytime, anywhere</h1>
-                            <h4 className="text-sm max-md:text-xs max-md:mt-4 mt-8 font-thin leading-loose">
+                            <h1 className="text-4xl font-medium sm:text-2xl">Order food anytime, anywhere</h1>
+                            <h4 className="text-sm sm:text-xs sm:mt-4 mt-8 font-thin leading-loose">
                                 Browse from our list of specials to place your order and have food delivered to you in
                                 no time. Affordable, tasty and fast!
                             </h4>
-                            <div className="flex justify-start mt-8 max-md:mt-4 max-md:justify-between">
-                                <button className="mr-4 bg-gray-600 p-3 rounded-md w-40 max-md:w-32 max-md:mr-0">
+                            <div className="flex justify-start mt-8 sm:mt-4 sm:justify-between">
+                                <button className="mr-4 bg-gray-600 p-3 rounded-md w-40 sm:w-32 sm:mr-0">
                                     <img src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg//assets/f4f5426ce757aea491dce94201560583.png" />
                                 </button>
-                                <button className="mr-4 bg-gray-600 p-3 rounded-md w-40 max-md:w-32 max-md:mr-0">
+                                <button className="mr-4 bg-gray-600 p-3 rounded-md w-40 sm:w-32 sm:mr-0">
                                     <img src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg//assets/39f189e19764dab688d3850742f13718.png" />
                                 </button>
                             </div>
@@ -59,14 +59,14 @@ function Home() {
                     </div>
 
                     <div className="grid justify-center">
-                        <h1 className=" text-center text-2xl font-bold max-md:text-lg">Special Meals of the day!</h1>
-                        <h4 className=" text-center text-sm mt-7 w-96 leading-7 max-md:w-full max-md:text-xs max-md:mt-3">
+                        <h1 className=" text-center text-2xl font-bold sm:text-lg">Special Meals of the day!</h1>
+                        <h4 className=" text-center text-sm mt-7 w-96 leading-7 sm:w-full sm:text-xs sm:mt-3">
                             Check our sepecials of the day and get discounts on all our meals and swift delivery to what
                             ever location within Ilorin.
                         </h4>
                     </div>
 
-                    <div className="grid grid-cols-3 gap-6 max-md:grid-cols-1">
+                    <div className="grid grid-cols-3 gap-6 sm:grid-cols-1">
                         {listFoods.map((item, i) => (
                             <div key={i} className="flex flex-col justify-start items-center gap-4">
                                 <div className="items-center flex justify-center">
@@ -89,12 +89,12 @@ function Home() {
                         ))}
                     </div>
 
-                    <div className="grid grid-cols-2 mb-36 gap-10 max-md:grid-cols-1 max-md:gap-6 max-md:block">
+                    <div className="grid grid-cols-2 mb-36 gap-10 sm:grid-cols-1 sm:gap-6 sm:block">
                         <div>
-                            <h2 className="text-2xl font-semibold text-regal-yellow max-md:text-base">
+                            <h2 className="text-2xl font-semibold text-regal-yellow sm:text-base">
                                 Get notified when we update!
                             </h2>
-                            <h4 className="text-sm font-normal mt-4 max-md:text-xs max-md:mt-2">
+                            <h4 className="text-sm font-normal mt-4 sm:text-xs sm:mt-2">
                                 Get notified when we add new items to our specials menu, update our price list of have
                                 promos!
                             </h4>

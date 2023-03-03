@@ -44,7 +44,7 @@ function Dashboard() {
     console.log('getData');
 
     return (
-        <div className="flex h-screen max-md:mt-[80px]">
+        <div className="flex h-screen sm:mt-[80px]">
             <Sidebar />
             <Suspense fallback={<Loader />}>
                 <Content data={getFoods} />

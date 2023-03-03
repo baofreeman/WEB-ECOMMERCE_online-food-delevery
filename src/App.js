@@ -15,7 +15,6 @@ import CreateContainer from './utils/CreateContainer';
 import { useAuth } from './contexts';
 
 function App() {
-    const { user } = useAuth();
     return (
         <div className="App max-md:w-full">
             <Routes>

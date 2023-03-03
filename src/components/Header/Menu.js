@@ -17,24 +17,24 @@ function MenuMobile() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 200 }}
                     key={id}
-                    className="flex w-full items-center justify-end gap-12 my-4 max-lg:gap-6 max-md:flex-col max-md:gap-10"
+                    className="flex w-full items-center justify-end gap-12 my-4 md:gap-6 sm:flex-col sm:gap-10"
                 >
-                    <div className="max-md:w-full text-center max-md:flex">
+                    <div className="sm:w-full text-center sm:flex">
                         <Button size={'linkSmall'} style={'linkBasic'} to={item.home.path}>
                             {item.home.display}
                         </Button>
                     </div>
-                    <div className="max-md:w-full text-center max-md:flex">
+                    <div className="sm:w-full text-center sm:flex">
                         <Button size={'linkSmall'} style={'linkBasic'} to={item.dashboard.path}>
                             {item.dashboard.display}
                         </Button>
                     </div>
-                    <div className="max-md:w-full text-center hidden max-md:flex">
+                    <div className="sm:w-full text-center hidden sm:flex">
                         <Button size={'linkSmall'} style={'linkBasic'} to={item.order.path}>
                             {item.order.display}
                         </Button>
                     </div>
-                    <div className="max-md:w-full text-center hidden max-md:flex">
+                    <div className="sm:w-full text-center hidden sm:flex">
                         <Button size={'linkSmall'} style={'linkBasic'} to={item.cart.path}>
                             {item.cart.display}
                         </Button>
@@ -43,12 +43,12 @@ function MenuMobile() {
                     {user ? (
                         <>
                             <UserUi />
-                            <div className="hidden max-md:flex max-md:w-full text-center">
+                            <div className="hidden sm:flex sm:w-full text-center">
                                 <Button size={'linkSmall'} style={'linkPrimary'} to={item.profile.path}>
                                     {item.profile.display}
                                 </Button>
                             </div>
-                            <div className="hidden max-md:flex max-md:w-full text-center">
+                            <div className="hidden sm:flex sm:w-full text-center">
                                 <Button
                                     size={'linkSmall'}
                                     style={'linkPrimary'}
@@ -61,19 +61,19 @@ function MenuMobile() {
                         </>
                     ) : (
                         <>
-                            <div className="max-md:w-full text-center max-md:flex">
+                            <div className="sm:w-full text-center sm:flex">
                                 <Button
-                                    size={'max-md:' ? 'linkSmall' : 'linkSmallRounded'}
-                                    style={`max-md:` ? 'linkPrimary' : 'linkPrimaryRounded'}
+                                    size={'sm:' ? 'linkSmall' : 'linkSmallRounded'}
+                                    style={`sm:` ? 'linkPrimary' : 'linkPrimaryRounded'}
                                     to={item.signup.path}
                                 >
                                     {item.signup.display}
                                 </Button>
                             </div>
-                            <div className="max-md:w-full text-center max-md:flex">
+                            <div className="sm:w-full text-center sm:flex">
                                 <Button
-                                    size={'max-md:' ? 'linkSmall' : 'linkSmallRounded'}
-                                    style={`max-md:` ? 'linkPrimary' : 'linkPrimaryRounded'}
+                                    size={'sm:' ? 'linkSmall' : 'linkSmallRounded'}
+                                    style={`sm:` ? 'linkPrimary' : 'linkPrimaryRounded'}
                                     to={item.login.path}
                                 >
                                     {item.login.display}

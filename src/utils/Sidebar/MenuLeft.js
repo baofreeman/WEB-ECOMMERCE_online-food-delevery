@@ -28,9 +28,9 @@ function MenuLeft() {
     useEffect(() => {}, [getCartQty]);
 
     return (
-        <div className="w-1/4 bg-regal-white-200 px-10 py-10 items-start h-screen max-lg:px-5 max-md:hidden">
-            <div className="flex items-start mb-14 max-lg:flex-col">
-                <Link className="flex-1 w-16 h-16 max-lg:mb-4" to={'/dashboard/profile'}>
+        <div className="w-1/4 bg-regal-white-200 px-10 py-10 items-start h-screen md:px-5 sm:hidden">
+            <div className="flex items-start mb-14 md:flex-col">
+                <Link className="flex-1 w-16 h-16 md:mb-4" to={'/dashboard/profile'}>
                     <img src={photoURL} className={'rounded-full w-16 h-16 p-1 bg-white border border-regal-yellow'} />
                 </Link>
                 <div className="">

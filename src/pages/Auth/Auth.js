@@ -4,6 +4,7 @@ import SignIn from './SignIn';
 import SignUp from './SignUp';
 import { image2 } from '../../assets/images';
 import { useAuth } from '../../contexts';
+import LayoutDefault from '../../layout/LayoutDefault';
 
 function Wrapper() {
     const [index, setIndex] = useState(false);
@@ -14,16 +15,12 @@ function Wrapper() {
     };
 
     return (
-        <>
-            <div className="h-full flex max-lg:flex-col max-md:flex-col max-lg:h-screen">
-                <div className="max-lg:flex max-lg:h-1/2 max-lg:justify-center max-md:hidden">
-                    <img
-                        className="h-screen max-lg:h-full max-lg:w-full max-lg:items-center w-auto"
-                        src={image2}
-                        alt="loi anh"
-                    />
+        <LayoutDefault>
+            <div className="h-full items-start justify-center gap-8 flex">
+                <div className="max-w-fit h-full flex items-start justify-start sm:hidden md:hidden">
+                    <img className="object-cover" src={image2} alt="loi anh" />
                 </div>
-                <div className="w-1/2 px-16 py-8 max-md:px-4 max-md:w-full max-lg:w-full max-lg:h-3/4 max-md:flex-1 flex flex-col items-center justify-center gap-4">
+                <div className="w-1/2 md:px-4 md:w-full md:flex-1 flex flex-col items-center justify-center gap-4">
                     {!index ? <SignIn /> : <SignUp />}
                     <div className="px-6">
                         <div className="flex text-xs items-center justify-center cursor-pointer" onClick={toggleIndex}>
@@ -51,7 +48,7 @@ function Wrapper() {
                     </div>
                 </div>
             </div>
-        </>
+        </LayoutDefault>
     );
 }
 
