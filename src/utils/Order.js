@@ -1,4 +1,4 @@
-import LayoutModal from '../pages/Dashboard/LayoutModal';
+import LayoutModal from '../layout/LayoutMenuOnly';
 
 function Order() {
     let orderCart = localStorage.getItem('order') ? JSON.parse(localStorage.getItem('order')) : [];

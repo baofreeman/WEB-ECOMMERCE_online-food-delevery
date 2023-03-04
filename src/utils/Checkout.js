@@ -10,7 +10,8 @@ import Input from '../components/Input';
 import Select from '../components/Select';
 import Button from '../components/Button';
 import SignIn from '../pages/Auth/SignIn';
-import LayoutModal from '../pages/Dashboard/LayoutModal';
+import LayoutModal from '../layout/LayoutMenuOnly';
+
 import { resetStore } from '../redux/actions';
 import { useAuth } from '../contexts';
 

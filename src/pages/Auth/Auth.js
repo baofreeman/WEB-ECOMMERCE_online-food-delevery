@@ -4,7 +4,7 @@ import SignIn from './SignIn';
 import SignUp from './SignUp';
 import { image2 } from '../../assets/images';
 import { useAuth } from '../../contexts';
-import LayoutDefault from '../../layout/LayoutDefault';
+import LayoutMenuOnly from '../../layout/LayoutMenuOnly';
 
 function Wrapper() {
     const [index, setIndex] = useState(false);
@@ -15,7 +15,7 @@ function Wrapper() {
     };
 
     return (
-        <LayoutDefault>
+        <LayoutMenuOnly>
             <div className="h-full items-start sm:items-center justify-center gap-8 flex">
                 <div className="max-w-fit h-full flex items-start justify-start sm:hidden md:hidden">
                     <img className="object-cover" src={image2} alt="loi anh" />
@@ -48,7 +48,7 @@ function Wrapper() {
                     </div>
                 </div>
             </div>
-        </LayoutDefault>
+        </LayoutMenuOnly>
     );
 }
 

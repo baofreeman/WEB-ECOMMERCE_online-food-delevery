@@ -3,7 +3,8 @@ import { useOutletContext, useParams } from 'react-router-dom';
 
 import { addCart } from '../../redux/actions';
 import Button from '../../components/Button';
-import LayoutModal from '../../pages/Dashboard/LayoutModal';
+import LayoutModal from '../../layout/LayoutModal';
+
 import { useEffect, useState } from 'react';
 import Loader from '../../components/Loader';
 function ProductSingle() {

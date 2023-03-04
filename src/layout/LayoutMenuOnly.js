@@ -1,6 +1,6 @@
 import Header from '../components/Header';
 
-function LayoutDefault({ children }) {
+function LayoutMenuOnly({ children }) {
     return (
         <div className="h-screen flex flex-col overflow-hidden gap-8 sm:gap-0 bg-regal-green px-[120px] md:px-[60px] sm:px-[20px] text-white">
             <Header />
@@ -9,4 +9,4 @@ function LayoutDefault({ children }) {
     );
 }
 
-export default LayoutDefault;
+export default LayoutMenuOnly;
