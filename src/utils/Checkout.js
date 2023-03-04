@@ -111,87 +111,89 @@ function Checkout() {
         <>
             {user ? (
                 <LayoutModal>
-                    <h1 className={'text-xl font-bold'}>Checkout</h1>
-                    <div className="flex flex-col justify-center items-center">
-                        <form
-                            action="/dashboard"
-                            onSubmit={formik.handleSubmit}
-                            className={'w-full flex flex-col gap-4 items-center top-1/4 px-5 py-5 shadow-form'}
-                        >
-                            <Input
-                                type={'text'}
-                                name="title"
-                                id="title"
-                                size={'m'}
-                                placeholder={'Enter your title'}
-                                value={formik.values.title}
-                                onChange={formik.handleChange}
-                            />
-                            {formik.touched.title && formik.errors.title && (
-                                <p className="text-xs font-thin text-red-600">{formik.errors.title}</p>
-                            )}
-
-                            <Input
-                                type={'text'}
-                                name="phone"
-                                id="phone"
-                                size={'m'}
-                                placeholder={'Enter your phone'}
-                                value={formik.values.phone}
-                                onChange={formik.handleChange}
-                            />
-                            {formik.touched.phone && formik.errors.phone && (
-                                <p className="text-xs font-thin text-red-600">{formik.errors.phone}</p>
-                            )}
-
-                            <Input
-                                type={'text'}
-                                name="address"
-                                id="address"
-                                size={'m'}
-                                placeholder={'Enter your address'}
-                                value={formik.values.address}
-                                onChange={formik.handleChange}
-                            />
-                            {formik.touched.address && formik.errors.address && (
-                                <p className="text-xs font-thin text-red-600">{formik.errors.address}</p>
-                            )}
-                            <Select
-                                type={'province'}
-                                name="province"
-                                id="province"
-                                value={province}
-                                setValue={setProvince}
-                                options={provinces}
-                                label={'province'}
-                                onChange={(value) => formik.setFieldValue(province, value.value)}
-                            ></Select>
-                            {formik.touched.province && formik.errors.province && (
-                                <p className="text-xs font-thin text-red-600">{formik.errors.province}</p>
-                            )}
-                            <Select
-                                type={'district'}
-                                name="district"
-                                id="district"
-                                value={district}
-                                setValue={setDistrict}
-                                options={districts}
-                                label={'district'}
-                                onChange={formik.handleChange}
-                            ></Select>
-                            {formik.touched.district && formik.errors.district && (
-                                <p className="text-xs font-thin text-red-600">{formik.errors.district}</p>
-                            )}
-                            {console.log(formik.values)}
-
-                            <Button
-                                type={'submit'}
-                                size={'buttonMedium'}
-                                style={formik.dirty ? 'buttonBasic' : 'buttonDisable'}
+                    <div className="flex flex-col w-full h-screen gap-4 sm:gap-2 items-center sm:justify-start justify-center">
+                        <h1 className={'text-xl text-center font-bold'}>Checkout</h1>
+                        <div className="flex flex-col w-full justify-center items-center">
+                            <form
+                                action="/dashboard"
+                                onSubmit={formik.handleSubmit}
+                                className={'w-full flex flex-col gap-4 items-center top-1/4 px-5 py-5 shadow-form'}
                             >
-                                Payment
-                            </Button>
-                        </form>
+                                <Input
+                                    type={'text'}
+                                    name="title"
+                                    id="title"
+                                    size={'m'}
+                                    placeholder={'Enter your title'}
+                                    value={formik.values.title}
+                                    onChange={formik.handleChange}
+                                />
+                                {formik.touched.title && formik.errors.title && (
+                                    <p className="text-xs font-thin text-red-600">{formik.errors.title}</p>
+                                )}
+
+                                <Input
+                                    type={'text'}
+                                    name="phone"
+                                    id="phone"
+                                    size={'m'}
+                                    placeholder={'Enter your phone'}
+                                    value={formik.values.phone}
+                                    onChange={formik.handleChange}
+                                />
+                                {formik.touched.phone && formik.errors.phone && (
+                                    <p className="text-xs font-thin text-red-600">{formik.errors.phone}</p>
+                                )}
+
+                                <Input
+                                    type={'text'}
+                                    name="address"
+                                    id="address"
+                                    size={'m'}
+                                    placeholder={'Enter your address'}
+                                    value={formik.values.address}
+                                    onChange={formik.handleChange}
+                                />
+                                {formik.touched.address && formik.errors.address && (
+                                    <p className="text-xs font-thin text-red-600">{formik.errors.address}</p>
+                                )}
+                                <Select
+                                    type={'province'}
+                                    name="province"
+                                    id="province"
+                                    value={province}
+                                    setValue={setProvince}
+                                    options={provinces}
+                                    label={'province'}
+                                    onChange={(value) => formik.setFieldValue(province, value.value)}
+                                ></Select>
+                                {formik.touched.province && formik.errors.province && (
+                                    <p className="text-xs font-thin text-red-600">{formik.errors.province}</p>
+                                )}
+                                <Select
+                                    type={'district'}
+                                    name="district"
+                                    id="district"
+                                    value={district}
+                                    setValue={setDistrict}
+                                    options={districts}
+                                    label={'district'}
+                                    onChange={formik.handleChange}
+                                ></Select>
+                                {formik.touched.district && formik.errors.district && (
+                                    <p className="text-xs font-thin text-red-600">{formik.errors.district}</p>
+                                )}
+                                {console.log(formik.values)}
+
+                                <Button
+                                    type={'submit'}
+                                    size={'buttonMedium'}
+                                    style={formik.dirty ? 'buttonBasic' : 'buttonDisable'}
+                                >
+                                    Payment
+                                </Button>
+                            </form>
+                        </div>
                     </div>
                 </LayoutModal>
             ) : (

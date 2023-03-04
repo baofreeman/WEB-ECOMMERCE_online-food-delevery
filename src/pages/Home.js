@@ -25,9 +25,9 @@ function Home() {
     ];
     return (
         <>
-            <div className="grid w-full h-full md:px-[60px] bg-regal-green px-[120px] text-white sm:justify-center">
+            <div className="grid w-full h-full text-white gap-[120px] bg-regal-green sm:justify-center">
                 <Header />
-                <div className="grid mt-36 gap-28 sm:mt-0 sm:flex sm:flex-col">
+                <div className="grid px-[120px] md:px-[60px] sm:px-[20px] bg-regal-green gap-28 sm:mt-0 sm:flex sm:flex-col">
                     <div className="grid grid-cols-2 sm:grid-cols-1 sm:pt-32">
                         <div className="items-center">
                             <h1 className="text-4xl font-medium sm:text-2xl">Order food anytime, anywhere</h1>

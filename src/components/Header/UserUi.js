@@ -7,7 +7,7 @@ function UserUi() {
     const [toggleUser, setToggleUser] = useState(false);
 
     return (
-        <div>
+        <>
             <div className="sm:hidden ml-8 flex justify-end relative" onClick={() => setToggleUser((prev) => !prev)}>
                 <img
                     src={user.photoURL ? user.photoURL : 'https://cdn-icons-png.flaticon.com/512/1946/1946429.png'}
@@ -26,7 +26,7 @@ function UserUi() {
                     </div>
                 ) : null}
             </div>
-        </div>
+        </>
     );
 }
 

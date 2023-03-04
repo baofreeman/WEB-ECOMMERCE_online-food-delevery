@@ -8,8 +8,9 @@ export const ButtonStyle = {
 };
 
 export const ButtonSize = {
-    buttonSmall: 'w-full py-3 px-6 text-xs flex items-center justify-center max-md:py-3 max-md:px-4 max-md:text-xs',
-    buttonMedium: 'w-full py-4 px-8 text-sm flex items-center justify-center max-md:py-4 max-md:px-6 max-md:text-xs',
+    buttonSmall: 'w-full py-3 px-6 text-xs flex items-center justify-center sm:py-1 sm:px-2 sm:text-xs md:py-2 md:px-4',
+    buttonMedium:
+        'w-full py-4 px-8 text-sm flex items-center justify-center sm:py-3 sm:px-5 sm:text-xs md:py-3 md:px-6',
 };
 
 export const LinkStyle = {
@@ -23,8 +24,8 @@ export const LinkStyle = {
 };
 
 export const LinkSize = {
-    linkSmall: 'w-full text-center text-sm',
-    linkMedium: 'w-full text-base text-center font-bold max-md:py-4',
-    linkSmallRounded: 'py-3 px-6 text-sm w-full flex items-center justify-center text-center',
-    linkMediumRounded: 'py-4 px-8 text-base w-full text-center',
+    linkSmall: 'w-full text-center text-sm sm:text-xs',
+    linkMedium: 'w-full text-sm sm:text-xs text-center font-bold',
+    linkSmallRounded: 'py-3 px-6 text-sm sm:py-1 sm:px-2 w-full flex items-center justify-center text-center',
+    linkMediumRounded: 'py-4 px-8 text-base sm:text-sm sm:py-3 sm:px-5 w-full text-center',
 };

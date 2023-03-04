@@ -13,7 +13,7 @@ function Order() {
 
     return (
         <LayoutModal>
-            <div className="flex flex-col w-full h-screen gap-4 items-center justify-center">
+            <div className="flex flex-col w-full h-screen gap-4 sm:gap-2 sm:justify-start items-center justify-center">
                 <h1 className={'text-xl font-bold'}>Order</h1>
                 <div className="w-full shadow-form bg-regal-white-400">
                     <div className="h-[400px] md:h-[300px] sm:h-[250px] overflow-y-scroll">
@@ -46,7 +46,7 @@ function Order() {
                         ))}
                     </div>
                 </div>
-                <h1 className="flex items-center text-lg text-regal-green font-medium">
+                <h1 className="flex items-center text-sm text-gray-400 font-medium">
                     Thank you for trusting us, we will call to confirm and prepare the dish for you. Wish you enjoy
                     delicious.
                 </h1>

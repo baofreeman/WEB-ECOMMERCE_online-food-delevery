@@ -32,7 +32,7 @@ function ProductSingle() {
             {fields && foodItem ? (
                 <>
                     <div className="flex items-center justify-center">
-                        <div className="flex items-center justify-center rounded-full w-[260px] h-[260px] p-1 border border-regal-yellow">
+                        <div className="flex items-center justify-center rounded-full w-[260px] h-[260px] sm:w-[160px] sm:h-[160px] p-1 border border-regal-yellow">
                             <img src={foodItem.imageURL} className={'w-full h-full rounded-full object-cover'} />
                         </div>
                     </div>

@@ -136,10 +136,10 @@ function CreateContainer() {
     };
     return (
         <>
-            <div className="flex flex-col items-start h-screen bg-regal-green px-36 text-white max-lg:px-16 max-md:px-8 max-md:justify-center max-md:block">
+            <div className="flex flex-col items-start h-screen bg-regal-green px-36 text-white md:px-16 sm:px-8 sm:justify-center sm:block">
                 <Header />
                 <div className="w-full h-full flex gap-4 items-center justify-center mb-10 bg-regal-white-200 rounded-md">
-                    <div className="w-[50%] h-[80%] max-md:w-[75%] flex flex-col gap-4 border border-gray-200 rounded-md p-4">
+                    <div className="w-[50%] h-[80%] sm:w-[75%] flex flex-col gap-4 border border-gray-200 rounded-md p-4">
                         {fields && (
                             <motion.p
                                 initial={{ opacity: 0 }}
@@ -168,10 +168,10 @@ function CreateContainer() {
                             <select
                                 onChange={(e) => setCategory(e.target.value)}
                                 className={
-                                    'w-full outline-none text-sm max-md:text-xs p-2 rounded-md cursor-pointer text-black'
+                                    'w-full outline-none text-sm sm:text-xs p-2 rounded-md cursor-pointer text-black'
                                 }
                             >
-                                <option value={'other'} className={'text-sm max-md:text-xs text-black'}>
+                                <option value={'other'} className={'text-sm sm:text-xs text-black'}>
                                     Select Category
                                 </option>
                                 {category &&
@@ -179,7 +179,7 @@ function CreateContainer() {
                                         <option
                                             key={item.id}
                                             value={item.urlParamName}
-                                            className={'text-sm max-md:text-xs text-black'}
+                                            className={'text-sm sm:text-xs text-black'}
                                         >
                                             {item.name}
                                         </option>

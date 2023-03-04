@@ -36,13 +36,13 @@ function SignIn() {
     return (
         <div className="flex flex-col w-full items-center">
             <form
-                className="w-full flex flex-col gap-4 items-center px-10 py-10 rounded-md border-2 shadow-form"
+                className="w-full flex flex-col gap-4 sm:gap-2 items-center p-8 sm:p-3 rounded-md border shadow-form"
                 onSubmit={(e) => {
                     e.preventDefault();
                     formik.handleSubmit(e);
                 }}
             >
-                <h1 className="text-2xl font-bold mb-2">Welcome Back</h1>
+                <h1 className="text-2xl md:text-xl sm:text-lg font-bold">Welcome Back</h1>
                 <Input
                     type={'email'}
                     id="email"

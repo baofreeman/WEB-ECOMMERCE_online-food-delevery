@@ -13,7 +13,7 @@ function Product({ data }) {
     };
     return (
         <div className="w-full h-screen">
-            <div className="grid grid-cols-3 gap-2 md:grid-cols-2" to={'/dashboard/product'}>
+            <div className="grid grid-cols-3 gap-2 sm:grid-cols-2" to={'/dashboard/product'}>
                 {data.map((product) => (
                     <section
                         key={product.id}
@@ -38,9 +38,11 @@ function Product({ data }) {
                                 </div>
                             </div>
                         </Link>
-                        <div className="mt-1 flex justify-between items-center w-full px-10 pb-5 md:px-5 sm:px-1 sm:flex-col">
-                            <span className="text-base font-semibold sm:mb-2">{product.price}</span>
-                            <div className="w-full pl-12 sm:pl-0">
+                        <div className="flex gap-4 sm:gap-2 justify-between items-center w-full px-8 pb-5 md:px-5 sm:px-2 sm:flex-col">
+                            <span className="w-1/3 sm:w-full sm:text-center text-base font-semibold">
+                                {product.price}
+                            </span>
+                            <div className="w-full">
                                 <Button
                                     size={'buttonSmall'}
                                     style={'buttonPrimary'}

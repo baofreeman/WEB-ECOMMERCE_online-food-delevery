@@ -16,11 +16,11 @@ function Wrapper() {
 
     return (
         <LayoutDefault>
-            <div className="h-full items-start justify-center gap-8 flex">
+            <div className="h-full items-start sm:items-center justify-center gap-8 flex">
                 <div className="max-w-fit h-full flex items-start justify-start sm:hidden md:hidden">
                     <img className="object-cover" src={image2} alt="loi anh" />
                 </div>
-                <div className="w-1/2 md:px-4 md:w-full md:flex-1 flex flex-col items-center justify-center gap-4">
+                <div className="w-1/2 sm:w-full md:w-full flex flex-col items-center justify-center gap-4">
                     {!index ? <SignIn /> : <SignUp />}
                     <div className="px-6">
                         <div className="flex text-xs items-center justify-center cursor-pointer" onClick={toggleIndex}>

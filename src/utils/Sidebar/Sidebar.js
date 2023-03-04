@@ -19,7 +19,7 @@ function Sidebar() {
     return (
         <>
             <MenuLeft />
-            <div className="hidden sm:flex sm:flex-col">
+            <div className="hidden sm:block">
                 <Header />
             </div>
             {navbar ? (

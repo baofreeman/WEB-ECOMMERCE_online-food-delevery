@@ -41,19 +41,17 @@ function AddToCart() {
 
     return (
         <LayoutModal>
-            <div className="flex flex-col w-full h-screen gap-4 items-center justify-center">
+            <div className="flex flex-col w-full h-screen gap-4 sm:gap-2 items-center sm:justify-start justify-center">
                 <h1 className={'text-xl font-bold'}>Cart</h1>
                 {getData.length ? (
-                    <div className="w-full shadow-form bg-regal-white-400">
+                    <div className="w-full flex flex-col gap-4 sm:gap-2 shadow-form bg-regal-white-400">
                         <div className="h-[400px] md:h-[300px] sm:h-[250px] overflow-y-scroll">
                             {getData.map((product, i) => (
                                 <section
                                     key={i}
-                                    className={
-                                        'flex flex-1 flex-col my-1 mx-5 border-b border-stone-400 md:mt-12 sm:mt-14'
-                                    }
+                                    className={'flex flex-1 flex-col my-1 mx-5 border-b border-stone-400 gap-4'}
                                 >
-                                    <div className="flex items-start py-4">
+                                    <div className="flex items-start sm:items-center py-4 sm:py-2">
                                         <div className="flex items-center w-[60px] h-[60px] rounded-full">
                                             <img
                                                 src={product.imageURL}
@@ -95,11 +93,11 @@ function AddToCart() {
                                 </section>
                             ))}
                         </div>
-                        <div>
-                            <span className="flex justify-end w-full text-base font-bold px-5 select-none mt-5">
+                        <div className="flex flex-col gap-4 sm:gap-2">
+                            <span className="flex justify-end w-full text-base font-bold px-5 select-none">
                                 Subtotal: {price}
                             </span>
-                            <div className="w-full flex right-0 left-0 mt-5 md:px-0">
+                            <div className="w-full flex right-0 left-0 md:px-0">
                                 <Button
                                     to={'/dashboard/checkout'}
                                     size={'linkMediumRounded'}
