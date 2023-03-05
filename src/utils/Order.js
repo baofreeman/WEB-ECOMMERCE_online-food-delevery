@@ -1,4 +1,8 @@
+import { updateDoc, doc } from 'firebase/firestore';
+import { useAuth } from '../contexts';
 import LayoutModal from '../layout/LayoutModal';
+import { db } from '../firebase-config';
+import { useEffect } from 'react';
 
 function Order() {
     let orderCart = localStorage.getItem('order') ? JSON.parse(localStorage.getItem('order')) : [];

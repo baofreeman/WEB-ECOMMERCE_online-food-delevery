@@ -10,8 +10,9 @@ import {
     sendPasswordResetEmail,
 } from 'firebase/auth';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import { collection, doc, getDocs, orderBy, query, setDoc, updateDoc } from 'firebase/firestore';
 
-import { auth } from '../firebase-config';
+import { auth, db } from '../firebase-config';
 import { storage } from '../firebase-config';
 
 /** Auth Context */
@@ -39,15 +40,28 @@ export function AuthProvider({ children }) {
     }, []);
 
     // register
-    const registerUser = (name, email, password, phone) => {
+    const registerUser = (name, email, password, phoneNumber) => {
         setLoading(true);
-        createUserWithEmailAndPassword(auth, email, password, phone)
-            .then(() => {
+        createUserWithEmailAndPassword(auth, email, password, phoneNumber)
+            .then((userCredential) => {
+                console.log(userCredential);
                 return updateProfile(auth.currentUser, { displayName: name });
             })
             .then((res) => {
+                setDoc(
+                    doc(db, 'user', `${auth.currentUser.uid}`),
+                    {
+                        name: auth.currentUser.displayName,
+                        email: auth.currentUser.email,
+                        phone: auth.currentUser.phoneNumber,
+                        photoURL: auth.currentUser.photoURL,
+                    },
+                    {
+                        merge: true,
+                    },
+                );
                 console.log(res);
-                navigate('/dashboard');
+                // navigate('/dashboard');
             })
             .catch((err) => setError(err.message))
             .finally(() => setLoading(false));
@@ -60,7 +74,8 @@ export function AuthProvider({ children }) {
             .then((res) => {
                 // const user = res.user.providerData;
                 // localStorage.setItem('user', JSON.stringify(user));
-                navigate('/dashboard');
+                console.log(res);
+                // navigate('/dashboard');
             })
             .catch((err) => setError(err.message))
             .finally(() => setLoading(false));
@@ -85,6 +100,8 @@ export function AuthProvider({ children }) {
         const snapshot = await uploadBytes(fileRef, file);
         const photoURL = await getDownloadURL(fileRef);
         updateProfile(auth.currentUser, { photoURL });
+        const userDb = doc(db, 'user', `${auth.currentUser.uid}`);
+        updateDoc(userDb, { photoURL: photoURL });
         setLoading(false);
         alert('thanh cong');
     };

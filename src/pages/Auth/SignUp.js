@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { useAuth } from '../../contexts';
+import { saveUser } from '../../data/dataUser';
 
 function SignUp() {
     const { registerUser, getStore } = useAuth();
@@ -17,13 +18,13 @@ function SignUp() {
             phone: '',
         },
         onSubmit: (value) => {
+            console.log(value);
             const name = value.name;
             const email = value.email;
             const password = value.password;
-            const phone = value.email;
-            if (name && email && password && phone) {
-                registerUser(name, email, password, phone);
-                getStore(name, email);
+            const phoneNumber = value.phone;
+            if (name && email && password && phoneNumber) {
+                registerUser(name, email, password, phoneNumber);
             }
         },
         validationSchema: Yup.object({

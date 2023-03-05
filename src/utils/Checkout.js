@@ -11,7 +11,7 @@ import Select from '../components/Select';
 import Button from '../components/Button';
 import SignIn from '../pages/Auth/SignIn';
 import LayoutModal from '../layout/LayoutModal';
-
+import Profile from '../utils/Profile';
 import { resetStore } from '../redux/actions';
 import { useAuth } from '../contexts';
 
@@ -20,6 +20,7 @@ function Checkout() {
     const [province, setProvince] = useState();
     const [districts, setDistricts] = useState([]);
     const [district, setDistrict] = useState();
+    const [field, setField] = useState(false);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -28,6 +29,13 @@ function Checkout() {
     console.log(user);
 
     const price = JSON.parse(localStorage.getItem('price'));
+
+    useEffect(() => {
+        if (user) {
+            setField(true);
+            navigate('/dashboard/checkout');
+        }
+    }, [user]);
 
     const makeid = (length) => {
         let result = '';
@@ -42,6 +50,7 @@ function Checkout() {
     };
 
     console.log(province, district);
+
     useEffect(() => {
         const fetchPublicProvinces = async () => {
             const response = await apiGetPublicProvinces();
@@ -110,7 +119,7 @@ function Checkout() {
     console.log({ province, district });
     return (
         <>
-            {user ? (
+            {user && field ? (
                 <LayoutModal>
                     <div className="flex flex-col w-full h-screen gap-4 sm:gap-2 items-center sm:justify-start justify-center">
                         <h1 className={'text-xl text-center font-bold'}>Checkout</h1>
@@ -198,7 +207,7 @@ function Checkout() {
                     </div>
                 </LayoutModal>
             ) : (
-                <Navigate to={'/dashboard/profile'} />
+                <Profile />
             )}
         </>
     );

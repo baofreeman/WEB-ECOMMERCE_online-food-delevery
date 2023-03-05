@@ -46,6 +46,7 @@ export const saveItem = async (data) => {
     });
 };
 
+// Getting Item
 export const getAllFoodItems = async () => {
     const items = await getDocs(query(collection(db, 'foodItems'), orderBy('id', 'desc')));
 
