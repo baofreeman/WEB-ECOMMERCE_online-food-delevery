@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useAuth } from '../contexts';
 import Button from '../components/Button';
 import Input from '../components/Input';
-import LayoutModal from '../layout/LayoutMenuOnly';
+import LayoutModal from '../layout/LayoutModal';
 
 import SignIn from '../pages/Auth/SignIn';
 import SignUp from '../pages/Auth/SignUp';

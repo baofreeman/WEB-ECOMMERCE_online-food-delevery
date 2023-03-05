@@ -6,7 +6,7 @@ import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import Button from '../components/Button';
 import { addCart, removeInt, removeItem } from '../redux/actions';
 import { cartEmpty } from '../assets/images/index';
-import LayoutModal from '../layout/LayoutMenuOnly';
+import LayoutModal from '../layout/LayoutModal';
 
 function AddToCart() {
     const dispatch = useDispatch();
