@@ -1,4 +1,4 @@
-import { collection, doc, getDocs, orderBy, query, setDoc } from 'firebase/firestore';
+import { collection, deleteDoc, doc, getDocs, orderBy, query, setDoc } from 'firebase/firestore';
 import { db } from '../firebase-config';
 
 export const categories = [
@@ -51,4 +51,11 @@ export const getAllFoodItems = async () => {
     const items = await getDocs(query(collection(db, 'foodItems'), orderBy('id', 'desc')));
 
     return items.docs.map((doc) => doc.data());
+};
+
+// Delete Item
+export const deleteItem = async (data) => {
+    await deleteDoc(doc(db, 'foodItems', `${Date.now()}`), data, {
+        merge: true,
+    });
 };

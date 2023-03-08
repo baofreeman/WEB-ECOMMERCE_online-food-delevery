@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link, NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getOrder } from '../../data/dataOrder';
 
 import { useAuth } from '../../contexts';
 import { dataListMenuLeft } from '../../data/dataListMenuLeft';
@@ -9,7 +10,9 @@ import { dataListMenuLeft } from '../../data/dataListMenuLeft';
 function MenuLeft() {
     const { user } = useAuth();
     const [photoURL, setPhotoURL] = useState('https://cdn-icons-png.flaticon.com/512/1946/1946429.png');
+    const [orderItem, setOrderItem] = useState([]);
     const [displayname, setDisplayname] = useState('');
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if (user?.photoURL) {
@@ -17,6 +20,13 @@ function MenuLeft() {
             setDisplayname(user.displayName);
         }
     }, [user]);
+
+    useEffect(() => {
+        if (user) {
+            getOrder(user.uid).then((res) => setOrderItem(res));
+        }
+    }, [user]);
+
     const orderCart = JSON.parse(localStorage.getItem('order'));
     const getCartQty = JSON.parse(localStorage.getItem('cart'));
 
@@ -24,6 +34,9 @@ function MenuLeft() {
         return isActive ? 'nav-link activated' : 'nav-link';
     };
     const getQty = useSelector((state) => state.cartReducer.totalQty);
+    // const orders = useSelector((state) => state.cartReducer.orders);
+    // console.log(orders);
+    console.log(orderItem);
 
     useEffect(() => {}, [getCartQty]);
 
@@ -62,7 +75,7 @@ function MenuLeft() {
                                 <span className="flex-1 w-full">{item.display}</span>
                                 {item.module ? (
                                     <span className="px-3 py-1 bg-regal-green-500 text-white rounded-md w-12 text-center">
-                                        {item.display === 'Your Cart' ? getQty : orderCart ? orderCart.length : 0}
+                                        {item.display === 'Your Cart' ? getQty : orderItem ? orderItem.length : 0}
                                     </span>
                                 ) : null}
                             </NavLink>

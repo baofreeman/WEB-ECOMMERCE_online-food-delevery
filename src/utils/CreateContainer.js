@@ -14,6 +14,7 @@ import { makeid } from '../data/randomID';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setFoods } from '../redux/actions';
+import LayoutMenuOnly from '../layout/LayoutMenuOnly';
 
 function CreateContainer() {
     const navigate = useNavigate();
@@ -135,135 +136,129 @@ function CreateContainer() {
         setCategory('Select Category');
     };
     return (
-        <>
-            <div className="flex flex-col items-start h-screen bg-regal-green px-36 text-white md:px-16 sm:px-8 sm:justify-center sm:block">
-                <Header />
-                <div className="w-full h-full flex gap-4 items-center justify-center mb-10 bg-regal-white-200 rounded-md">
-                    <div className="w-[50%] h-[80%] sm:w-[75%] flex flex-col gap-4 border border-gray-200 rounded-md p-4">
-                        {fields && (
-                            <motion.p
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                className={`w-full rounded-lg p-2 text-center text-sm ${
-                                    alertStatus === 'danger' ? 'bg-red-500 text-red-800' : 'bg-green-500 text-green-800'
-                                }`}
-                            >
-                                {msg}
-                            </motion.p>
+        <LayoutMenuOnly>
+            <div className="w-full h-full flex gap-4 items-center justify-center mb-10 bg-regal-white-200 rounded-md">
+                <div className="w-[50%] h-[80%] sm:w-[75%] flex flex-col gap-4 border border-gray-200 rounded-md p-4">
+                    {fields && (
+                        <motion.p
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className={`w-full rounded-lg p-2 text-center text-sm ${
+                                alertStatus === 'danger' ? 'bg-red-500 text-red-800' : 'bg-green-500 text-green-800'
+                            }`}
+                        >
+                            {msg}
+                        </motion.p>
+                    )}
+                    <div className="w-full flex gap-2 items-center">
+                        <FontAwesomeIcon icon={faBurger} className="text-black text-sm" />
+                        <Input
+                            required
+                            size="sm"
+                            type="text"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            placeholder="Give me a tittle ..."
+                        />
+                    </div>
+
+                    <div className="w-full">
+                        <select
+                            onChange={(e) => setCategory(e.target.value)}
+                            className={
+                                'w-full outline-none text-sm sm:text-xs p-2 rounded-md cursor-pointer text-black'
+                            }
+                        >
+                            <option value={'other'} className={'text-sm sm:text-xs text-black'}>
+                                Select Category
+                            </option>
+                            {category &&
+                                categories.map((item) => (
+                                    <option
+                                        key={item.id}
+                                        value={item.urlParamName}
+                                        className={'text-sm sm:text-xs text-black'}
+                                    >
+                                        {item.name}
+                                    </option>
+                                ))}
+                        </select>
+                    </div>
+
+                    <div className="group flex justify-center items-center flex-col border-2 border-dotted w-full h-[255px] rounded-md cursor-pointer">
+                        {loading ? (
+                            <Loader />
+                        ) : (
+                            <>
+                                {!imageAsset ? (
+                                    <>
+                                        <label className="w-full h-full flex flex-col items-center justify-center cursor-pointer">
+                                            <div className="w-full h-full flex flex-col items-center justify-center gap-2">
+                                                <FontAwesomeIcon icon={faUpload} className="text-gray-500 text-sm" />
+                                                <p className="text-gray-500 text-sm">Click here to upload</p>
+                                            </div>
+                                            <Input
+                                                type="file"
+                                                name="uploadimage"
+                                                accept="image/*"
+                                                className="w-0 h-0"
+                                                onChange={uploadImage}
+                                            />
+                                        </label>
+                                    </>
+                                ) : (
+                                    <>
+                                        <div className="h-full">
+                                            <img
+                                                src={imageAsset}
+                                                alt="upload image"
+                                                className="w-full h-full object-cover"
+                                            />
+                                        </div>
+                                    </>
+                                )}
+                            </>
                         )}
-                        <div className="w-full flex gap-2 items-center">
-                            <FontAwesomeIcon icon={faBurger} className="text-black text-sm" />
+                    </div>
+                    <div className="w-full flex items-center justify-center gap-4">
+                        <Button size={'buttonSmall'} style={'buttonDelete'} onClick={deleteImage}>
+                            remove
+                        </Button>
+
+                        <div className="flex w-full gap-2 items-center justify-center">
+                            <FontAwesomeIcon icon={faDollar} className="text-gray-500 text-sm" />
                             <Input
                                 required
-                                size="sm"
-                                type="text"
-                                value={title}
-                                onChange={(e) => setTitle(e.target.value)}
-                                placeholder="Give me a tittle ..."
+                                type={'text'}
+                                placeholder={'Price'}
+                                value={price}
+                                onChange={(e) => setPrice(e.target.value)}
+                                size={'m'}
                             />
                         </div>
-
-                        <div className="w-full">
-                            <select
-                                onChange={(e) => setCategory(e.target.value)}
-                                className={
-                                    'w-full outline-none text-sm sm:text-xs p-2 rounded-md cursor-pointer text-black'
-                                }
-                            >
-                                <option value={'other'} className={'text-sm sm:text-xs text-black'}>
-                                    Select Category
-                                </option>
-                                {category &&
-                                    categories.map((item) => (
-                                        <option
-                                            key={item.id}
-                                            value={item.urlParamName}
-                                            className={'text-sm sm:text-xs text-black'}
-                                        >
-                                            {item.name}
-                                        </option>
-                                    ))}
-                            </select>
-                        </div>
-
-                        <div className="group flex justify-center items-center flex-col border-2 border-dotted w-full h-[255px] rounded-md cursor-pointer">
-                            {loading ? (
-                                <Loader />
-                            ) : (
-                                <>
-                                    {!imageAsset ? (
-                                        <>
-                                            <label className="w-full h-full flex flex-col items-center justify-center cursor-pointer">
-                                                <div className="w-full h-full flex flex-col items-center justify-center gap-2">
-                                                    <FontAwesomeIcon
-                                                        icon={faUpload}
-                                                        className="text-gray-500 text-sm"
-                                                    />
-                                                    <p className="text-gray-500 text-sm">Click here to upload</p>
-                                                </div>
-                                                <Input
-                                                    type="file"
-                                                    name="uploadimage"
-                                                    accept="image/*"
-                                                    className="w-0 h-0"
-                                                    onChange={uploadImage}
-                                                />
-                                            </label>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <div className="h-full">
-                                                <img
-                                                    src={imageAsset}
-                                                    alt="upload image"
-                                                    className="w-full h-full object-cover"
-                                                />
-                                            </div>
-                                        </>
-                                    )}
-                                </>
-                            )}
-                        </div>
-                        <div className="w-full flex items-center justify-center gap-4">
-                            <Button size={'buttonSmall'} style={'buttonDelete'} onClick={deleteImage}>
-                                remove
-                            </Button>
-
-                            <div className="flex w-full gap-2 items-center justify-center">
-                                <FontAwesomeIcon icon={faDollar} className="text-gray-500 text-sm" />
-                                <Input
-                                    required
-                                    type={'text'}
-                                    placeholder={'Price'}
-                                    value={price}
-                                    onChange={(e) => setPrice(e.target.value)}
-                                    size={'m'}
-                                />
-                            </div>
-                        </div>
-
-                        <div>
-                            <Button size={'buttonMedium'} style={'buttonPrimary'} onClick={saveDetails}>
-                                Save
-                            </Button>
-                        </div>
                     </div>
-                    <div className="w-[50%] h-[80%]  flex flex-col gap-4 border border-gray-200 rounded-md p-4">
-                        <h1 className="w-full text-black text-sm">Desception</h1>
-                        <div className="h-full flex-1">
-                            <Input
-                                required
-                                type="text"
-                                value={des}
-                                size="lg"
-                                onChange={(e) => setDes(e.target.value)}
-                            ></Input>
-                        </div>
+
+                    <div>
+                        <Button size={'buttonMedium'} style={'buttonPrimary'} onClick={saveDetails}>
+                            Save
+                        </Button>
+                    </div>
+                </div>
+                <div className="w-[50%] h-[80%]  flex flex-col gap-4 border border-gray-200 rounded-md p-4">
+                    <h1 className="w-full text-black text-sm">Desception</h1>
+                    <div className="h-full flex-1">
+                        <Input
+                            required
+                            type="text"
+                            value={des}
+                            size="lg"
+                            onChange={(e) => setDes(e.target.value)}
+                        ></Input>
                     </div>
                 </div>
             </div>
-        </>
+        </LayoutMenuOnly>
     );
 }
 

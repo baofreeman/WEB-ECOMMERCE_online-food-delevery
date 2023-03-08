@@ -13,6 +13,8 @@ import Auth from './pages/Auth/Auth';
 
 import CreateContainer from './utils/CreateContainer';
 import { useAuth } from './contexts';
+import AllProducts from './utils/AllProducts';
+import Admin from './utils/Admin/Admin';
 
 function App() {
     return (
@@ -21,7 +23,9 @@ function App() {
                 <Route path="/" element={<Home />}></Route>
                 <Route path="/signin" element={<Auth />} />
                 <Route path="/signup" element={<Auth />} />
+                <Route path="/admin" element={<Admin />} />
                 <Route path="/create" element={<CreateContainer />} />
+                <Route path="/all-products" element={<AllProducts />} />
                 <Route path="/dashboard" element={<Dashboard />}>
                     <Route path="order" element={<Order />} />
                     <Route path="profile" element={<Profile />} />

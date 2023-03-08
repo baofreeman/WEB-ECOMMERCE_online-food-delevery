@@ -9,9 +9,12 @@ import { cartEmpty } from '../assets/images/index';
 import LayoutModal from '../layout/LayoutModal';
 
 function AddToCart() {
-    const dispatch = useDispatch();
+    // Get store redux
     const getData = useSelector((state) => state.cartReducer.carts);
 
+    const dispatch = useDispatch();
+
+    // Total Price
     const [price, setPrice] = useState(0);
     const total = () => {
         let price = 0;
@@ -21,13 +24,13 @@ function AddToCart() {
         });
     };
 
-    console.log('render');
-
+    // Set Price Local Storage
     useEffect(() => {
         localStorage.setItem('price', JSON.stringify(price));
         total();
     }, [total]);
 
+    // Dispatch product in store
     const increment = (product) => {
         dispatch(addCart(product));
     };

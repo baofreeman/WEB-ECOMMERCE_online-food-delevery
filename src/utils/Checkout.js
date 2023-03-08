@@ -9,13 +9,14 @@ import { apiGetPublicDisTrict, apiGetPublicProvinces } from '../data/dataAddress
 import Input from '../components/Input';
 import Select from '../components/Select';
 import Button from '../components/Button';
-import SignIn from '../pages/Auth/SignIn';
 import LayoutModal from '../layout/LayoutModal';
 import Profile from '../utils/Profile';
 import { resetStore } from '../redux/actions';
 import { useAuth } from '../contexts';
+import { saveOrder } from '../data/dataOrder';
 
 function Checkout() {
+    // Set data form
     const [provinces, setProvinces] = useState([]);
     const [province, setProvince] = useState();
     const [districts, setDistricts] = useState([]);
@@ -24,12 +25,16 @@ function Checkout() {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const getData = useSelector((state) => state.cartReducer.carts);
-    const { user } = useAuth();
-    console.log(user);
 
+    // get data store Redux
+    const getData = useSelector((state) => state.cartReducer.carts);
+
+    const { user } = useAuth();
+
+    //Local Storage
     const price = JSON.parse(localStorage.getItem('price'));
 
+    // Set field
     useEffect(() => {
         if (user) {
             setField(true);
@@ -37,6 +42,7 @@ function Checkout() {
         }
     }, [user]);
 
+    // Random number OrderId
     const makeid = (length) => {
         let result = '';
         const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -49,12 +55,11 @@ function Checkout() {
         return result;
     };
 
-    console.log(province, district);
-
+    // Fetch data Provinces
     useEffect(() => {
         const fetchPublicProvinces = async () => {
             const response = await apiGetPublicProvinces();
-            console.log(response);
+            // console.log(response);
             if (response.status === 200) {
                 setProvinces(response?.data.results);
             }
@@ -62,6 +67,7 @@ function Checkout() {
         fetchPublicProvinces();
     }, []);
 
+    // Fetch data District
     useEffect(() => {
         const fetchPublicDistrict = async () => {
             const response = await apiGetPublicDisTrict(province);
@@ -72,31 +78,40 @@ function Checkout() {
         province && fetchPublicDistrict(province);
     }, [province]);
 
+    // Submit
     const onSubmit = async (values, actions) => {
-        console.log(values);
-        console.log(actions);
-
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        navigate('/dashboard/order');
-        let listOrder = localStorage.getItem('order') ? JSON.parse(localStorage.getItem('order')) : [];
-        listOrder.push({
+        const data = {
             id: user ? user.uid : null,
             orderId: makeid(6),
-            title: values.title,
+            name: values.name,
             phone: values.phone,
             cart: getData,
             price: price,
-        });
+        };
+
+        navigate('/dashboard/order');
+
+        // Local Storage
+        let listOrder = localStorage.getItem('order') ? JSON.parse(localStorage.getItem('order')) : [];
+        listOrder.push(data);
         localStorage.setItem('order', JSON.stringify(listOrder));
+
+        // Save data orders database
+        saveOrder(user.uid, data);
+
+        // Reset store redux
         setTimeout(() => {
             dispatch(resetStore());
         }, 2000);
-        actions.resetForm();
+        actions.resetForm(); // reset form
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        console.log(data);
     };
 
+    // Formik & Yup
     const formik = useFormik({
         initialValues: {
-            title: '',
+            name: '',
             phone: '',
             address: '',
             province: province,
@@ -104,19 +119,19 @@ function Checkout() {
         },
         onSubmit,
         validationSchema: Yup.object().shape({
-            title: Yup.string().required('Required').min(3, 'Must be 4 character or more'),
+            name: Yup.string().required('Required').min(3, 'Must be 4 character or more'),
             phone: Yup.string()
                 .required('Required')
                 .matches(/(03|05|07|08|09|01[2|6|8|9])+([0-9]{8})\b/, 'Must be a valid phone number'),
             address: Yup.string().required('Required'),
             // provinces: Yup.object().shape({
+
             //     label: Yup.string().required(),
             //     value: Yup.string().required(),
             // }),
         }),
     });
 
-    console.log({ province, district });
     return (
         <>
             {user && field ? (
@@ -131,15 +146,15 @@ function Checkout() {
                             >
                                 <Input
                                     type={'text'}
-                                    name="title"
-                                    id="title"
+                                    name="name"
+                                    id="name"
                                     size={'m'}
-                                    placeholder={'Enter your title'}
+                                    placeholder={'Enter your name'}
                                     value={formik.values.title}
                                     onChange={formik.handleChange}
                                 />
-                                {formik.touched.title && formik.errors.title && (
-                                    <p className="text-xs font-thin text-red-600">{formik.errors.title}</p>
+                                {formik.touched.name && formik.errors.name && (
+                                    <p className="text-xs font-thin text-red-600">{formik.errors.name}</p>
                                 )}
 
                                 <Input
@@ -193,7 +208,7 @@ function Checkout() {
                                 {formik.touched.district && formik.errors.district && (
                                     <p className="text-xs font-thin text-red-600">{formik.errors.district}</p>
                                 )}
-                                {console.log(formik.values)}
+                                {/* {console.log(formik.values)} */}
 
                                 <Button
                                     type={'submit'}

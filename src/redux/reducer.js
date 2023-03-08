@@ -90,6 +90,12 @@ export const cartReducer = (state = initialStore, action) => {
                 totalQty: total,
             };
 
+        // case ORDERS_LIST:
+        //     return {
+        //         ...state,
+        //         orders: [...action.payload],
+        //     };
+
         case RESET_STORE:
             return {
                 ...state,

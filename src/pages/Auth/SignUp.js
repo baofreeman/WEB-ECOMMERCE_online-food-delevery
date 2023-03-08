@@ -4,7 +4,6 @@ import * as Yup from 'yup';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { useAuth } from '../../contexts';
-import { saveUser } from '../../data/dataUser';
 
 function SignUp() {
     const { registerUser, getStore } = useAuth();
