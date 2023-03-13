@@ -6,7 +6,7 @@ import { useAuth } from '../../contexts';
 import { dataListMenu } from '../../data/dataListMenu';
 import UserUi from './UserUi';
 
-function MenuMobile() {
+function Menu() {
     const { user, logoutUser } = useAuth();
 
     return (
@@ -87,4 +87,4 @@ function MenuMobile() {
     );
 }
 
-export default MenuMobile;
+export default Menu;

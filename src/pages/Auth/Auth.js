@@ -26,14 +26,14 @@ function Wrapper() {
                         <div className="flex text-xs items-center justify-center cursor-pointer" onClick={toggleIndex}>
                             {!index ? (
                                 <>
-                                    <p className="mr-1">Create your</p>
+                                    <p className="mr-1 text-black">Create your</p>
                                     <p className="text-blue-600 hover:text-orange-500 hover:decoration-solid hover:decoration-orange-500">
                                         Account
                                     </p>
                                 </>
                             ) : (
                                 <>
-                                    <p className="mr-1">Already have an</p>
+                                    <p className="mr-1 text-black">Already have an</p>
                                     <p className="text-blue-600 hover:text-orange-500 hover:decoration-solid hover:decoration-orange-500">
                                         Account
                                     </p>

@@ -8,7 +8,7 @@ function UserUi() {
 
     return (
         <>
-            <div className="sm:hidden ml-8 flex justify-end relative" onClick={() => setToggleUser((prev) => !prev)}>
+            <div className="sm:hidden flex justify-end relative" onClick={() => setToggleUser((prev) => !prev)}>
                 <img
                     src={user.photoURL ? user.photoURL : 'https://cdn-icons-png.flaticon.com/512/1946/1946429.png'}
                     alt="avatar"
@@ -19,6 +19,11 @@ function UserUi() {
                         <div className="flex flex-col h-full items-center justify-between py-4">
                             <h1 className="text-black text-sm font-light select-none">{user.displayName}</h1>
                             <h1 className="text-black text-sm font-light select-none">{user.email}</h1>
+                            {user.email === 'admin@gmail.com' ? (
+                                <Button size={'linkSmall'} style={'linkBasic'} to="/admin">
+                                    Admin
+                                </Button>
+                            ) : null}
                             <Button size={'buttonSmall'} style={'buttonBasic'} onClick={logoutUser}>
                                 Logout
                             </Button>

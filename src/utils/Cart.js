@@ -6,7 +6,7 @@ import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import Button from '../components/Button';
 import { addCart, removeInt, removeItem } from '../redux/actions';
 import { cartEmpty } from '../assets/images/index';
-import LayoutModal from '../layout/LayoutModal';
+import { LayoutModal } from '../layout';
 
 function AddToCart() {
     // Get store redux
@@ -90,7 +90,7 @@ function AddToCart() {
                                             />
                                         </div>
                                         <span className="text-base font-semibold w-24 text-right select-none">
-                                            {product.qty * product.price}
+                                            {`${product.qty * product.price}$`}
                                         </span>
                                     </div>
                                 </section>
@@ -98,7 +98,7 @@ function AddToCart() {
                         </div>
                         <div className="flex flex-col gap-4 sm:gap-2">
                             <span className="flex justify-end w-full text-base font-bold px-5 select-none">
-                                Subtotal: {price}
+                                Subtotal: {`${price}$`}
                             </span>
                             <div className="w-full flex right-0 left-0 md:px-0">
                                 <Button

@@ -1,5 +1,8 @@
-import { collection, deleteDoc, doc, getDocs, orderBy, query, setDoc } from 'firebase/firestore';
-import { db } from '../firebase-config';
+import { async } from '@firebase/util';
+import { onValue, ref } from 'firebase/database';
+import { collection, deleteDoc, doc, getDocs, orderBy, query, setDoc, onSnapshot } from 'firebase/firestore';
+
+import { db, database } from '../firebase.config';
 
 export const categories = [
     {
@@ -40,22 +43,27 @@ export const categories = [
 ];
 
 // Saving new Item
-export const saveItem = async (data) => {
-    await setDoc(doc(db, 'foodItems', `${Date.now()}`), data, {
-        merge: true,
-    });
+export const saveItem = async (id, data) => {
+    const docRef = doc(collection(db, 'foodItems'), `${id}`);
+    await setDoc(docRef, data);
 };
 
 // Getting Item
-export const getAllFoodItems = async () => {
-    const items = await getDocs(query(collection(db, 'foodItems'), orderBy('id', 'desc')));
+// export const getAllFoodItems = async () => {
+//     const items = await getDocs(query(collection(db, 'foodItems'), orderBy('id', 'desc')));
 
-    return items.docs.map((doc) => doc.data());
-};
+//     return items.docs.map((doc) => doc.data());
+// };
+
+export const getAllFoodItems = () => {};
+// export const getAllFoodItems = async () => {
+//     const q = query(collection(db, 'foodItems'));
+//     await onSnapshot(q, (querySnapshot) => {
+//         return querySnapshot.docs.map((doc) => doc.data());
+//     });
+// };
 
 // Delete Item
-export const deleteItem = async (data) => {
-    await deleteDoc(doc(db, 'foodItems', `${Date.now()}`), data, {
-        merge: true,
-    });
+export const deleteItem = async (id) => {
+    await deleteDoc(doc(db, 'foodItems', id));
 };

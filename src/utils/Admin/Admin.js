@@ -1,33 +1,47 @@
 import LayoutMenuOnly from '../../layout/LayoutMenuOnly';
-import { setFoods } from '../../redux/actions';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { getAllFoodItems } from '../../data/dataProducts';
+import { useDispatchs } from 'react-redux';
+import { useEffect, useState } from 'react';
+import Button from '../../components/Button';
+import { Outlet } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../contexts';
 
-function Admin({ children }) {
-    const dispatch = useDispatch();
-    const getFoods = useSelector((state) => state.cartReducer.foodItems);
+function Admin() {
+    const { user } = useAuth();
+    const navigate = useNavigate();
+    const [field, setField] = useState(false);
+
     useEffect(() => {
-        const fetchData = async () => {
-            let data = await getAllFoodItems();
-            return data;
-        };
-        fetchData()
-            .then((data) => {
-                dispatch(setFoods(data));
-                console.log(data);
-            })
-            .catch((err) => {
-                alert(err.message);
-            });
-    }, []);
-
+        if (user) {
+            setField(true);
+        }
+    }, [user]);
     return (
-        <LayoutMenuOnly>
-            <div className="w-full h-full flex gap-4 items-center justify-center mb-10 bg-regal-white-200 rounded-md">
-                {children}
-            </div>
-        </LayoutMenuOnly>
+        <>
+            {field && user.email === 'admin@gmail.com' ? (
+                <LayoutMenuOnly>
+                    <div className="w-full h-[500px] flex flex-col gap-2 items-center justify-start mb-10 bg-regal-white-200 rounded-md">
+                        <div className="flex h-[80px] justify-center py-4 gap-4">
+                            <Button size={'linkSmall'} style={'linkBasicRounded'} to={'/admin/create'}>
+                                Create Product
+                            </Button>
+                            <Button size={'linkSmall'} style={'linkBasicRounded'} to={'/admin/all-users'}>
+                                All Users
+                            </Button>
+                            <Button size={'linkSmall'} style={'linkBasicRounded'} to={'/admin/all-products'}>
+                                All Products
+                            </Button>
+                            <Button size={'linkSmall'} style={'linkBasicRounded'} to={'/admin/all-orders'}>
+                                All Orders
+                            </Button>
+                        </div>
+                        <Outlet />
+                    </div>
+                </LayoutMenuOnly>
+            ) : (
+                navigate('/signin')
+            )}
+        </>
     );
 }
 

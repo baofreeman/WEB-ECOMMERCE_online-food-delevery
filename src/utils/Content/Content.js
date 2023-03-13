@@ -1,10 +1,8 @@
-import React, { lazy, Suspense, useEffect, useState } from 'react';
-import Loader from '../../components/Loader';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import Loader from '../../components/Loader';
 
 import Product from './Product';
-
-// const Product = lazy(() => import('./Product'));
 
 function Content({ data }) {
     const [productList, setProductList] = useState();
@@ -89,9 +87,9 @@ function Content({ data }) {
                     Family
                 </option>
             </select>
-            <div className="grid overflow-y-scroll overflow-x-hidden gap-4">
-                {field && productList.length ? <Product data={productList} /> : null}
-            </div>
+            <section className="grid overflow-y-scroll overflow-x-hidden gap-4">
+                {field && productList.length ? <Product data={productList} /> : <Loader />}
+            </section>
         </div>
     );
 }

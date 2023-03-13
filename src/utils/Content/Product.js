@@ -1,10 +1,8 @@
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import Button from '../../components/Button';
 import { addCart } from '../../redux/actions';
-import { Suspense, useState } from 'react';
-import Loader from '../../components/Loader';
 
 function Product({ data }) {
     const dispatch = useDispatch();
@@ -40,7 +38,7 @@ function Product({ data }) {
                         </Link>
                         <div className="flex gap-4 sm:gap-2 justify-between items-center w-full px-8 pb-5 md:px-5 sm:px-2 sm:flex-col">
                             <span className="w-1/3 sm:w-full sm:text-center text-base font-semibold">
-                                {product.price}
+                                {`${product.price}$`}
                             </span>
                             <div className="w-full">
                                 <Button

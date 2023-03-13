@@ -13,7 +13,7 @@ import LayoutModal from '../layout/LayoutModal';
 import Profile from '../utils/Profile';
 import { resetStore } from '../redux/actions';
 import { useAuth } from '../contexts';
-import { saveOrder } from '../data/dataOrder';
+import { saveOrder } from '../data/dataOrders';
 
 function Checkout() {
     // Set data form
@@ -59,7 +59,7 @@ function Checkout() {
     useEffect(() => {
         const fetchPublicProvinces = async () => {
             const response = await apiGetPublicProvinces();
-            // console.log(response);
+            console.log(response);
             if (response.status === 200) {
                 setProvinces(response?.data.results);
             }
@@ -97,7 +97,7 @@ function Checkout() {
         localStorage.setItem('order', JSON.stringify(listOrder));
 
         // Save data orders database
-        saveOrder(user.uid, data);
+        saveOrder(user.uid, data.orderId, data);
 
         // Reset store redux
         setTimeout(() => {
@@ -108,30 +108,28 @@ function Checkout() {
         console.log(data);
     };
 
+    console.log(provinces);
     // Formik & Yup
     const formik = useFormik({
         initialValues: {
             name: '',
             phone: '',
             address: '',
-            province: province,
+            province: '',
             district: '',
         },
         onSubmit,
         validationSchema: Yup.object().shape({
-            name: Yup.string().required('Required').min(3, 'Must be 4 character or more'),
+            name: Yup.string().required('Required').min(3, 'Must be 4 character or more').trim(),
             phone: Yup.string()
                 .required('Required')
                 .matches(/(03|05|07|08|09|01[2|6|8|9])+([0-9]{8})\b/, 'Must be a valid phone number'),
             address: Yup.string().required('Required'),
-            // provinces: Yup.object().shape({
-
-            //     label: Yup.string().required(),
-            //     value: Yup.string().required(),
-            // }),
+            province: Yup.string().required('Required'),
+            district: Yup.string().required('Required'),
         }),
     });
-
+    console.log(province, district);
     return (
         <>
             {user && field ? (
@@ -190,11 +188,8 @@ function Checkout() {
                                     setValue={setProvince}
                                     options={provinces}
                                     label={'province'}
-                                    onChange={(value) => formik.setFieldValue(province, value.value)}
                                 ></Select>
-                                {formik.touched.province && formik.errors.province && (
-                                    <p className="text-xs font-thin text-red-600">{formik.errors.province}</p>
-                                )}
+
                                 <Select
                                     type={'district'}
                                     name="district"
@@ -203,15 +198,10 @@ function Checkout() {
                                     setValue={setDistrict}
                                     options={districts}
                                     label={'district'}
-                                    onChange={formik.handleChange}
                                 ></Select>
-                                {formik.touched.district && formik.errors.district && (
-                                    <p className="text-xs font-thin text-red-600">{formik.errors.district}</p>
-                                )}
-                                {/* {console.log(formik.values)} */}
 
                                 <Button
-                                    type={'submit'}
+                                    type="submit"
                                     size={'buttonMedium'}
                                     style={formik.dirty ? 'buttonBasic' : 'buttonDisable'}
                                 >

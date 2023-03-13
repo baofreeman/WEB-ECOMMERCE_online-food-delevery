@@ -1,20 +1,21 @@
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import React, { Suspense } from 'react';
-import Home from './pages/Home';
-import Order from './utils/Order';
-import AddToCart from './utils/AddToCart';
-import Checkout from './utils/Checkout';
-import Dashboard from './pages/Dashboard/Dashboard';
-import ProductSingle from './utils/Content/ProductDetail';
-import Product from './utils/Content/Product';
-import Profile from './utils/Profile';
-import Auth from './pages/Auth/Auth';
-
-import CreateContainer from './utils/CreateContainer';
-import { useAuth } from './contexts';
-import AllProducts from './utils/AllProducts';
-import Admin from './utils/Admin/Admin';
+import { Home, Auth, Dashboard } from './pages';
+import {
+    Cart,
+    Checkout,
+    Order,
+    Profile,
+    ProductDetail,
+    Product,
+    Admin,
+    AllOrders,
+    AllProducts,
+    AllUser,
+    CreateContainer,
+    CheckoutTest,
+} from './utils';
 
 function App() {
     return (
@@ -23,16 +24,19 @@ function App() {
                 <Route path="/" element={<Home />}></Route>
                 <Route path="/signin" element={<Auth />} />
                 <Route path="/signup" element={<Auth />} />
-                <Route path="/admin" element={<Admin />} />
-                <Route path="/create" element={<CreateContainer />} />
-                <Route path="/all-products" element={<AllProducts />} />
+                <Route path="admin" element={<Admin />}>
+                    <Route path="create" element={<CreateContainer />} />
+                    <Route path="all-users" element={<AllUser />} />
+                    <Route path="all-products" element={<AllProducts />} />
+                    <Route path="all-orders" element={<AllOrders />} />
+                </Route>
                 <Route path="/dashboard" element={<Dashboard />}>
                     <Route path="order" element={<Order />} />
                     <Route path="profile" element={<Profile />} />
                     <Route path="product" element={<Product />} />
-                    <Route path="product/:productId" element={<ProductSingle />} />
-                    <Route path="add" element={<AddToCart />} />
-                    <Route path="add/:productId" element={<AddToCart />} />
+                    <Route path="product/:productId" element={<ProductDetail />} />
+                    <Route path="add" element={<Cart />} />
+                    <Route path="add/:productId" element={<Cart />} />
                     <Route path="checkout" element={<Checkout />} />
                 </Route>
                 {/* <Route path="*" element={<NoMatch />} /> */}

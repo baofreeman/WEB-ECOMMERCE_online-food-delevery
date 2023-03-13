@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { createContext } from 'react';
-import { Await, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
     createUserWithEmailAndPassword,
     onAuthStateChanged,
@@ -10,10 +10,9 @@ import {
     sendPasswordResetEmail,
 } from 'firebase/auth';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
-import { collection, doc, getDocs, getDoc, orderBy, query, setDoc, updateDoc } from 'firebase/firestore';
-import { saveUser, getUser, updateUser } from '../data/dataUser';
-import { auth, db } from '../firebase-config';
-import { storage } from '../firebase-config';
+import { saveUser, getUser, updateUser } from '../data/dataUsers';
+import { auth } from '../firebase.config';
+import { storage } from '../firebase.config';
 
 /** Auth Context */
 
@@ -32,9 +31,8 @@ export function AuthProvider({ children }) {
     useEffect(() => {
         setLoading(true);
         const unsubscribe = onAuthStateChanged(auth, (res) => {
-            // res ? setUser(res) : setUser(null);
             if (res) {
-                getUser(res.uid).then((user) => setUser(user));
+                getUser(res.uid).then((user) => setUser(user)); // get user database
             } else {
                 setUser(null);
             }
@@ -47,21 +45,8 @@ export function AuthProvider({ children }) {
     // register
     const registerUser = (name, email, password, phoneNumber) => {
         setLoading(true);
-        createUserWithEmailAndPassword(auth, email, password, phoneNumber)
+        createUserWithEmailAndPassword(auth, email, password)
             .then((cred) => {
-                // return setDoc(
-                //     doc(db, 'user', `${cred.user.uid}`),
-                //     {
-                //         id: cred.user.uid,
-                //         displayName: name,
-                //         email: email,
-                //         phoneNumber: phoneNumber,
-                //     },
-                //     {
-                //         merge: true,
-                //     },
-                // );
-                // return updateProfile(auth.currentUser, { displayName: name });
                 const data = {
                     uid: cred.user.uid,
                     displayName: name,
@@ -69,11 +54,11 @@ export function AuthProvider({ children }) {
                     phoneNumber: phoneNumber,
                     photoURL: '',
                 };
-                saveUser(cred.user.uid, data);
+                saveUser(cred.user.uid, data); // set user database
             })
             .then(() => {
                 console.log('Success');
-                // navigate('/dashboard');
+                navigate('/dashboard');
             })
             .catch((err) => setError(err.message))
             .finally(() => setLoading(false));
@@ -84,10 +69,8 @@ export function AuthProvider({ children }) {
         setLoading(true);
         signInWithEmailAndPassword(auth, email, password)
             .then((res) => {
-                // const user = res.user.providerData;
-                // localStorage.setItem('user', JSON.stringify(user));
                 console.log(res);
-                // navigate('/dashboard');
+                navigate('/dashboard');
             })
             .catch((err) => setError(err.message))
             .finally(() => setLoading(false));
@@ -115,7 +98,7 @@ export function AuthProvider({ children }) {
         updateUser(auth.currentUser.uid, { photoURL: photoURL });
         console.log(user.uid);
         setLoading(false);
-        alert('thanh cong');
+        alert('Upload Succsess');
     };
 
     const contextValue = {

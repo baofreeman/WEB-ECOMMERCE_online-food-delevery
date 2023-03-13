@@ -6,7 +6,7 @@ import Button from '../../components/Button';
 import { useAuth } from '../../contexts';
 
 function SignIn() {
-    const { signInUser, forgetPassword } = useAuth();
+    const { signInUser, forgetPassword, loading } = useAuth();
 
     const formik = useFormik({
         initialValues: {
@@ -24,13 +24,15 @@ function SignIn() {
         validationSchema: Yup.object({
             email: Yup.string()
                 .required('Required')
-                .matches(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please enter a validate'),
+                .matches(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please enter a validate')
+                .trim(),
             password: Yup.string()
                 .required('Required')
                 .matches(
                     /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/,
                     'Please must be at 8 character and contain at least one letter, one number and one a special character',
-                ),
+                )
+                .trim(),
         }),
     });
     return (
@@ -42,7 +44,7 @@ function SignIn() {
                     formik.handleSubmit(e);
                 }}
             >
-                <h1 className="text-2xl md:text-xl sm:text-lg font-bold">Welcome Back</h1>
+                <h1 className="text-2xl text-black md:text-xl sm:text-lg font-bold">Welcome Back</h1>
                 <Input
                     type={'email'}
                     id="email"

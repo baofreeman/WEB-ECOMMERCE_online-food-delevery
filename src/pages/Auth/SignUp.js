@@ -27,23 +27,27 @@ function SignUp() {
             }
         },
         validationSchema: Yup.object({
-            name: Yup.string().required('Required').min(3, 'Must be 4 character or more'),
+            name: Yup.string().required('Required').min(3, 'Must be 4 character or more'.trim()),
 
             email: Yup.string()
                 .required('Required')
-                .matches(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please enter a validate'),
+                .matches(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please enter a validate')
+                .trim(),
             password: Yup.string()
                 .required('Required')
                 .matches(
                     /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/,
                     'Please must be at 8 character and contain at least one letter, one number and one a special character',
-                ),
+                )
+                .trim(),
             confirmPassword: Yup.string()
                 .required('Required')
-                .oneOf([Yup.ref('password'), null], 'Password must match'),
+                .oneOf([Yup.ref('password'), null], 'Password must match')
+                .trim(),
             phone: Yup.string()
                 .required('Required')
-                .matches(/(03|05|07|08|09|01[2|6|8|9])+([0-9]{8})\b/, 'Must be a valid phone number'),
+                .matches(/(03|05|07|08|09|01[2|6|8|9])+([0-9]{8})\b/, 'Must be a valid phone number')
+                .trim(),
         }),
     });
 
@@ -53,7 +57,12 @@ function SignUp() {
                 className="w-full flex flex-col gap-4 sm:gap-2 items-center p-8 sm:px-5 sm:py-3 rounded-md border shadow-form"
                 onSubmit={formik.handleSubmit}
             >
-                <h1 className="text-2xl sm:text-base md:text-xl font-bold">Welcome</h1>
+                <h1
+                    className="text-2xl sm:text-base text-black
+                 md:text-xl font-bold"
+                >
+                    Welcome
+                </h1>
                 <Input
                     type={'text'}
                     name="name"

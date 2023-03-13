@@ -1,9 +1,11 @@
-import { updateDoc, doc, setDoc, getDoc, arrayUnion } from 'firebase/firestore';
+import { updateDoc, doc, setDoc, getDoc, arrayUnion, query, where } from 'firebase/firestore';
 import { useAuth } from '../contexts';
 import LayoutModal from '../layout/LayoutModal';
-import { db } from '../firebase-config';
+import { db } from '../firebase.config';
 import { useEffect, useState } from 'react';
-import { getOrder } from '../data/dataOrder';
+import { getOrder } from '../data/dataOrders';
+
+import { collection, onSnapshot } from 'firebase/firestore';
 
 function Order() {
     let orderCart = localStorage.getItem('order') ? JSON.parse(localStorage.getItem('order')) : [];
@@ -15,13 +17,23 @@ function Order() {
         localStorage.removeItem('cart');
         localStorage.removeItem('qty');
         localStorage.removeItem('price');
-        // localStorage.removeItem('order');
+        localStorage.removeItem('order');
     }, 1000);
     useEffect(() => {
         if (user) {
-            getOrder(user.uid).then((res) => setOrderItem(res));
+            const uID = user.uid;
+            console.log(uID);
+            const q = query(collection(db, 'orders'), where('id', '==', `${uID}`));
+            const unsubscribe = onSnapshot(q, (querySnapshot) => {
+                const item = querySnapshot.docs.map((doc) => doc.data());
+                console.log(item);
+                setOrderItem(item);
+            });
+            return unsubscribe;
         }
     }, [user]);
+
+    console.log(orderItem);
     return (
         <LayoutModal>
             <div className="flex flex-col w-full h-screen gap-4 sm:gap-2 sm:justify-start items-center justify-center">
@@ -43,7 +55,7 @@ function Order() {
                                                   </div>
                                                   <div>{product.qty}</div>
                                                   <div className="text-base font-semibold w-24 text-right select-none">
-                                                      {product.price}
+                                                      {`${product.qty * product.price}$`}
                                                   </div>
                                               </div>
                                           ))}
@@ -51,7 +63,7 @@ function Order() {
                                       <div className="flex justify-end w-full text-base font-bold select-none py-2">
                                           <div className="w-1/2 flex">
                                               <p className="w-full flex justify-end mr-4">Total:</p>
-                                              <p>{item.price}</p>
+                                              <p>{`${item.price}$`}</p>
                                           </div>
                                       </div>
                                   </section>

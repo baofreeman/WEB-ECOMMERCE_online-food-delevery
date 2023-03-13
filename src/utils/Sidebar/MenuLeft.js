@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { db } from '../../firebase.config';
 import { Link, NavLink } from 'react-router-dom';
+import { updateDoc, doc, setDoc, getDoc, collection, onSnapshot, arrayUnion, query, where } from 'firebase/firestore';
+
 import { useDispatch, useSelector } from 'react-redux';
-import { getOrder } from '../../data/dataOrder';
 
 import { useAuth } from '../../contexts';
 import { dataListMenuLeft } from '../../data/dataListMenuLeft';
@@ -23,7 +25,15 @@ function MenuLeft() {
 
     useEffect(() => {
         if (user) {
-            getOrder(user.uid).then((res) => setOrderItem(res));
+            const uID = user.uid;
+            console.log(uID);
+            const q = query(collection(db, 'orders'), where('id', '==', `${uID}`));
+            const unsubscribe = onSnapshot(q, (querySnapshot) => {
+                const item = querySnapshot.docs.map((doc) => doc.data());
+                console.log(item);
+                setOrderItem(item);
+            });
+            return unsubscribe;
         }
     }, [user]);
 

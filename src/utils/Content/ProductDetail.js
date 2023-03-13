@@ -7,7 +7,7 @@ import LayoutModal from '../../layout/LayoutModal';
 
 import { useEffect, useState } from 'react';
 import Loader from '../../components/Loader';
-function ProductSingle() {
+function ProductDetail() {
     const { productId } = useParams();
     const [foodItem, setFoodItem] = useState();
     const [fields, setfields] = useState(false);
@@ -60,4 +60,4 @@ function ProductSingle() {
     );
 }
 
-export default ProductSingle;
+export default ProductDetail;

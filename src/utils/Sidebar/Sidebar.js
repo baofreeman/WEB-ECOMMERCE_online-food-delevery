@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import MenuLeft from './MenuLeft';
-import Header from '../../components/Header';
+import { Header } from '../../components/Header';
 import Button from '../../components/Button';
 
 function Sidebar() {
