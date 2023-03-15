@@ -14,7 +14,6 @@ import {
     AllProducts,
     AllUser,
     CreateContainer,
-    CheckoutTest,
 } from './utils';
 
 function App() {

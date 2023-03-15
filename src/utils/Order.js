@@ -44,7 +44,7 @@ function Order() {
                             ? orderItem.map((item, i) => (
                                   <section
                                       key={i}
-                                      className="'flex flex-1 flex-col my-5 mx-5 border-b border-stone-400 md:mt-12 sm:mt-14'"
+                                      className="'flex flex-1 flex-col my-5 mx-5 border-b border-stone-400 md:mt-12 sm:mt-14"
                                   >
                                       <h1 className="text-xs text-regal-yellow font-thin">Order: {item.orderId}</h1>
                                       <div className="flex flex-col">
