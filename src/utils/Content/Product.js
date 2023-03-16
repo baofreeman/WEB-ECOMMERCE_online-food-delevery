@@ -30,9 +30,7 @@ function Product({ data }) {
                                 </div>
                                 <div className="w-full flex flex-col gap-2">
                                     <h2 className="wrap_1 text-base font-bold sm:text-sm">{product.title}</h2>
-                                    <h4 className="wrap text-xs font-thin px-8 text-left sm:text-xs sm:px-2">
-                                        {product.des}
-                                    </h4>
+                                    <h4 className="wrap text-xs font-thin text-left sm:text-xs">{product.des}</h4>
                                 </div>
                             </div>
                         </Link>

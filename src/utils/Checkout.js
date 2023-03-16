@@ -191,6 +191,7 @@ function Checkout() {
                                     type={'province'}
                                     options={dataProvince}
                                     name="province"
+                                    label={'province'}
                                     id="province"
                                     onBlur={() => {
                                         formik.handleBlur({ target: { name: 'province' } });

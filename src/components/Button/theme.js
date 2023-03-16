@@ -18,13 +18,14 @@ export const LinkStyle = {
     linkPrimaryRounded:
         'bg-regal-yellow text-black hover:bg-regal-yellow-500 text-black font-bold rounded focus:ring focus:ring-regal-green select-none',
     linkBasic: 'text-white font-base select-none',
+    linkBasicBlack: 'text-black font-base select-none',
     linkBasicRounded:
         'bg-regal-green hover:bg-regal-green-500 text-white font-bold rounded focus:ring focus:ring-regal-yellow select-none',
     linkDisable: 'bg-black text-white font-bold rounded pointer-events-none opacity-40 select-none',
 };
 
 export const LinkSize = {
-    linkSmall: 'w-full text-center text-sm sm:text-xs',
+    linkSmall: 'w-full text-center text-xs',
     linkMedium: 'w-full text-sm sm:text-xs text-center font-bold',
     linkSmallRounded: 'py-3 px-6 text-sm sm:py-1 sm:px-2 w-full flex items-center justify-center text-center',
     linkMediumRounded: 'py-4 px-8 text-base sm:text-sm sm:py-3 sm:px-5 w-full text-center',

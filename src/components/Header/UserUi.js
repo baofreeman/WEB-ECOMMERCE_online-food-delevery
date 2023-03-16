@@ -16,11 +16,11 @@ function UserUi() {
                 />
                 {toggleUser ? (
                     <div className="absolute top-20 right-0 bg-regal-yellow-500 flex flex-col min-w-fit h-32 px-4 items-center justify-between rounded-md">
-                        <div className="flex flex-col h-full items-center justify-between py-4">
-                            <h1 className="text-black text-sm font-light select-none">{user.displayName}</h1>
-                            <h1 className="text-black text-sm font-light select-none">{user.email}</h1>
+                        <div className="flex flex-col h-full items-center justify-between gap-1 py-4">
+                            <h1 className="text-black text-xs select-none">{user.displayName}</h1>
+                            <h1 className="text-black text-xs select-none">{user.email}</h1>
                             {user.email === 'admin@gmail.com' ? (
-                                <Button size={'linkSmall'} style={'linkBasic'} to="/admin">
+                                <Button size={'linkSmall'} style={'linkBasicBlack'} to="/admin">
                                     Admin
                                 </Button>
                             ) : null}

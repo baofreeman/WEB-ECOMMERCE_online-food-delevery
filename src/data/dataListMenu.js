@@ -3,7 +3,7 @@ import { faFolder, faHouse, faSackDollar, faStore, faUser } from '@fortawesome/f
 export const dataListMenu = [
     {
         home: { path: '/', display: 'Home', icon: faHouse },
-        login: { path: '/signin', display: 'Login', icon: faHouse },
+        login: { path: '/login', display: 'Login', icon: faHouse },
         signup: { path: '/signup', display: 'Sign Up', icon: faHouse },
         dashboard: { path: '/dashboard', display: 'DashBoard', icon: faHouse },
         order: { path: '/dashboard/order', display: 'Order', icon: faSackDollar, qty: '1' },

@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useOutletContext, useParams } from 'react-router-dom';
 
 import { addCart } from '../../redux/actions';
@@ -31,20 +31,20 @@ function ProductDetail() {
     return (
         <LayoutModal>
             {fields && foodItem ? (
-                <>
+                <div className="flex flex-col items-center justify-center gap-4">
                     <div className="flex items-center justify-center">
                         <div className="flex items-center justify-center rounded-full w-[260px] h-[260px] sm:w-[160px] sm:h-[160px] p-1 border border-regal-yellow">
                             <img src={foodItem.imageURL} className={'w-full h-full rounded-full object-cover'} />
                         </div>
                     </div>
-                    <div className="flex flex-col w-full h-[120px] gap-3">
+                    <div className="flex flex-col items-center w-full h-[120px] gap-3">
                         <h2 className="text-base font-bold">{foodItem.title}</h2>
                         <h4 className="flex-1 h-[100px] text-sm font-thin text-justify overflow-y-scroll">
                             {foodItem.des}
                         </h4>
                     </div>
                     <div className="flex justify-between items-center gap-4 w-full">
-                        <span className="text-base font-semibold">{foodItem.price}</span>
+                        <span className="text-base font-semibold">{foodItem.price}$</span>
                         <span className="text-base font-semibold">10-20Mins</span>
                     </div>
                     <div className="w-full">
@@ -52,7 +52,7 @@ function ProductDetail() {
                             Add to cart
                         </Button>
                     </div>
-                </>
+                </div>
             ) : (
                 <Loader />
             )}

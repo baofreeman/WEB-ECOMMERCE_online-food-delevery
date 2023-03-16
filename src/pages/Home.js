@@ -27,19 +27,19 @@ function Home() {
         <>
             <div className="grid w-full h-full text-white gap-[120px] bg-regal-green sm:justify-center">
                 <Header />
-                <div className="grid px-[120px] md:px-[60px] sm:px-[20px] bg-regal-green gap-28 sm:mt-0 sm:flex sm:flex-col">
-                    <div className="grid grid-cols-2 sm:grid-cols-1 sm:pt-32">
-                        <div className="items-center">
+                <div className="grid px-[120px] md:px-[60px] sm:px-[10px] bg-regal-green gap-28 sm:gap-14 sm:flex sm:flex-col">
+                    <div className="grid grid-cols-2 sm:grid-cols-1 sm:pt-32 gap-6">
+                        <div className="flex flex-col items-start sm:items-center gap-4">
                             <h1 className="text-4xl font-medium sm:text-2xl">Order food anytime, anywhere</h1>
-                            <h4 className="text-sm sm:text-xs sm:mt-4 mt-8 font-thin leading-loose">
+                            <h4 className="text-sm sm:text-xs font-thin leading-loose">
                                 Browse from our list of specials to place your order and have food delivered to you in
                                 no time. Affordable, tasty and fast!
                             </h4>
-                            <div className="flex justify-start mt-8 sm:mt-4 sm:justify-between">
-                                <button className="mr-4 bg-gray-600 p-3 rounded-md w-40 sm:w-32 sm:mr-0">
+                            <div className="flex justify-start sm:justify-between gap-4">
+                                <button className="bg-gray-600 p-3 rounded-md w-40 sm:w-32">
                                     <img src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg//assets/f4f5426ce757aea491dce94201560583.png" />
                                 </button>
-                                <button className="mr-4 bg-gray-600 p-3 rounded-md w-40 sm:w-32 sm:mr-0">
+                                <button className="bg-gray-600 p-3 rounded-md w-40 sm:w-32">
                                     <img src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg//assets/39f189e19764dab688d3850742f13718.png" />
                                 </button>
                             </div>

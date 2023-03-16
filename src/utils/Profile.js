@@ -5,7 +5,7 @@ import Button from '../components/Button';
 import Input from '../components/Input';
 import LayoutModal from '../layout/LayoutModal';
 
-import SignIn from '../pages/Auth/SignIn';
+import Login from '../pages/Auth/Login';
 import SignUp from '../pages/Auth/SignUp';
 
 function Profile() {
@@ -66,7 +66,7 @@ function Profile() {
                 </>
             ) : (
                 <div>
-                    {!index ? <SignIn /> : <SignUp />}
+                    {!index ? <Login /> : <SignUp />}
                     <div className=" w-full px-28 sm:px-4">
                         <p className="flex flex-col text-xs items-center cursor-pointer mt-4" onClick={toggleIndex}>
                             {!index ? 'Create an Account' : 'Already have an Account'}

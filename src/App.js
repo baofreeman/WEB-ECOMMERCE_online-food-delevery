@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import { Home, Auth, Dashboard } from './pages';
+import { Home, Auth, Dashboard, Login, SignUp } from './pages';
 import {
     Cart,
     Checkout,
@@ -21,8 +21,8 @@ function App() {
         <div className="App max-md:w-full">
             <Routes>
                 <Route path="/" element={<Home />}></Route>
-                <Route path="/signin" element={<Auth />} />
-                <Route path="/signup" element={<Auth />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<SignUp />} />
                 <Route path="admin" element={<Admin />}>
                     <Route path="create" element={<CreateContainer />} />
                     <Route path="all-users" element={<AllUser />} />
