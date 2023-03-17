@@ -3,10 +3,10 @@ import Select from 'react-select';
 const customStyles = {
     control: (base) => ({
         ...base,
-        fontSize: '14px',
+        fontSize: '13px',
         fontWeight: 'thin',
         borderRadius: '4px',
-        padding: '3px',
+        padding: '2px',
         border: '1px solid #EBCCA8',
         boxShadow: 'none',
         '&:focus': {

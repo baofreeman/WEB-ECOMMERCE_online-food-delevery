@@ -8,7 +8,8 @@ export const ButtonStyle = {
 };
 
 export const ButtonSize = {
-    buttonSmall: 'w-full py-3 px-6 text-xs flex items-center justify-center sm:py-1 sm:px-2 sm:text-xs md:py-2 md:px-4',
+    buttonSmall:
+        'w-full h-full py-3 px-6 text-xs flex items-center justify-center sm:py-1 sm:px-2 sm:text-xs md:py-2 md:px-4',
     buttonMedium:
         'w-full py-4 px-8 text-sm flex items-center justify-center sm:py-3 sm:px-5 sm:text-xs md:py-3 md:px-6',
 };

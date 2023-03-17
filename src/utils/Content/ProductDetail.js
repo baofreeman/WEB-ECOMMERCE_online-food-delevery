@@ -1,12 +1,12 @@
 import { useDispatch } from 'react-redux';
 import { useOutletContext, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 import { addCart } from '../../redux/actions';
-import Button from '../../components/Button';
 import LayoutModal from '../../layout/LayoutModal';
-
-import { useEffect, useState } from 'react';
+import Button from '../../components/Button';
 import Loader from '../../components/Loader';
+
 function ProductDetail() {
     const { productId } = useParams();
     const [foodItem, setFoodItem] = useState();
@@ -31,7 +31,7 @@ function ProductDetail() {
     return (
         <LayoutModal>
             {fields && foodItem ? (
-                <div className="flex flex-col items-center justify-center gap-4">
+                <div className="flex flex-col items-center justify-center h-full gap-4">
                     <div className="flex items-center justify-center">
                         <div className="flex items-center justify-center rounded-full w-[260px] h-[260px] sm:w-[160px] sm:h-[160px] p-1 border border-regal-yellow">
                             <img src={foodItem.imageURL} className={'w-full h-full rounded-full object-cover'} />

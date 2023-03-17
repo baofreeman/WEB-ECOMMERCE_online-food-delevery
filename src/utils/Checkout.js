@@ -91,6 +91,7 @@ function Checkout() {
             id: user ? user.uid : null,
             orderId: makeid(6),
             name: values.name,
+            address: values.address,
             phone: values.phone,
             province: values.province,
             district: values.district,
@@ -98,6 +99,7 @@ function Checkout() {
             price: price,
         };
 
+        console.log(values);
         navigate('/dashboard/order');
 
         // Local Storage
@@ -140,13 +142,15 @@ function Checkout() {
         <>
             {user && field ? (
                 <LayoutModal>
-                    <div className="flex flex-col w-full h-screen gap-4 sm:gap-2 items-center sm:justify-start justify-center">
+                    <div className="flex flex-col w-full h-full gap-4 sm:gap-2 items-center sm:justify-start justify-center">
                         <h1 className={'text-xl text-center font-bold'}>Checkout</h1>
                         <div className="flex flex-col w-full justify-center items-center">
                             <form
                                 action="/dashboard"
                                 onSubmit={formik.handleSubmit}
-                                className={'w-full flex flex-col gap-4 items-center top-1/4 px-5 py-5 shadow-form'}
+                                className={
+                                    'w-full flex flex-col gap-4 sm:gap-2 items-center top-1/4 px-5 py-5 shadow-form'
+                                }
                             >
                                 <Input
                                     type={'text'}

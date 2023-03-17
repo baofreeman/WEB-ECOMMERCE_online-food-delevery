@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import { Home, Auth, Dashboard, Login, SignUp } from './pages';
+import { Home, Auth, Dashboard, Login, SignUp, AuthWrapper } from './pages';
 import {
     Cart,
     Checkout,
@@ -14,15 +14,16 @@ import {
     AllProducts,
     AllUser,
     CreateContainer,
+    NoMatch,
 } from './utils';
 
 function App() {
     return (
-        <div className="App max-md:w-full">
+        <div className="App">
             <Routes>
                 <Route path="/" element={<Home />}></Route>
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<SignUp />} />
+                <Route path="/login" element={<AuthWrapper />} />
+                <Route path="/signup" element={<AuthWrapper />} />
                 <Route path="admin" element={<Admin />}>
                     <Route path="create" element={<CreateContainer />} />
                     <Route path="all-users" element={<AllUser />} />
@@ -38,7 +39,7 @@ function App() {
                     <Route path="add/:productId" element={<Cart />} />
                     <Route path="checkout" element={<Checkout />} />
                 </Route>
-                {/* <Route path="*" element={<NoMatch />} /> */}
+                <Route path="*" element={<NoMatch />} />
             </Routes>
         </div>
     );

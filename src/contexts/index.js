@@ -90,7 +90,7 @@ export function AuthProvider({ children }) {
 
     // upload avatar
     const upload = async (file, currentUser) => {
-        const fileRef = ref(storage, currentUser.uid + '.png');
+        const fileRef = ref(storage, `ImagesUsers/${currentUser.uid}.png`);
         setLoading(true);
         const snapshot = await uploadBytes(fileRef, file);
         const photoURL = await getDownloadURL(fileRef);

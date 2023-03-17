@@ -26,7 +26,7 @@ function Dashboard() {
     }, []);
 
     return (
-        <div className="flex h-screen sm:mt-[62px]">
+        <div className="flex h-screen sm:h-full sm:mt-[62px]">
             <Sidebar />
             <Suspense fallback={<Loader />}>
                 <Content data={getFoods} />
