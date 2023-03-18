@@ -36,21 +36,21 @@ function Order() {
     console.log(orderItem);
     return (
         <LayoutModal>
-            <div className="flex flex-col w-full h-screen gap-4 sm:gap-2 sm:justify-start items-center justify-center">
+            <div className="flex flex-col w-full h-screen gap-4 sm:gap-2 items-center sm:justify-start justify-start">
                 <h1 className={'text-xl font-bold'}>Order</h1>
-                <div className="w-full shadow-form bg-regal-white-400">
-                    <div className="h-[400px] md:h-[300px] sm:h-[250px] overflow-y-scroll">
+                <div className="w-full h-[60%] md:h-[50%] sm:h-[60%] flex flex-col gap-4 sm:gap-2 shadow-form bg-regal-white-400">
+                    <div className="overflow-y-scroll">
                         {orderItem && field
                             ? orderItem.map((item, i) => (
                                   <section
-                                      key={i}
-                                      className="'flex flex-1 flex-col my-5 mx-5 border-b border-stone-400 md:mt-12 sm:mt-14"
+                                      key={item.orderId}
+                                      className="flex flex-1 flex-col my-1 mx-5 border-b border-stone-400 gap-2"
                                   >
                                       <h1 className="text-xs text-regal-yellow font-thin">Order: {item.orderId}</h1>
                                       <div className="flex flex-col">
                                           {item.cart.map((product, i) => (
-                                              <div key={i} className="flex justify-between mt-1">
-                                                  <div className="wrap w-1/2 text-sm font-medium my-1 select-none">
+                                              <div key={i} className="flex justify-between">
+                                                  <div className="wrap w-1/2 text-sm font-mediumselect-none">
                                                       {product.title}
                                                   </div>
                                                   <div>{product.qty}</div>
@@ -71,7 +71,7 @@ function Order() {
                             : null}
                     </div>
                 </div>
-                <h1 className="flex items-center text-sm text-gray-400 font-medium">
+                <h1 className="flex items-start justify-start text-sm text-gray-400 font-medium">
                     Thank you for trusting us, we will call to confirm and prepare the dish for you. Wish you enjoy
                     delicious.
                 </h1>
