@@ -45,20 +45,20 @@ function Profile() {
             ) : (
                 <>
                     {user ? (
-                        <>
-                            <div className="flex w-full items-center justify-center">
-                                <div className="w-[150px] h-[150px] rounded-full p-1 border border-regal-yellow">
+                        <div className="flex flex-col w-ful h-[70vh] md:h-[50vh] sm:h-[30vh] gap-4 sm:gap-2">
+                            <div className="flex w-full h-full items-center justify-center">
+                                <div className="w-[30vh] h-[30vh] rounded-full p-1 border border-regal-yellow">
                                     <img
                                         src={photoURL}
                                         alt="avatar"
-                                        className="w-full h-full rounded-full object-cover"
+                                        className="w-[30vh] h-[30vh] rounded-full object-cover"
                                     />
                                 </div>
                             </div>
-                            <h1 className="text-base sm:text-sm font-semibold select-none">Name: {user.displayName}</h1>
-                            <h1 className="text-base sm:text-sm font-semibold select-none">Email: {user.email}</h1>
+                            <h1 className="text-md sm:text-sm font-semibold select-none">Name: {user.displayName}</h1>
+                            <h1 className="text-md sm:text-sm font-semibold select-none">Email: {user.email}</h1>
                             <div className="flex items-center justify-between gap-2">
-                                <h1 className="text-base sm:text-sm font-semibold select-none">Avatar:</h1>
+                                <h1 className="text-md sm:text-sm font-semibold select-none">Avatar:</h1>
                                 <Input type="file" onChange={handleChange} size={'sm'}></Input>
                                 <div className="w-1/5 h-full">
                                     <Button
@@ -74,7 +74,7 @@ function Profile() {
                             <Button size={'buttonMedium'} style={'buttonBasic'} onClick={logoutUser}>
                                 Logout
                             </Button>
-                        </>
+                        </div>
                     ) : (
                         <div className="flex flex-col gap-4">
                             {!index ? <Login /> : <SignUp />}

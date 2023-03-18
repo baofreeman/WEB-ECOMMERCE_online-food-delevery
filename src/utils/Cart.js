@@ -48,7 +48,7 @@ function AddToCart() {
                 <h1 className={'text-xl font-bold'}>Cart</h1>
                 {getData.length ? (
                     <div className="w-full flex flex-col gap-4 sm:gap-2 shadow-form bg-regal-white-400">
-                        <div className="h-[40%] md:h-[50%] sm:h-[30%] overflow-y-scroll">
+                        <div className="h-[50vh] md:h-[70vh] sm:h-[50vh] overflow-y-scroll">
                             {getData.map((product, i) => (
                                 <section
                                     key={product.id}

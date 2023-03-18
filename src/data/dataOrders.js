@@ -1,18 +1,4 @@
-import {
-    doc,
-    setDoc,
-    getDocs,
-    getDoc,
-    updateDoc,
-    addDoc,
-    collection,
-    arrayUnion,
-    orderBy,
-    deleteDoc,
-    query,
-    onSnapshot,
-    where,
-} from 'firebase/firestore';
+import { doc, setDoc, collection, deleteDoc } from 'firebase/firestore';
 import { db } from '../firebase.config';
 
 export const saveOrder = async (user, orderId, data) => {

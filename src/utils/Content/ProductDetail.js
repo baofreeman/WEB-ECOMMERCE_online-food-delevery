@@ -31,15 +31,20 @@ function ProductDetail() {
     return (
         <LayoutModal>
             {fields && foodItem ? (
-                <div className="flex flex-col items-center justify-center h-full gap-4">
-                    <div className="flex items-center justify-center">
-                        <div className="flex items-center justify-center rounded-full w-[260px] h-[260px] sm:w-[160px] sm:h-[160px] p-1 border border-regal-yellow">
-                            <img src={foodItem.imageURL} className={'w-full h-full rounded-full object-cover'} />
+                <section className="flex flex-col w-full h-[70vh] md:h-[70vh] sm:h-[30vh] gap-4 sm:gap-2 items-center sm:justify-start justify-start">
+                    <div className="flex w-[40vh] h-[40vh] sm:w-[30vh] md:w-[30vh] sm:h-[30vh] md:h-[30vh] items-center justify-center">
+                        <div className="flex items-center justify-center rounded-full w-full h-full p-1 border border-regal-yellow">
+                            <img
+                                src={foodItem.imageURL}
+                                className={
+                                    'w-[40vh] h-[40vh] sm:w-[30vh] sm:h-[30vh] md:w-[30vh] md:h-[30vh] rounded-full object-cover'
+                                }
+                            />
                         </div>
                     </div>
-                    <div className="flex flex-col items-center w-full h-[120px] gap-3">
-                        <h2 className="text-base font-bold">{foodItem.title}</h2>
-                        <h4 className="flex-1 h-[100px] text-sm font-thin text-justify overflow-y-scroll">
+                    <div className="flex flex-col items-center w-full h-full gap-3">
+                        <h2 className="h-[10%] text-base font-bold">{foodItem.title}</h2>
+                        <h4 className="flex-1 h-[90%] text-sm font-thin text-justify overflow-y-scroll">
                             {foodItem.des}
                         </h4>
                     </div>
@@ -52,7 +57,7 @@ function ProductDetail() {
                             Add to cart
                         </Button>
                     </div>
-                </div>
+                </section>
             ) : (
                 <Loader />
             )}

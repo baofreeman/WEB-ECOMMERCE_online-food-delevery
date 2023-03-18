@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { deleteItem } from '../../data/dataProducts';
 import { db } from '../../firebase.config';
-import { collection, getDoc, onSnapshot } from 'firebase/firestore';
-import { setFoods } from '../../redux/actions';
+import { collection, onSnapshot } from 'firebase/firestore';
 import { useDispatch } from 'react-redux';
 
+import { deleteItem } from '../../data/dataProducts';
+import { setFoods } from '../../redux/actions';
 import Button from '../../components/Button';
 
 function AllProducts() {

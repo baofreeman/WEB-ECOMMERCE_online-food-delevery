@@ -5,12 +5,9 @@ import * as Yup from 'yup';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { useAuth } from '../../contexts';
-import Wrapper from './AuthWrapper';
-import { useNavigate } from 'react-router-dom';
 
 function SignUp() {
-    const { registerUser, getStore } = useAuth();
-    const navigate = useNavigate();
+    const { registerUser } = useAuth();
 
     const location = useLocation();
     const locationPath = location.pathname.startsWith('/dashboard');

@@ -1,11 +1,10 @@
-import { updateDoc, doc, setDoc, getDoc, arrayUnion, query, where } from 'firebase/firestore';
-import { useAuth } from '../contexts';
-import LayoutModal from '../layout/LayoutModal';
-import { db } from '../firebase.config';
 import { useEffect, useState } from 'react';
-import { getOrder } from '../data/dataOrders';
+import { query, where } from 'firebase/firestore';
 
 import { collection, onSnapshot } from 'firebase/firestore';
+import { db } from '../firebase.config';
+import { useAuth } from '../contexts';
+import LayoutModal from '../layout/LayoutModal';
 
 function Order() {
     let orderCart = localStorage.getItem('order') ? JSON.parse(localStorage.getItem('order')) : [];
@@ -38,7 +37,7 @@ function Order() {
         <LayoutModal>
             <div className="flex flex-col w-full h-screen gap-4 sm:gap-2 items-center sm:justify-start justify-start">
                 <h1 className={'text-xl font-bold'}>Order</h1>
-                <div className="w-full h-[60%] md:h-[50%] sm:h-[60%] flex flex-col gap-4 sm:gap-2 shadow-form bg-regal-white-400">
+                <div className="w-full h-[60vh] md:h-[70vh] sm:h-[50vh] flex flex-col gap-4 sm:gap-2 shadow-form bg-regal-white-400">
                     <div className="overflow-y-scroll">
                         {orderItem && field
                             ? orderItem.map((item, i) => (

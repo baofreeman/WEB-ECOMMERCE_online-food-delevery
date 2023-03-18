@@ -1,10 +1,10 @@
-import LayoutMenuOnly from '../../layout/LayoutMenuOnly';
-import { useDispatchs } from 'react-redux';
 import { useEffect, useState } from 'react';
-import Button from '../../components/Button';
-import { Outlet } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts';
+
+import LayoutMenuOnly from '../../layout/LayoutMenuOnly';
+import { Outlet } from 'react-router-dom';
+import Button from '../../components/Button';
 
 function Admin() {
     const { user } = useAuth();

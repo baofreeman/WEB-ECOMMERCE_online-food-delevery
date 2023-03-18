@@ -1,8 +1,6 @@
-import { async } from '@firebase/util';
-import { onValue, ref } from 'firebase/database';
-import { collection, deleteDoc, doc, getDocs, orderBy, query, setDoc, onSnapshot } from 'firebase/firestore';
+import { collection, deleteDoc, doc, setDoc } from 'firebase/firestore';
 
-import { db, database } from '../firebase.config';
+import { db } from '../firebase.config';
 
 export const categories = [
     {

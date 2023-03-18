@@ -1,5 +1,5 @@
-import Button from '../components/Button';
 import { LayoutMenuOnly } from '../layout';
+import Button from '../components/Button';
 
 function NoMatch() {
     return (

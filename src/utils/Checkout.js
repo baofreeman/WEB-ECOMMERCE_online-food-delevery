@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
-import { Field, useFormik } from 'formik';
+import { useNavigate } from 'react-router-dom';
+import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { apiGetPublicDisTrict, apiGetPublicProvinces } from '../data/dataAddress';

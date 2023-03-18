@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import Header from '../../components/Header';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBurger, faDollar, faUpload } from '@fortawesome/free-solid-svg-icons';
 import { categories } from '../../data/dataProducts';

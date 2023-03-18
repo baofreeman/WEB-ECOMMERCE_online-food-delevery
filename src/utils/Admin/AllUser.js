@@ -2,6 +2,7 @@ import { collection, onSnapshot } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { db } from '../../firebase.config';
 import { deleteItem } from '../../data/dataUsers';
+
 import Button from '../../components/Button';
 
 function AllUser() {

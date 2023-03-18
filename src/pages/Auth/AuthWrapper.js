@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import { image2 } from '../../assets/images';
+
 import LayoutMenuOnly from '../../layout/LayoutMenuOnly';
 import Login from './Login';
 import SignUp from './SignUp';
