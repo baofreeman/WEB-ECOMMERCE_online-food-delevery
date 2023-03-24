@@ -7,6 +7,8 @@ import Button from '../../components/Button';
 
 function AllUser() {
     const [allUser, setAllUser] = useState([]);
+
+    // Get all user on firebase database
     useEffect(() => {
         const q = collection(db, 'users');
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -16,16 +18,16 @@ function AllUser() {
         return unsubscribe;
     }, []);
     return (
-        <div className="w-full h-full flex flex-col gap-4">
-            <ul className="flex flex-col px-4 gap-4 w-full justify-center h-[40px] bg-regal-yellow-500 py-2">
-                <li className="flex gap-4 justify-around items-center text-sm font-medium">
-                    <h1 className="text-black w-[25%]">Email</h1>
-                    <h1 className="text-black w-[25%]">Name</h1>
-                    <h1 className="text-black w-[15%]">Phone</h1>
-                    <h1 className="text-black w-[25%]">ID</h1>
-                    <h1 className="text-black w-[10%]">Delete</h1>
-                </li>
-            </ul>
+        <section className="w-full h-full flex flex-col gap-4">
+            <div className="flex flex-col px-4 gap-4 w-full justify-center h-[40px] bg-regal-yellow-500 py-2">
+                <ul className="flex gap-4 justify-around items-center text-sm font-bold">
+                    <li className="text-black w-[25%]">Email</li>
+                    <li className="text-black w-[25%]">Name</li>
+                    <li className="text-black w-[15%]">Phone</li>
+                    <li className="text-black w-[25%]">ID</li>
+                    <li className="text-black w-[10%]">Delete</li>
+                </ul>
+            </div>
             <ul className="flex flex-col px-4 gap-2 w-full h-[320px] overflow-y-scroll">
                 {allUser.map((item, i) => (
                     <li
@@ -44,7 +46,7 @@ function AllUser() {
                     </li>
                 ))}
             </ul>
-        </div>
+        </section>
     );
 }
 

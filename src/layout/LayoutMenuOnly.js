@@ -3,7 +3,7 @@ import { Header } from '../components/Header';
 
 function LayoutMenuOnly({ children }) {
     const location = useLocation();
-    const locationpath = location.pathname.startsWith('/dashboard');
+    const locationpath = location.pathname.startsWith('/dashboard'); // Match Admin panel
 
     return (
         <div className="h-screen flex flex-col overflow-hidden gap-8 sm:gap-0 text-white">

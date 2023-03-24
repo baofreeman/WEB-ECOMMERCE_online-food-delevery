@@ -12,6 +12,8 @@ function AllProducts() {
     const dispatch = useDispatch();
 
     const getFoods = useSelector((state) => state.cartReducer.foodItems);
+
+    // Get all product on Firebase database
     useEffect(() => {
         const q = collection(db, 'foodItems');
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -23,15 +25,15 @@ function AllProducts() {
 
     return (
         <>
-            <div className="w-full h-full flex flex-col gap-4">
-                <ul className="flex flex-col justify-center h-[40px] px-4 gap-4 w-full bg-regal-yellow-500 py-2">
-                    <li className="flex gap-4 justify-around items-center text-sm font-medium">
-                        <h1 className="text-black w-[5%]">Image</h1>
-                        <h1 className="text-black w-[25%]">Title</h1>
-                        <h1 className="text-black w-[25%]">Price</h1>
-                        <h1 className="text-black w-[10%]">Delete</h1>
-                    </li>
-                </ul>
+            <section className="w-full h-full flex flex-col gap-4">
+                <div className="flex flex-col justify-center h-[40px] px-4 gap-4 w-full bg-regal-yellow-500 py-2">
+                    <ul className="flex gap-4 justify-around items-center text-sm font-bold">
+                        <li className="text-black w-[5%]">Image</li>
+                        <li className="text-black w-[25%]">Title</li>
+                        <li className="text-black w-[25%]">Price</li>
+                        <li className="text-black w-[10%]">Delete</li>
+                    </ul>
+                </div>
                 <ul className="flex flex-col px-4 gap-2 w-full h-[320px] overflow-y-scroll">
                     {getFoods.map((item, i) => (
                         <li
@@ -56,7 +58,7 @@ function AllProducts() {
                         </li>
                     ))}
                 </ul>
-            </div>
+            </section>
         </>
     );
 }

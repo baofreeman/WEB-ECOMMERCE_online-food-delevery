@@ -41,7 +41,8 @@ export function AuthProvider({ children }) {
         });
         return unsubscribe;
     }, []);
-    console.log(user);
+    // console.log(user);
+
     // register
     const registerUser = (name, email, password, phoneNumber) => {
         setLoading(true);
@@ -69,7 +70,7 @@ export function AuthProvider({ children }) {
         setLoading(true);
         signInWithEmailAndPassword(auth, email, password)
             .then((res) => {
-                console.log(res);
+                // console.log(res);
                 navigate('/dashboard');
             })
             .catch((err) => setError(err.message))
@@ -96,7 +97,6 @@ export function AuthProvider({ children }) {
         const photoURL = await getDownloadURL(fileRef);
         updateProfile(auth.currentUser, { photoURL });
         updateUser(auth.currentUser.uid, { photoURL: photoURL });
-        console.log(user.uid);
         setLoading(false);
         alert('Upload Succsess');
     };

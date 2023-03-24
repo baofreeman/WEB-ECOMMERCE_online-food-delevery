@@ -6,25 +6,27 @@ import Product from './Product';
 
 function Content({ data }) {
     const [productList, setProductList] = useState();
-    const [field, setFiels] = useState(false);
+    const [field, setField] = useState(false);
     const getQty = useSelector((state) => state.cartReducer.totalQty);
     const getData = useSelector((state) => state.cartReducer.carts);
 
     useEffect(() => {
         if (data) {
-            setFiels(true);
+            setField(true);
             setProductList(data);
-            console.log(data);
+            // console.log(data);
         }
     }, [data]);
 
+    // Local Storage
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(getData));
         localStorage.setItem('qty', JSON.stringify(getQty));
     }, [getQty]);
 
-    console.log(productList);
+    // console.log(productList);
 
+    // Search products
     const handleChange = (e) => {
         if (e.target.value === 'burgers') {
             const filterProducts = data.filter((product) => product.category === 'burgers');
@@ -60,7 +62,7 @@ function Content({ data }) {
     };
 
     return (
-        <div className="grid w-full bg-white px-5 py-5 h-screen gap-4">
+        <div className="w-full h-screen flex flex-col bg-white px-5 py-5 gap-4">
             <select
                 className="w-[20%] md:w-[40%] sm:w-full h-[40px] outline-none text-sm sm:text-xs p-2 rounded-md cursor-pointer text-black border border-regal-yellow"
                 onChange={handleChange}
@@ -87,7 +89,7 @@ function Content({ data }) {
                     Family
                 </option>
             </select>
-            <section className="grid overflow-y-scroll overflow-x-hidden gap-4">
+            <section className="grid h-screen overflow-y-scroll scrollbar-hide gap-4">
                 {field && productList.length ? <Product data={productList} /> : <Loader />}
             </section>
         </div>

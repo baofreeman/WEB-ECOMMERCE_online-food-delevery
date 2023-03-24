@@ -1,17 +1,15 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { lazy, Suspense, useEffect } from 'react';
+import { useEffect } from 'react';
 
 import { Sidebar } from '../utils';
+import { Content } from '../utils';
 import { setFoods } from '../redux/actions';
 import { useDispatch } from 'react-redux';
 import { db } from '../firebase.config';
 import { collection, onSnapshot } from 'firebase/firestore';
 
-import Loader from '../components/Loader';
-
-const Content = lazy(() => import('../utils/Content/Content'));
 function Dashboard() {
     const getFoods = useSelector((state) => state.cartReducer.foodItems);
     const dispatch = useDispatch();
@@ -28,9 +26,7 @@ function Dashboard() {
     return (
         <div className="flex h-screen sm:h-full sm:mt-[62px]">
             <Sidebar />
-            <Suspense fallback={<Loader />}>
-                <Content data={getFoods} />
-            </Suspense>
+            <Content data={getFoods} />
             <Outlet context={getFoods} />
         </div>
     );

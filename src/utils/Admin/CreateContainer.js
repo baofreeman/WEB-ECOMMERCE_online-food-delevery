@@ -13,6 +13,7 @@ import Loader from '../../components/Loader';
 import Button from '../../components/Button';
 
 function CreateContainer() {
+    // Set list
     const [title, setTitle] = useState('');
     const [price, setPrice] = useState('');
     const [category, setCategory] = useState(true);
@@ -23,6 +24,7 @@ function CreateContainer() {
     const [msg, setMsg] = useState(null);
     const [loading, setLoading] = useState(false);
 
+    // Upload img
     const uploadImage = (e) => {
         setLoading(true);
         const imageFile = e.target.files[0];
@@ -58,6 +60,8 @@ function CreateContainer() {
             },
         );
     };
+
+    // delete img
     const deleteImage = () => {
         setLoading(true);
         const deleteRef = ref(storage, imageAsset);
@@ -72,6 +76,8 @@ function CreateContainer() {
             }, 4000);
         });
     };
+
+    // Save product on Firebase database
     const saveDetails = () => {
         setLoading(true);
         try {
@@ -92,7 +98,7 @@ function CreateContainer() {
                     des: des,
                     price: price,
                 };
-                saveItem(data.id, data);
+                saveItem(data.id, data); // save Product
                 setLoading(false);
                 setFields(true);
                 setMsg('Data Uploaded successfully 😊');
@@ -119,7 +125,7 @@ function CreateContainer() {
         setImageAsset(null);
         setPrice('');
         setDes('');
-        setCategory('Select Category');
+        setCategory(true);
     };
     return (
         // <LayoutMenuOnly>

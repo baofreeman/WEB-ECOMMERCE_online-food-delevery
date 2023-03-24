@@ -7,6 +7,8 @@ import Button from '../../components/Button';
 
 function AllOrders() {
     const [orderItem, setOrderItem] = useState([]);
+
+    // Get orders all User on Firebase database
     useEffect(() => {
         const q = collection(db, 'orders');
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -15,21 +17,21 @@ function AllOrders() {
         });
         return unsubscribe;
     }, []);
-    console.log(orderItem);
+    // console.log(orderItem);
     return (
-        <div className="w-full h-full flex flex-col gap-4">
-            <ul className="flex flex-col px-4 gap-4 w-full justify-center h-[40px] bg-regal-yellow-500 py-2">
-                <li className="flex gap-4 justify-around items-center text-sm font-medium">
-                    <h1 className="text-black w-[5%]">OrderID</h1>
-                    <h1 className="text-black w-[25%]">Name</h1>
-                    <h1 className="text-black w-[25%]">Address</h1>
-                    <h1 className="text-black w-[10%]">Phone</h1>
-                    <h1 className="text-black w-[20%]">Item</h1>
-                    <h1 className="text-black w-[5%]">Qty</h1>
-                    <h1 className="text-black w-[5%]">Price</h1>
-                    <h1 className="text-black w-[5%]">Delete</h1>
-                </li>
-            </ul>
+        <section className="w-full h-full flex flex-col gap-4">
+            <div className="flex flex-col px-4 gap-4 w-full justify-center h-[40px] bg-regal-yellow-500 py-2">
+                <ul className="flex gap-4 justify-around items-center text-sm font-bold">
+                    <li className="text-black w-[5%]">OrderID</li>
+                    <li className="text-black w-[25%]">Name</li>
+                    <li className="text-black w-[25%]">Address</li>
+                    <li className="text-black w-[10%]">Phone</li>
+                    <li className="text-black w-[20%]">Item</li>
+                    <li className="text-black w-[5%]">Qty</li>
+                    <li className="text-black w-[5%]">Price</li>
+                    <li className="text-black w-[5%]">Delete</li>
+                </ul>
+            </div>
             <ul className="flex flex-col px-4 gap-2 w-full h-[320px] overflow-y-scroll">
                 {orderItem.map((item, i) => (
                     <li
@@ -65,7 +67,7 @@ function AllOrders() {
                     </li>
                 ))}
             </ul>
-        </div>
+        </section>
     );
 }
 

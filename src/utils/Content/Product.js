@@ -1,13 +1,15 @@
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { motion } from 'framer-motion';
 
 import Button from '../../components/Button';
 import { addCart } from '../../redux/actions';
 
 function Product({ data }) {
     const dispatch = useDispatch();
+
     const handleAddCart = (product) => {
-        dispatch(addCart(product));
+        dispatch(addCart(product)); // add product
     };
     return (
         <div className="w-full h-screen">
@@ -25,9 +27,14 @@ function Product({ data }) {
                                     'text-center flex items-center flex-col gap-2 px-10 py-5 md:px-5 sm:px-1 sm:py-2'
                                 }
                             >
-                                <div className="w-[120px] h-[120px] rounded-full border border-regal-yellow">
+                                <motion.div
+                                    whileHover={{ scale: 1.1 }}
+                                    whileTap={{ scale: 0.9 }}
+                                    exit={{ scale: 0 }}
+                                    className="w-[120px] h-[120px] rounded-full border border-regal-yellow"
+                                >
                                     <img src={product.imageURL} className={'w-full h-full rounded-full object-cover'} />
-                                </div>
+                                </motion.div>
                                 <div className="w-full flex flex-col gap-2">
                                     <h2 className="wrap_1 text-base font-bold sm:text-sm">{product.title}</h2>
                                     <h4 className="wrap text-xs font-thin text-left sm:text-xs">{product.des}</h4>

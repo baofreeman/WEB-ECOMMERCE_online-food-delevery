@@ -7,7 +7,6 @@ import { useAuth } from '../contexts';
 import LayoutModal from '../layout/LayoutModal';
 
 function Order() {
-    let orderCart = localStorage.getItem('order') ? JSON.parse(localStorage.getItem('order')) : [];
     const [orderItem, setOrderItem] = useState([]);
     const [field, setField] = useState(true);
     const { user } = useAuth();
@@ -16,29 +15,27 @@ function Order() {
         localStorage.removeItem('cart');
         localStorage.removeItem('qty');
         localStorage.removeItem('price');
-        localStorage.removeItem('order');
     }, 1000);
     useEffect(() => {
         if (user) {
             const uID = user.uid;
-            console.log(uID);
             const q = query(collection(db, 'orders'), where('id', '==', `${uID}`));
             const unsubscribe = onSnapshot(q, (querySnapshot) => {
                 const item = querySnapshot.docs.map((doc) => doc.data());
-                console.log(item);
+                // console.log(item);
                 setOrderItem(item);
             });
             return unsubscribe;
         }
     }, [user]);
 
-    console.log(orderItem);
+    // console.log(orderItem);
     return (
         <LayoutModal>
             <div className="flex flex-col w-full h-screen gap-4 sm:gap-2 items-center sm:justify-start justify-start">
                 <h1 className={'text-xl font-bold'}>Order</h1>
                 <div className="w-full h-[60vh] md:h-[70vh] sm:h-[50vh] flex flex-col gap-4 sm:gap-2 shadow-form bg-regal-white-400">
-                    <div className="overflow-y-scroll">
+                    <div className="overflow-y-scroll scrollbar-hide">
                         {orderItem && field
                             ? orderItem.map((item, i) => (
                                   <section
@@ -47,13 +44,20 @@ function Order() {
                                   >
                                       <h1 className="text-xs text-regal-yellow font-thin">Order: {item.orderId}</h1>
                                       <div className="flex flex-col">
+                                          <div className="flex flex-col w-full justify-center h-[30px]">
+                                              <ul className="flex w-full justify-between items-center text-sm font-bold">
+                                                  <li className="text-black w-[50%]">Name</li>
+                                                  <li className="text-black">Qty</li>
+                                                  <li className="text-black w-[10%] text-right">Price</li>
+                                              </ul>
+                                          </div>
                                           {item.cart.map((product, i) => (
-                                              <div key={i} className="flex justify-between">
-                                                  <div className="wrap w-1/2 text-sm font-mediumselect-none">
+                                              <div key={i} className="flex w-full justify-between">
+                                                  <div className="wrap w-[50%] text-sm font-medium select-none">
                                                       {product.title}
                                                   </div>
                                                   <div>{product.qty}</div>
-                                                  <div className="text-base font-semibold w-24 text-right select-none">
+                                                  <div className="text-base font-semibold w-[10%] text-right select-none">
                                                       {`${product.qty * product.price}$`}
                                                   </div>
                                               </div>

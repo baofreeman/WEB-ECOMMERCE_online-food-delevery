@@ -5,11 +5,13 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { useAuth } from '../../contexts';
 import { useLocation } from 'react-router-dom';
+import Loader from '../../components/Loader';
 
 function Login() {
     const { signInUser, forgetPassword, loading } = useAuth();
     const location = useLocation();
-    const locationPath = location.pathname.startsWith('/dashboard');
+    const locationPath = location.pathname.startsWith('/dashboard'); // Match Admin panel
+
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -18,11 +20,14 @@ function Login() {
         onSubmit: (value) => {
             const email = value.email;
             const password = value.password;
+
+            // Login User
             if (email && password) {
                 signInUser(email, password);
             }
         },
 
+        // Validate
         validationSchema: Yup.object({
             email: Yup.string()
                 .required('Required')
@@ -71,11 +76,12 @@ function Login() {
                     <p className="text-xs font-thin text-red-600">{formik.errors.password}</p>
                 )}
                 <Button
+                    disabled={loading}
                     type="submit"
                     size="buttonMedium"
                     style={formik.values.email && formik.values.password ? 'buttonBasic' : 'buttonDisable'}
                 >
-                    SIGN IN
+                    {loading ? <Loader /> : `LOGIN`}
                 </Button>
             </form>
             {locationPath ? null : (

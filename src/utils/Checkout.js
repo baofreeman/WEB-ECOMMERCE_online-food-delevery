@@ -59,7 +59,7 @@ function Checkout() {
     useEffect(() => {
         const fetchPublicProvinces = async () => {
             const response = await apiGetPublicProvinces();
-            console.log(response);
+            // console.log(response);
             if (response.status === 200) {
                 setProvinces(response?.data.results);
             }
@@ -99,13 +99,8 @@ function Checkout() {
             price: price,
         };
 
-        console.log(values);
+        // console.log(values);
         navigate('/dashboard/order');
-
-        // Local Storage
-        let listOrder = localStorage.getItem('order') ? JSON.parse(localStorage.getItem('order')) : [];
-        listOrder.push(data);
-        localStorage.setItem('order', JSON.stringify(listOrder));
 
         // Save data orders database
         saveOrder(user.uid, data.orderId, data);
@@ -116,7 +111,7 @@ function Checkout() {
         }, 2000);
         actions.resetForm(); // reset form
         await new Promise((resolve) => setTimeout(resolve, 1000));
-        console.log(data);
+        // console.log(data);
     };
     // Formik & Yup
     const formik = useFormik({
@@ -192,6 +187,9 @@ function Checkout() {
                                 )}
 
                                 <SelectFieldProvince
+                                    defaultValue={{ label: 'City', value: '' }}
+                                    isClearable
+                                    isSearchable={false}
                                     type={'province'}
                                     options={dataProvince}
                                     name="province"
@@ -201,7 +199,6 @@ function Checkout() {
                                         formik.handleBlur({ target: { name: 'province' } });
                                     }}
                                     onChange={(option) => {
-                                        console.log(option);
                                         formik.setFieldValue('province', option?.value);
                                         setProvince(option?.key);
                                     }}
@@ -211,6 +208,9 @@ function Checkout() {
                                 )}
 
                                 <SelectFieldDistrist
+                                    defaultValue={{ label: 'District', value: '' }}
+                                    isSearchable={false}
+                                    isClearable
                                     type={'district'}
                                     options={dataDistrict}
                                     name="district"

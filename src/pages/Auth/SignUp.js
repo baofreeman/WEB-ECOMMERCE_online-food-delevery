@@ -4,13 +4,15 @@ import * as Yup from 'yup';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import Loader from '../../components/Loader';
 import { useAuth } from '../../contexts';
 
 function SignUp() {
-    const { registerUser } = useAuth();
+    const { registerUser, loading } = useAuth();
 
     const location = useLocation();
-    const locationPath = location.pathname.startsWith('/dashboard');
+    const locationPath = location.pathname.startsWith('/dashboard'); // Match Admin panel
+
     const formik = useFormik({
         initialValues: {
             name: '',
@@ -19,16 +21,21 @@ function SignUp() {
             confirmPassword: '',
             phone: '',
         },
+
         onSubmit: (value) => {
-            console.log(value);
+            // console.log(value);
             const name = value.name;
             const email = value.email;
             const password = value.password;
             const phoneNumber = value.phone;
+
+            // Create User
             if (name && email && password && phoneNumber) {
                 registerUser(name, email, password, phoneNumber);
             }
         },
+
+        // Validate
         validationSchema: Yup.object({
             name: Yup.string().required('Required').min(3, 'Must be 4 character or more'.trim()),
 
@@ -134,6 +141,7 @@ function SignUp() {
                 <Button
                     type="submit"
                     size="buttonMedium"
+                    disabled={loading}
                     style={
                         formik.values.name &&
                         formik.values.email &&
@@ -144,7 +152,7 @@ function SignUp() {
                             : 'buttonDisable'
                     }
                 >
-                    SIGN UP
+                    {loading ? <Loader /> : `SIGN UP`}
                 </Button>
             </form>
             {locationPath ? null : (

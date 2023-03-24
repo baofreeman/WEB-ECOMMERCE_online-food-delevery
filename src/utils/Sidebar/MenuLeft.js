@@ -2,20 +2,24 @@ import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { db } from '../../firebase.config';
 import { Link, NavLink } from 'react-router-dom';
-import { updateDoc, doc, setDoc, getDoc, collection, onSnapshot, arrayUnion, query, where } from 'firebase/firestore';
+import { collection, onSnapshot, query, where } from 'firebase/firestore';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { useAuth } from '../../contexts';
 import { dataListMenuLeft } from '../../data/dataListMenuLeft';
 
 function MenuLeft() {
+    const avtUser = 'https://cdn-icons-png.flaticon.com/512/1946/1946429.png';
     const { user } = useAuth();
-    const [photoURL, setPhotoURL] = useState('https://cdn-icons-png.flaticon.com/512/1946/1946429.png');
+    const [photoURL, setPhotoURL] = useState(avtUser);
     const [orderItem, setOrderItem] = useState([]);
     const [displayname, setDisplayname] = useState('');
-    const dispatch = useDispatch();
 
+    const getQty = useSelector((state) => state.cartReducer.totalQty);
+    const getCartQty = JSON.parse(localStorage.getItem('cart')); // get cart Local Storage
+
+    // Set photo User
     useEffect(() => {
         if (user?.photoURL) {
             setPhotoURL(user.photoURL);
@@ -23,30 +27,25 @@ function MenuLeft() {
         }
     }, [user]);
 
+    // Get order User on firebase database
     useEffect(() => {
         if (user) {
             const uID = user.uid;
-            console.log(uID);
             const q = query(collection(db, 'orders'), where('id', '==', `${uID}`));
             const unsubscribe = onSnapshot(q, (querySnapshot) => {
                 const item = querySnapshot.docs.map((doc) => doc.data());
-                console.log(item);
+                // console.log(item);
                 setOrderItem(item);
             });
             return unsubscribe;
         }
     }, [user]);
 
-    const orderCart = JSON.parse(localStorage.getItem('order'));
-    const getCartQty = JSON.parse(localStorage.getItem('cart'));
-
     const navLinkClass = ({ isActive }) => {
         return isActive ? 'nav-link activated' : 'nav-link';
     };
-    const getQty = useSelector((state) => state.cartReducer.totalQty);
-    // const orders = useSelector((state) => state.cartReducer.orders);
-    // console.log(orders);
-    console.log(orderItem);
+
+    // console.log(orderItem);
 
     useEffect(() => {}, [getCartQty]);
 

@@ -1,14 +1,14 @@
-import { faFolder, faHouse, faSackDollar, faStore, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faFolder, faHouse, faSackDollar, faStore } from '@fortawesome/free-solid-svg-icons';
 
 export const dataListMenu = [
     {
         home: { path: '/', display: 'Home', icon: faHouse },
-        login: { path: '/login', display: 'Login', icon: faHouse },
-        signup: { path: '/signup', display: 'Sign Up', icon: faHouse },
-        dashboard: { path: '/dashboard', display: 'DashBoard', icon: faHouse },
-        order: { path: '/dashboard/order', display: 'Order', icon: faSackDollar, qty: '1' },
+        login: { path: '/login', display: 'Login' },
+        signup: { path: '/signup', display: 'Sign Up' },
+        dashboard: { path: '/dashboard', display: 'DashBoard', icon: faStore },
+        order: { path: '/dashboard/order', display: 'Order', icon: faFolder, qty: '1' },
         cart: { path: '/dashboard/add', display: 'Your Cart', icon: faSackDollar, qty: '0' },
-        profile: { path: '/dashboard/profile', display: 'Profile', icon: faSackDollar },
-        logout: { path: '/', display: 'Logout', icon: faSackDollar },
+        profile: { path: '/dashboard/profile', display: 'Profile' },
+        logout: { path: '/', display: 'Logout' },
     },
 ];

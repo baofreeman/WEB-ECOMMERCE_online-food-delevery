@@ -22,11 +22,26 @@ const customStyles = {
     },
 };
 
-export const SelectField = ({ value, onChange, options, label, error, onBlur, id, name, touched }) => {
+export const SelectField = ({
+    value,
+    onChange,
+    options,
+    defaultValue,
+    label,
+    error,
+    onBlur,
+    isClearable,
+    isSearchable,
+    id,
+    name,
+    touched,
+}) => {
     return (
         <div className="w-full">
             <Select
-                isClearable="true"
+                isClearable={isClearable}
+                isSearchable={isSearchable}
+                defaultValue={defaultValue}
                 label={label}
                 value={value}
                 options={options}

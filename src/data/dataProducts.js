@@ -46,21 +46,6 @@ export const saveItem = async (id, data) => {
     await setDoc(docRef, data);
 };
 
-// Getting Item
-// export const getAllFoodItems = async () => {
-//     const items = await getDocs(query(collection(db, 'foodItems'), orderBy('id', 'desc')));
-
-//     return items.docs.map((doc) => doc.data());
-// };
-
-export const getAllFoodItems = () => {};
-// export const getAllFoodItems = async () => {
-//     const q = query(collection(db, 'foodItems'));
-//     await onSnapshot(q, (querySnapshot) => {
-//         return querySnapshot.docs.map((doc) => doc.data());
-//     });
-// };
-
 // Delete Item
 export const deleteItem = async (id) => {
     await deleteDoc(doc(db, 'foodItems', id));

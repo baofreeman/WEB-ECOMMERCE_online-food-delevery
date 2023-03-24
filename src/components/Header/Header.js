@@ -10,6 +10,7 @@ function Header() {
     const [toggleNavbar, setToggleNavbar] = useState('menu');
     const navbarRef = useRef();
 
+    // Toggle Menu mobile
     const handleMenu = () => {
         setToggleNavbar('close');
         navbarRef.current.classList.remove('sm:hidden');

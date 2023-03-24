@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+// API Provinces
 export const apiGetPublicProvinces = () =>
     new Promise(async (resolve, reject) => {
         try {
@@ -13,6 +14,7 @@ export const apiGetPublicProvinces = () =>
         }
     });
 
+// API Districts
 export const apiGetPublicDisTrict = (provinceId) =>
     new Promise(async (resolve, reject) => {
         try {
